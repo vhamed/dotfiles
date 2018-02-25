@@ -35,16 +35,13 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 
 " code to solve (back at original) problem
-set noshowmode
-
-" set shortmess+=c
-" catch /^Vim\%((\a\+)\)\=:E539: Illegal character/
-"   autocmd MyAutoCmd VimEnter *
-"         \ highlight ModeMsg guifg=bg guibg=bg |
-"         \ highlight Question guifg=bg guibg=bg
-" endtry
-
-
+try
+  set shortmess+=c
+catch /^Vim\%((\a\+)\)\=:E539: Illegal character/
+  autocmd MyAutoCmd VimEnter *
+        \ highlight ModeMsg guifg=bg guibg=bg |
+        \ highlight Question guifg=bg guibg=bg
+endtry
 
 
 " Make searching better set gdefault Never have to type /g at the end of search / replace again
