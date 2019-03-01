@@ -1,0 +1,17 @@
+snippet rgc "Route::get() Closure" b
+Route::get('$1', function ($2) {
+    return $3;
+})$4;
+endsnippet
+
+snippet rg "Route::get() " b
+Route::get('$1', '$2')$3;$4
+endsnippet
+
+snippet rr "Route::resource()" b
+Route::resource('$1', '$2')$3;$4
+endsnippet
+
+snippet rv "return view()" b
+return view('$1'$2);
+endsnippet
