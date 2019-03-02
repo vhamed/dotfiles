@@ -70,7 +70,7 @@ videop () {
     youtube-dl --yes-playlist -o "~/Videos/%(title)s.%(ext)s" "$1"
 }
 
-updateYoutubedl () {
+youtubeupdate () {
     pip install --upgrade youtube-dl
 }
 
@@ -84,10 +84,32 @@ blue() {
     tput setaf 4; echo $@; tput sgr0; 
 }
 
-pa () {
+# Laravel
+a () {
     php artisan $@ 
 }
 
 route:list () {
     php artisan route:list $@
+}
+
+# Git 
+gl () {
+    git log $@
+}
+
+glo () {
+    git log --format=oneline $@
+}
+
+gs () {
+    git status $@ 
+}
+
+co () {
+    git checkout $@
+}
+
+stash () {
+    git stash $@
 }

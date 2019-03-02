@@ -17,8 +17,8 @@ HISTFILE=~/.zsh_history
 HISTIGNORE="ls:cd *:cd:cd ~:l:pwd:exit:date:* --help";
 MUSIC=$HOME/kevin/Music;
 EDITOR="vim";
-EDITOR2="gedit";
 REPOS=$HOME/Repos;
+DOTFILES=$REPOS/dotfiles;
 
 # Use modern completion system
 autoload -Uz compinit
@@ -156,7 +156,7 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
-source ~/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"

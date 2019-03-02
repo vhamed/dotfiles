@@ -1,7 +1,3 @@
-# Empty the trash folder that is created when you delete things as root
-alias root_trash='sudo bash -c "exec rm -r /root/.local/share/Trash/{files,info}/*"'
-
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     # test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -18,32 +14,20 @@ alias la='ls -A'
 # try base16 colors
 alias colortest='$HOME/.config/base16-shell/./colortest'
 
-# edit i3config file
-alias i3config='$EDITOR $HOME/.i3/config' 
-
 # edit aliases
-alias aliases='$EDITOR $HOME/.bash/aliases.sh'
-
-# edit functions
+alias aliases='$EDITOR $HOME/.zsh/aliases.sh'
 alias functions='$EDITOR $HOME/.zsh/functions.sh'
-
 alias zshrc='$EDITOR $HOME/.zshrc'
-
-# edit .vimrc   
 alias vimrc='$EDITOR $HOME/.vimrc'
-
-# edit .tmux.conf
 alias tmuxconf='$EDITOR $HOME/.tmux.conf'
 
-# clear screen
-alias l='clear'
-
-# refresh zsh
-alias sourcezsh='source $HOME/.zshrc && cd && l'
+# source zsh
+alias szsh='source $HOME/.zshrc'
 
 # pwd
 alias p='pwd'
-alias bye='sudo shutdown -h now'
+alias l='clear'
+alias bye='tmux kill-server'
 alias update='sudo apt-get update && sudo apt-get upgrade'
 alias upgrade='sudo apt-get upgrade'
 alias clean='sudo apt-get autoclean && sudo apt-get autoremove'
@@ -56,13 +40,9 @@ alias .....='cd ../../../..'
 alias q='exit'
 alias :q='exit'
 
-# start lampp server
+# lamp aliases
 alias lstart='sudo /opt/lampp/lampp start'
-
-# stop lampp server
 alias lstop='sudo /opt/lampp/lampp stop'
-
-# lampp server status
 alias lstatus='sudo /opt/lampp/lampp status'
 
 # vim
@@ -74,30 +54,17 @@ alias t='tmux'
 # tmux -2
 alias t2='tmux -2'
 
-# ranger
-alias r='ranger'
-
-# cmus
-alias c='cmus'
-
-# 
-alias s='php artisan serve'
+# laravel artisan aliases 
 alias serve='php artisan serve'
-
-# git status
-alias gs='git status'
-
-# git log
-alias gl='git log'
-
-# git log
-alias glo='git log --format=oneline'
-
-# cd Repos
-alias rp='cd $HOME/Repos'
 
 # home
 alias hm='cd $HOME'
 
-# cd Download
+# cd Repos
+alias rp='cd $REPOS'
+
+# cd Dotfiles
+alias dotfiles='cd $DOTFILES'
+
+# cd Downloads
 alias dwl='cd $HOME/Downloads'
