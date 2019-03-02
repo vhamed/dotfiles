@@ -19,35 +19,26 @@ alias la='ls -A'
 alias colortest='$HOME/.config/base16-shell/./colortest'
 
 # edit i3config file
-alias i3config='vim $HOME/.i3/config' 
+alias i3config='$EDITOR $HOME/.i3/config' 
 
 # edit aliases
-alias aliases='vim $HOME/.bash/aliases.sh'
-
-# edit exports
-alias exports='vim $HOME/.bash/exports.sh'
+alias aliases='$EDITOR $HOME/.bash/aliases.sh'
 
 # edit functions
-alias functions='vim $HOME/.bash/functions.sh'
+alias functions='$EDITOR $HOME/.zsh/functions.sh'
 
-# edit .bashrc 
-alias bashrc='vim $HOME/.bashrc'
-
-alias zshrc='vim $HOME/.zshrc'
+alias zshrc='$EDITOR $HOME/.zshrc'
 
 # edit .vimrc   
 alias vimrc='$EDITOR $HOME/.vimrc'
 
 # edit .tmux.conf
-alias tmuxconf='vim $HOME/.tmux.conf'
+alias tmuxconf='$EDITOR $HOME/.tmux.conf'
 
 # clear screen
 alias l='clear'
 
-# refresh bash
-alias sourcebash='source $HOME/.bashrc && cd && l'
-
-# refresh bash
+# refresh zsh
 alias sourcezsh='source $HOME/.zshrc && cd && l'
 
 # pwd

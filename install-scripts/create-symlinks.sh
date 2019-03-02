@@ -21,7 +21,6 @@ sudo rm -rf ~/.fonts > /dev/null 2>&1
 # Create symlinks in the home folder
 # Allow overriding with files of matching names in the custom-configs dir
 #==============
-ln -sf $dotfiles_dir/bashrc ~/.bashrc
 ln -sf $dotfiles_dir/zsh ~/.zsh
 ln -sf $dotfiles_dir/zshrc ~/.zshrc
 ln -sf $dotfiles_dir/tmux.conf ~/.tmux.conf
