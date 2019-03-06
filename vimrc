@@ -68,7 +68,9 @@ set title        " show nice title in xterm
 let &showbreak='↳ ' 
 " set nowrap
 " set wrapmargin=16
-" set textwidth=78
+set textwidth=78
+set cc=+1
+execute 'highlight link EndOfBuffer ColorColumn'
 
 " Numbers
 set nonumber
@@ -177,6 +179,7 @@ let g:UltiSnipsEditSplit="tabdo"  " If you want :UltiSnipsEdit to split your win
 
 " ----------- ctrlp ------------- 
 let g:ctrlp_map = '<leader>p'
+let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_multiple_files = 't'
 let g:ctrlp_open_new_file = 't'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv
@@ -331,3 +334,5 @@ let g:zoomwintab_hidetabbar = 0
 
 " Tab navigation like Firefox.
 nnoremap <C-t>     :tabnew<CR>
+source $HOME/.vim/autocmds.vim
+source $HOME/.vim/wincent/autocmds.vim
