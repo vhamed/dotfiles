@@ -22,7 +22,7 @@ alias vimrc='$EDITOR $HOME/.vimrc'
 alias tmuxconf='$EDITOR $HOME/.tmux.conf'
 
 # source zsh
-alias szsh='source $HOME/.zshrc'
+alias sourcezsh='source $HOME/.zshrc'
 
 # pwd
 alias p='pwd'

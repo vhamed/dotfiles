@@ -68,9 +68,10 @@ set title        " show nice title in xterm
 let &showbreak='↳ ' 
 " set nowrap
 " set wrapmargin=16
-set textwidth=78
-set cc=+1
-execute 'highlight link EndOfBuffer ColorColumn'
+" set textwidth=78
+" set cc=+1
+" set fillchars=vert:┆             " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
+" set fillchars+=fold:·             " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
 
 " Numbers
 set nonumber
@@ -328,11 +329,17 @@ au FileType mail let b:delimitMate_expand_cr = 1
 " ---------- indentline -----------------------
 let g:indentLine_enabled = 1
 let g:indentLine_char = '┊'
+let g:indentLine_bufTyepExlude = ['Nerd_tree.*']
+let g:indentLine_fileTypeExclude = ['help', 'markdown', 'reason']
 
 " ---------- zoomwintab -----------------------
 let g:zoomwintab_hidetabbar = 0
 
 " Tab navigation like Firefox.
 nnoremap <C-t>     :tabnew<CR>
+
 source $HOME/.vim/autocmds.vim
 source $HOME/.vim/wincent/autocmds.vim
+execute 'highlight link EndOfBuffer ColorColumn'
+execute 'highlight clear VertSplit'
+execute 'highlight link VertSplit LineNr'
