@@ -45,6 +45,16 @@ else
     echo "figlet FAILED TO INSTALL!!!" >> $log_file
 fi
 
+#============
+# cowsay 
+#============
+sudo apt-get -y install cowsay
+echo "installing cowsay ..."
+if type -p cowsay > /dev/null; then
+    echo "cowsay Installed" >> $log_file
+else
+    echo "cowsay FAILED TO INSTALL!!!" >> $log_file
+fi
 
 #============
 # rofi 

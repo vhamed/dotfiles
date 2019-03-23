@@ -17,6 +17,7 @@ HISTFILE=~/.zsh_history
 HISTIGNORE="ls:cd *:cd:cd ~:l:pwd:exit:date:* --help";
 MUSIC=$HOME/Music;
 EDITOR="vim";
+editor="vim";
 REPOS=$HOME/Repos;
 DOTFILES=$REPOS/dotfiles;
 
@@ -144,7 +145,7 @@ export RPROMPT=$RPROMPT_BASE
 export SPROMPT="zsh: correct %F{red}'%R'%f to %F{red}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]? "
 
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
-# eval $(dircolors ~/.dir_colors)
+eval $(dircolors ~/.dir_colors)
 # man xkeyboard-config 
 
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
@@ -158,5 +159,3 @@ export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
 source ~/.zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
-
-export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"

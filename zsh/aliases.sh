@@ -63,6 +63,9 @@ alias hm='cd $HOME'
 # cd Repos
 alias rp='cd $REPOS'
 
+# cd Music
+alias music='cd $MUSIC'
+
 # cd Dotfiles
 alias dotfiles='cd $DOTFILES'
 

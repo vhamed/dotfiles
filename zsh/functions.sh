@@ -89,6 +89,14 @@ a () {
     php artisan $@ 
 }
 
+ar () {
+    php artisan $@ 
+}
+
+artisan () {
+    php artisan $@ 
+}
+
 route:list () {
     php artisan route:list $@
 }
@@ -112,4 +120,8 @@ co () {
 
 stash () {
     git stash $@
+}
+
+whoeatmyram () {
+    ps aux | awk '{print $6/1024 " MB\t\t" $11}' | sort -rn | head -25 
 }

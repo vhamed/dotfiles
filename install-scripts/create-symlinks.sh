@@ -27,6 +27,7 @@ ln -sf $dotfiles_dir/tmux.conf ~/.tmux.conf
 ln -sf $dotfiles_dir/vimrc ~/.vimrc
 ln -sf $dotfiles_dir/fonts ~/.fonts
 ln -sf $dotfiles_dir/UltiSnips ~/.vim/UltiSnips
+ln -sf $dotfiles_dir/dir_colors ~/.dir_colors
 
 echo "creating symlinks of :  " >> $log_file
 echo "bashrc " >> $log_file
@@ -34,6 +35,7 @@ echo "zshrc " >> $log_file
 echo "tmux.conf " >> $log_file
 echo "vimrc " >> $log_file
 echo "fonts " >> $log_file
+echo "dir_colors " >> $log_file
 
 #==============
 # Set zsh as the default shell

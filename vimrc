@@ -34,9 +34,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>vs :vnew<cr>
 nnoremap <leader>hs :new<cr>
 nnoremap <leader>in :IndentLinesToggle<cr>
-set list                             " show trailing whitespace etc
+" set list                             " show trailing whitespace etc
 " set listchars=tab:»\ ,trail:·,nbsp:·
-set listchars=nbsp:·
+" set listchars=nbsp:·
  
 " code to solve (back at original) problem
 " try
@@ -70,12 +70,12 @@ let &showbreak='↳ '
 " set wrapmargin=16
 " set textwidth=78
 " set cc=+1
-" set fillchars=vert:┆             " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
+set fillchars=vert:┆             " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
 " set fillchars+=fold:·             " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
 
 " Numbers
 set nonumber
-set numberwidth=5
+set numberwidth=2
 set relativenumber
 
 " Splits
@@ -138,8 +138,8 @@ Plugin 'wincent/terminus'
 Plugin 'artur-shaik/vim-javacomplete2' " an omni-completion plugin for Java.
 
 " Cpp
-Plugin 'rip-rip/clang_complete' " This plugin use clang for accurately completing C and C++ code.
-Plugin 'octol/vim-cpp-enhanced-highlight'
+" Plugin 'rip-rip/clang_complete' " This plugin use clang for accurately completing C and C++ code.
+" Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " Php
 Plugin 'stanangeloff/php.vim'
@@ -258,9 +258,9 @@ nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-NewClass)
 nmap <silent> <buffer> <leader>jN <Plug>(JavaComplete-Generate-ClassInFile)
 
 " " ----------- clang complete ----------------------
-let g:clang_library_path='/usr/lib/llvm-3.8/lib/libclang.so.1'
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" let g:clang_library_path='/usr/lib/llvm-3.8/lib/libclang.so.1'
+" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " ----------- base16 ------------------------
 if exists('$KONSOLE_PROFILE_NAME') !~ 1
@@ -278,14 +278,14 @@ let g:lightline = {
    \ 'active': {
    \   'left': [ [ 'mode', 'paste' ],
    \             [ 'readonly', 'relativepath', 'modified'] ],
-   \   'right': [ [ 'lineinfo' ]
+   \   'right': [ [ 'lineinfo']
    \              ]
    \ },
    \'component': {
    \'lineinfo': '⭡ %3l / %-2v',
    \},
    \'component_function': {
-   \'readonly': 'LightlineReadonly'
+   \'readonly': 'LightlineReadonly',
    \},
    \'separator': { 'left': '', 'right': '' },
    \'subseparator': { 'left': '', 'right': '' }
@@ -338,8 +338,6 @@ let g:zoomwintab_hidetabbar = 0
 " Tab navigation like Firefox.
 nnoremap <C-t>     :tabnew<CR>
 
-source $HOME/.vim/autocmds.vim
-source $HOME/.vim/wincent/autocmds.vim
 execute 'highlight link EndOfBuffer ColorColumn'
 execute 'highlight clear VertSplit'
 execute 'highlight link VertSplit LineNr'
