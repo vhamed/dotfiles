@@ -1,5 +1,3 @@
-log_file=~/install_progress_log.txt
-
 #============
 # zsh 
 #============
@@ -21,6 +19,12 @@ if type -p vim > /dev/null; then
 else
     echo "Vim FAILED TO INSTALL!!!" >> $log_file
 fi
+
+#============
+# Vundle-Vim 
+#============
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+echo "Vim-Vundle Installed ..." >> $log_file
 
 #============
 # keepassx 
@@ -90,6 +94,12 @@ else
 fi
 
 #============
+# Tmux: Tmux-Plugin-Manager 
+#============
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "tmux-Plugin-Manager Installed" >> $log_file
+
+#============
 # cmus 
 #============
 sudo apt-get -y install cmus
@@ -101,23 +111,20 @@ else
 fi
 
 #============
-# base16-shell 
+# Zsh: base16-shell 
 #============
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 echo "Base16-shell Installed ..." >> $log_file
 
 #============
-# youcompleteme vim-plugin dependencies 
+# Zsh: zsh-autosuggestions 
+#============
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+echo "Zsh-authsuggestions plugin installed ... " >> $log_file
+
+#============
+# Vim: youcompleteme vim-plugin dependencies 
 #============
 sudo apt-get -y install build-essential cmake
 sudo apt-get -y install python-dev python3-dev
 echo "youcomplete vim-plugin dependencies Installed ..." >> $log_file
-
-#==============
-# Give the user a summary of what has been installed
-#==============
-echo -e "\n====== Summary ======\n"
-cat $log_file
-echo
-echo 'Enjoy - '$USERNAME
-rm $log_file
