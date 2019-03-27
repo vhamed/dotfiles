@@ -1,5 +1,10 @@
 # !/bin/zsh
 #==============
+# Dotfiles variable
+#==============
+DOTFILES=$HOME/Repos/dotfiles
+
+#==============
 # Delete existing dot files and folders
 #==============
 sudo rm -rf ~/.vim > /dev/null 2>&1

@@ -14,7 +14,7 @@ Best Dotfiles Ever.
 ## Installation
 
 ```sh
-$ mkdir -p Repos/dotfiles && cd Repos/dotfiles
+$ mkdir -p Repos/dotfiles
 $ git clone https://github.com/abdesselame17/dotfiles.git ~/Repos/dotfiles
 $ bash ~/Repos/dotfiles/install.sh
 ```

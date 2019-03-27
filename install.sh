@@ -1,5 +1,4 @@
 log_file=~/install_progress_log.txt
-DOTFILES=$HOME/Repos/dotfiles
 bash $DOTFILES/install-scripts/create-symlinks.sh
 bash $DOTFILES/install-scripts/install-packages.sh
 vim +PluginInstall +qall
