@@ -1,11 +1,11 @@
 log_file=~/install_progress_log.txt
-bash $DOTFILES/install-scripts/create-symlinks.sh
-bash $DOTFILES/install-scripts/install-packages.sh
-vim +PluginInstall +qall
-# install composer and other stuff
+bash ~/Repos/dotfiles/install-scripts/create-symlinks.sh
+bash ~/Repos/dotfiles/install-scripts/install-packages.sh
+bash ~/Repos/dotfiles/install-scripts/install-web-development-tools.sh
+bash ~/Repos/dotfiles/install-scripts/install-vim-plugins.sh
 
 #==============
-# Set zsh as the default shell
+# Set ZSH as the default shell
 #==============
 chsh -s ${which zsh}
 
@@ -23,3 +23,6 @@ echo '         \  (oo)\_______'
 echo '            (__)\       )\/\'
 echo '                ||----w |'
 echo '                ||     ||'
+echo '                ||     ||'
+echo '                ||     ||'
+echo '                         '

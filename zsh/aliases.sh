@@ -44,6 +44,9 @@ alias :q='exit'
 alias lstart='sudo /opt/lampp/lampp start'
 alias lstop='sudo /opt/lampp/lampp stop'
 alias lstatus='sudo /opt/lampp/lampp status'
+alias mstart='sudo /opt/lampp/lampp startmysql'
+alias mstop='sudo /opt/lampp/lampp stopmysql'
+alias manlampp='/opt/lampp/lampp help'
 
 # vim
 alias v='vim'

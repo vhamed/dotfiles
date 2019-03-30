@@ -1,4 +1,5 @@
 # !/bin/zsh
+
 #==============
 # Dotfiles variable
 #==============
@@ -30,6 +31,7 @@ ln -sf $DOTFILES/fonts ~/.fonts
 ln -sf $DOTFILES/UltiSnips ~/.vim/UltiSnips
 ln -sf $DOTFILES/dir_colors ~/.dir_colors
 
+rm $DOTFILES
 echo "creating symlinks of :  " >> $log_file
 echo "bashrc " >> $log_file
 echo "zshrc " >> $log_file
