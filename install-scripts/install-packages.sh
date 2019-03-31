@@ -127,6 +127,17 @@ else
 fi
 
 #============
+# Konsole 
+#============
+sudo apt-get -y install konsole
+echo "installing konsole ..."
+if type -p tmux > /dev/null; then
+    echo "konsole Installed" >> $log_file
+else
+    echo "konsole FAILED TO INSTALL!!!" >> $log_file
+fi
+
+#============
 # Snap 
 #============
 sudo apt-get -y install snapd
