@@ -1,4 +1,9 @@
 #============
+# Main-packages 
+#============
+echo "Main-packages: " >> $log_file
+
+#============
 # Curl 
 #============
 sudo apt-get -y install curl
@@ -27,6 +32,9 @@ sudo apt-get -y install zsh
 echo "installing zsh ..."
 if type -p zsh > /dev/null; then
     echo "ZSH Installed" >> $log_file
+    # make zsh as default shell.
+    chsh -s ${which zsh}
+    echo 'Zsh is the default shell (need logout to apply)'
 else
     echo "ZSH FAILED TO INSTALL!!!" >> $log_file
 fi
@@ -69,81 +77,4 @@ if type -p vim > /dev/null; then
     echo "VIM Installed" >> $log_file
 else
     echo "VIM FAILED TO INSTALL!!!" >> $log_file
-fi
-
-#============
-# Keepassx 
-#============
-sudo apt-get -y install keepassx
-echo "installing keepassx ..."
-if type -p keepassx > /dev/null; then
-    echo "Keepassx Installed" >> $log_file
-else
-    echo "Keepassx FAILED TO INSTALL!!!" >> $log_file
-fi
-
-#============
-# Figlet 
-#============
-sudo apt-get -y install figlet
-echo "installing figlet ..."
-if type -p figlet > /dev/null; then
-    echo "figlet Installed" >> $log_file
-else
-    echo "figlet FAILED TO INSTALL!!!" >> $log_file
-fi
-
-#============
-# Cowsay 
-#============
-sudo apt-get -y install cowsay
-echo "installing cowsay ..."
-if type -p cowsay > /dev/null; then
-    echo "cowsay Installed" >> $log_file
-else
-    echo "cowsay FAILED TO INSTALL!!!" >> $log_file
-fi
-
-#============
-# Rofi 
-#============
-sudo apt-get -y install rofi
-echo "installing rofi ..."
-if type -p rofi > /dev/null; then
-    echo "rofi Installed" >> $log_file
-else
-    echo "rofi FAILED TO INSTALL!!!" >> $log_file
-fi
-
-#============
-# Cmus 
-#============
-sudo apt-get -y install cmus
-echo "installing cmus ..."
-if type -p tmux > /dev/null; then
-    echo "cmus Installed" >> $log_file
-else
-    echo "cmus FAILED TO INSTALL!!!" >> $log_file
-fi
-
-#============
-# Konsole 
-#============
-sudo apt-get -y install konsole
-echo "installing konsole ..."
-if type -p tmux > /dev/null; then
-    echo "konsole Installed" >> $log_file
-else
-    echo "konsole FAILED TO INSTALL!!!" >> $log_file
-fi
-
-#============
-# Snap 
-#============
-sudo apt-get -y install snapd
-echo "installing snap ..."
-if type -p tmux > /dev/null; then
-    echo "snap Installed" >> $log_file
-else
-    echo "snap FAILED TO INSTALL!!!" >> $log_file
 fi

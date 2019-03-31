@@ -1,4 +1,9 @@
 #============
+# Vim-plugins: 
+#============
+echo "Vim-plugins: " >> $log_file
+
+#============
 # Vim-plugin: vundle
 #============
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -19,4 +24,5 @@ sudo apt-get -y install exuberant-ctags
 #============
 # Vim: Install plugins now.
 #============
+
 vim +PluginInstall +qall

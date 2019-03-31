@@ -1,0 +1,82 @@
+#!/bin/bash
+#==============
+# Create log file
+#==============
+echo > ~/install_progress_log.txt
+log_file=~/install_progress_log.txt
+
+help () {
+    echo "./install " 
+    echo "And choose from 1 to 3"
+    echo "1: Basic"
+    echo "2: Full"
+    echo "3: Show This is message"
+}
+
+summary () {
+    cat $log_file
+
+    echo ' ______________'
+    echo ' Enjoy '$USER
+    echo ' --------------'
+    echo '        \   ^__^'
+    echo '         \  (oo)\_______'
+    echo '            (__)\       )\/\'
+    echo '                ||----w |'
+    echo '                ||     ||'
+    echo '                ||     ||'
+    echo '                ||     ||'
+    echo '                         '
+}
+
+if [ $# -eq 0 ]; then
+    clear
+    echo "
+    Please Select: 
+
+    1) Basic-version (Recommended)
+    2) Full-version 
+    3) Help
+    0) Quit
+    "
+    read -p "Entre Selected option: "
+    case $REPLY in
+        1 )  
+            echo "Installing Basic Version ... "
+            install-scripts/./symlinks
+            install-scripts/./main-packages
+            install-scripts/./vim-plugins
+            summary
+            exit 1
+            ;;
+        2 )  
+            echo "Installing Full Version ... "
+            install-scripts/./symlinks
+            install-scripts/./main-packages
+            install-scripts/./web-dev-tools
+            install-scripts/./vim-plugins
+            summary
+            exit 1
+            ;;
+        3 )  
+            help
+            exit 1
+            ;;
+        0 ) 
+            echo "Quit ... "
+            exit 1
+            ;;
+        * )
+            help
+            exit 1
+            ;;
+    esac
+else
+    help 
+    exit 1
+fi
+
+#==============
+# Remove log file
+#==============
+rm $log_file

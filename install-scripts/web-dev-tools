@@ -1,4 +1,9 @@
 #============
+# Web-dev-tools 
+#============
+echo "Web-dev-tools: " >> $log_file
+
+#============
 # Php 
 #============
 sudo apt update 
@@ -13,7 +18,7 @@ sudo apt install php-mbstring php-curl php-mcrypt php-gettext php-xml php-json
 echo "Php Modules Installed ..." >> $log_file
 
 #============
-# MyCli 
+# DataBase tools
 #============
 sudo apt-get -y install mycli
 echo "installing mycli ..."
