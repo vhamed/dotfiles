@@ -1,6 +1,7 @@
 #============
 # Web-dev-tools 
 #============
+log_file=~/install_progress_log.txt
 echo "Web-dev-tools: " >> $log_file
 
 #============

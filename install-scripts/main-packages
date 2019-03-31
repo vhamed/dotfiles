@@ -1,6 +1,7 @@
 #============
 # Main-packages 
 #============
+log_file=~/install_progress_log.txt
 echo "Main-packages: " >> $log_file
 
 #============

@@ -2,8 +2,8 @@
 #==============
 # Create log file
 #==============
-echo > ~/install_progress_log.txt
-log_file=~/install_progress_log.txt
+echo > ~/Repos/dotfiles/install_progress_log.txt
+log_file=~/Repos/dotfiles/install_progress_log.txt
 
 help () {
     echo "./install " 

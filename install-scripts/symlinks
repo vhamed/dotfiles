@@ -1,8 +1,9 @@
 # !/bin/zsh
 
 #==============
-# Dotfiles variable
+# Dotfiles, log_file variables
 #==============
+log_file=~/Repos/dotfiles/install_progress_log.txt
 DOTFILES=$HOME/Repos/dotfiles
 
 #==============

@@ -1,6 +1,7 @@
 #============
 # Vim-plugins: 
 #============
+log_file=~/install_progress_log.txt
 echo "Vim-plugins: " >> $log_file
 
 #============

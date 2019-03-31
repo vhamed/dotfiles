@@ -1,6 +1,7 @@
 #============
 # Extra-packages 
 #============
+log_file=~/install_progress_log.txt
 echo "Extra Packages : " >> $log_file 
 
 #============
