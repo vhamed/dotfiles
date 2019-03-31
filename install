@@ -53,6 +53,7 @@ if [ $# -eq 0 ]; then
             echo "Installing Full Version ... "
             install-scripts/./symlinks
             install-scripts/./main-packages
+            install-scripts/./extra-packages
             install-scripts/./web-dev-tools
             install-scripts/./vim-plugins
             summary
