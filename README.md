@@ -11,9 +11,8 @@ My Dotfiles.
 ## Installation
 
 ```sh
-$ mkdir -p Repos/dotfiles
+$ mkdir -p Repos/dotfiles && cd Repos/dotfiles
 $ git clone https://github.com/abdesselame17/dotfiles.git ~/Repos/dotfiles
-$ cd Repos/dotfiles
 $ ./install
 ```
 
