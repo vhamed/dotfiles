@@ -13,6 +13,17 @@ sudo apt install php-mbstring php-curl php-mcrypt php-gettext php-xml php-json
 echo "Php Modules Installed ..." >> $log_file
 
 #============
+# MyCli 
+#============
+sudo apt-get -y install mycli
+echo "installing mycli ..."
+if type -p mycli > /dev/null; then
+    echo "mycli Installed" >> $log_file
+else
+    echo "mycli FAILED TO INSTALL!!!" >> $log_file
+fi
+
+#============
 # Composer 
 #============
 curl -sS https://getcomposer.org/installer | php
