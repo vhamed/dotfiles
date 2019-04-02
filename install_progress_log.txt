@@ -1,4 +1,12 @@
 
+Vim folder exists before 
+creating symlinks of :  
+zshrc 
+tmux.conf 
+vimrc 
+fonts 
+dir_colors 
+UltiSnips 
 Main-packages: 
 CURL Installed
 SSH-Server Installed
@@ -6,3 +14,8 @@ ZSH Installed
 Default Shell is ZSH
 base16-shell installed before
 Zsh-autosuggestions installed before
+tmux Installed
+Extra Packages : 
+snap Installed
+Keepassx Installed
+figlet Installed
