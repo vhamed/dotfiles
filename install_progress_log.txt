@@ -1,0 +1,8 @@
+
+Main-packages: 
+CURL Installed
+SSH-Server Installed
+ZSH Installed
+Default Shell is ZSH
+base16-shell installed before
+Zsh-autosuggestions installed before

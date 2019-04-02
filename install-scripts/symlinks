@@ -18,7 +18,7 @@ if [[ ! -L ~/.vimrc ]]; then
 fi
 
 # Vim
-if [[ -d ~/.vim -s ~/.vim ]]; then
+if [[ -d ~/.vim && -s ~/.vim ]]; then
     echo 'Vim folder exists before ' >> $log_file
 else
     sudo rm -rf ~/.vim > /dev/null 2>&1
