@@ -2,7 +2,11 @@
 #==============
 # Create log file
 #==============
+echo > ~/Repos/dotfiles/output.txt
+echo > ~/Repos/dotfiles/error.txt
 echo > ~/Repos/dotfiles/install_progress_log.txt
+output_file=~/Repos/dotfiles/output.txt
+error_file=~/Repos/dotfiles/error.txt
 log_file=~/Repos/dotfiles/install_progress_log.txt
 
 help () {
@@ -80,4 +84,6 @@ fi
 #==============
 # Remove log file
 #==============
-rm $log_file
+# rm $output_file
+# rm $error_file
+# rm $log_file

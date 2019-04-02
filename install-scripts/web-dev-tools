@@ -1,27 +1,29 @@
 #============
 # Web-dev-tools 
 #============
-log_file=~/install_progress_log.txt
+output_file=~/Repos/dotfiles/output.txt
+error_file=~/Repos/dotfiles/error.txt
+log_file=~/Repos/dotfiles/install_progress_log.txt
 echo "Web-dev-tools: " >> $log_file
 
 #============
 # Php 
 #============
-sudo apt update 
-sudo apt upgrade
+sudo apt update >> $output_file 2>> $error_file
+sudo apt upgrade >> $output_file 2>> $error_file
 echo "installing Php ..."
 if type -p php > /dev/null; then
     echo "Php Installed" >> $log_file
 else
     echo "Php FAILED TO INSTALL!!!" >> $log_file
 fi
-sudo apt install php-mbstring php-curl php-mcrypt php-gettext php-xml php-json
+sudo apt install php-mbstring php-curl php-mcrypt php-gettext php-xml php-json >> $output_file 2>> $error_file
 echo "Php Modules Installed ..." >> $log_file
 
 #============
 # DataBase tools
 #============
-sudo apt-get -y install mycli
+sudo apt-get -y install mycli >> $output_file 2>> $error_file
 echo "installing mycli ..."
 if type -p mycli > /dev/null; then
     echo "mycli Installed" >> $log_file
@@ -40,5 +42,5 @@ echo "Composer Installed ..." >> $log_file
 #============
 # The Best -- Laravel --
 #============
-composer global require "laravel/installer"
+composer global require "laravel/installer" >> $output_file 2>> $error_file
 echo "laravel/installer Installed ..." >> $log_file

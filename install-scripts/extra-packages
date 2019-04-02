@@ -1,13 +1,15 @@
 #============
 # Extra-packages 
 #============
-log_file=~/install_progress_log.txt
+output_file=~/Repos/dotfiles/output.txt
+error_file=~/Repos/dotfiles/error.txt
+log_file=~/Repos/dotfiles/install_progress_log.txt
 echo "Extra Packages : " >> $log_file 
 
 #============
 # Snap 
 #============
-sudo apt-get -y install snapd
+sudo apt-get -y install snapd >> $output_file 2>> $error_file
 echo "installing snap ..."
 if type -p tmux > /dev/null; then
     echo "snap Installed" >> $log_file
@@ -18,7 +20,7 @@ fi
 #============
 # Keepassx 
 #============
-sudo apt-get -y install keepassx
+sudo apt-get -y install keepassx >> $output_file 2>> $error_file
 echo "installing keepassx ..."
 if type -p keepassx > /dev/null; then
     echo "Keepassx Installed" >> $log_file
@@ -29,7 +31,7 @@ fi
 #============
 # Figlet 
 #============
-sudo apt-get -y install figlet
+sudo apt-get -y install figlet >> $output_file 2>> $error_file
 echo "installing figlet ..."
 if type -p figlet > /dev/null; then
     echo "figlet Installed" >> $log_file
@@ -40,7 +42,7 @@ fi
 #============
 # Cowsay 
 #============
-sudo apt-get -y install cowsay
+sudo apt-get -y install cowsay >> $output_file 2>> $error_file
 echo "installing cowsay ..."
 if type -p cowsay > /dev/null; then
     echo "cowsay Installed" >> $log_file
@@ -51,7 +53,7 @@ fi
 #============
 # Cmus 
 #============
-sudo apt-get -y install cmus
+sudo apt-get -y install cmus >> $output_file 2>> $error_file
 echo "installing cmus ..."
 if type -p tmux > /dev/null; then
     echo "cmus Installed" >> $log_file
@@ -62,7 +64,7 @@ fi
 #============
 # Rofi 
 #============
-sudo apt-get -y install rofi
+sudo apt-get -y install rofi >> $output_file 2>> $error_file
 echo "installing rofi ..."
 if type -p rofi > /dev/null; then
     echo "rofi Installed" >> $log_file
@@ -73,7 +75,7 @@ fi
 #============
 # Konsole 
 #============
-sudo apt-get -y install konsole
+sudo apt-get -y install konsole >> $output_file 2>> $error_file
 echo "installing konsole ..."
 if type -p tmux > /dev/null; then
     echo "konsole Installed" >> $log_file
@@ -84,7 +86,7 @@ fi
 #============
 # Mailspring 
 #============
-sudo snap install mailspring
+sudo snap install mailspring >> $output_file 2>> $error_file
 echo "installing mailspring ..."
 if type -p tmux > /dev/null; then
     echo "mailspring Installed" >> $log_file

@@ -1,13 +1,15 @@
 #============
 # Main-packages 
 #============
-log_file=~/install_progress_log.txt
+output_file=~/Repos/dotfiles/output.txt
+error_file=~/Repos/dotfiles/error.txt
+log_file=~/Repos/dotfiles/install_progress_log.txt
 echo "Main-packages: " >> $log_file
 
 #============
 # Curl 
 #============
-sudo apt-get -y install curl
+sudo apt-get -y install curl >> $output_file 2>> $error_file
 echo "installing curl ..."
 if type -p curl > /dev/null; then
     echo "CURL Installed" >> $log_file
@@ -18,7 +20,7 @@ fi
 #============
 # SSH 
 #============
-sudo apt-get -y install openssh-server
+sudo apt-get -y install openssh-server >> $output_file 2>> $error_file
 echo "installing SSH ..."
 if type -p ssh > /dev/null; then
     echo "SSH-Server Installed" >> $log_file
@@ -29,7 +31,7 @@ fi
 #============
 # Zsh 
 #============
-sudo apt-get -y install zsh
+sudo apt-get -y install zsh >> $output_file 2>> $error_file
 echo "installing zsh ..."
 if type -p zsh > /dev/null; then
     echo "ZSH Installed" >> $log_file
@@ -55,7 +57,7 @@ echo "Zsh-authsuggestions installed ... " >> $log_file
 #============
 # Tmux 
 #============
-sudo apt-get -y install tmux
+sudo apt-get -y install tmux >> $output_file 2>> $error_file
 echo "installing tmux ..."
 if type -p tmux > /dev/null; then
     echo "tmux Installed" >> $log_file
@@ -72,7 +74,7 @@ echo "tmux-Plugin-Manager Installed" >> $log_file
 #============
 # Vim 
 #============
-sudo apt-get -y install vim
+sudo apt-get -y install vim >> $output_file 2>> $error_file
 echo "installing vim ..."
 if type -p vim > /dev/null; then
     echo "VIM Installed" >> $log_file
