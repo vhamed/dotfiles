@@ -35,24 +35,35 @@ sudo apt-get -y install zsh >> $output_file 2>> $error_file
 echo "installing zsh ..."
 if type -p zsh > /dev/null; then
     echo "ZSH Installed" >> $log_file
-    # make zsh as default shell.
-    chsh -s ${which zsh}
-    echo 'Zsh is the default shell (need logout to apply)'
 else
     echo "ZSH FAILED TO INSTALL!!!" >> $log_file
+fi
+if [[ $SHELL == $(which zsh) ]]; then
+    echo 'Default Shell is ZSH' >> $log_file
+else 
+    chsh -s $(which zsh)
+    echo 'Change default shell to ZSH (need restart)' >> $log_file
 fi
 
 #============
 # Zsh-plugins: base16-shell 
 #============
-git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-echo "Base16-shell Installed ..." >> $log_file
+if [[ -d ~/.config/base16-shell && -s ~/.config/base16-shell ]]; then
+    echo 'base16-shell installed before' >> $log_file
+else
+    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell >> $output_file 2>> $error_file
+    echo "Base16-shell Installed ..." >> $log_file
+fi
 
 #============
 # Zsh-plugins: zsh-autosuggestions 
 #============
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-echo "Zsh-authsuggestions installed ... " >> $log_file
+if [[ -d ~/.zsh/zsh-autosuggestions && -s ~/.zsh/zsh-autosuggestions ]]; then
+    echo 'Zsh-autosuggestions installed before' >> $log_file
+else 
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions >> $output_file 2>> $error_file
+    echo "Zsh-authsuggestions installed ... " >> $log_file
+fi
 
 #============
 # Tmux 
@@ -68,8 +79,12 @@ fi
 #============
 # Tmux-plugins: tmux-plugin-manager 
 #============
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-echo "tmux-Plugin-Manager Installed" >> $log_file
+if [[ -d ~/.tmux/plugins/tpm -s ~/.tmux/plugins/tpm ]]; then
+    echo 'tpm installed before' >> $log_file
+else
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm >> $output_file 2>> $error_file
+    echo "tmux-Plugin-Manager Installed" >> $log_file
+fi
 
 #============
 # Vim 

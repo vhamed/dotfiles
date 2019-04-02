@@ -9,8 +9,12 @@ echo "Vim-plugins: " >> $log_file
 #============
 # Vim-plugin: vundle
 #============
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-echo "Vundle-vim Installed ..." >> $log_file
+if [[ -d ~/.vim/bundle/Vundle.vim && -s ~/.vim/bundle/Vundle.vim ]]; then
+    echo 'Vundle installed before' >> $log_file
+else
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    echo "Vundle-vim Installed ..." >> $log_file
+fi
 
 #============
 # Vim-plugin-dependencies: YCM
@@ -28,4 +32,4 @@ sudo apt-get -y install exuberant-ctags >> $output_file 2>> $error_file
 # Vim: Install plugins now.
 #============
 
-vim +PluginInstall +qall
+# vim +PluginInstall +qall

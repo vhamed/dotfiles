@@ -3,46 +3,81 @@
 #==============
 # Dotfiles, log_file variables
 #==============
+output_file=~/Repos/dotfiles/output.txt
+error_file=~/Repos/dotfiles/error.txt
 log_file=~/Repos/dotfiles/install_progress_log.txt
 DOTFILES=$HOME/Repos/dotfiles
 
 #==============
 # Delete existing dotfiles and folders
 #==============
-if [ -d ~/.vim]; then
-    sudo rm -rf ~/.vim > /dev/null 2>&1
+# Vimrc
+if [[ ! -L ~/.vimrc ]]; then
+    sudo rm -rf ~/.vimrc > /dev/null 2>&1
+    ln -sf $DOTFILES/vimrc ~/.vimrc
 fi
-sudo rm -rf ~/.vimrc > /dev/null 2>&1
-sudo rm -rf ~/.bashrc > /dev/null 2>&1
-sudo rm -rf ~/.bash > /dev/null 2>&1
-sudo rm -rf ~/.zshrc > /dev/null 2>&1
-sudo rm -rf ~/.tmux > /dev/null 2>&1
-sudo rm -rf ~/.tmux.conf > /dev/null 2>&1
-sudo rm -rf ~/.fonts > /dev/null 2>&1
 
-#==============
-# Create symlinks in the home folder
-# Allow overriding with files of matching names in the custom-configs dir
-#==============
-if [ ! -d $HOME/.vim ]; then
-    mkdir -p $HOME/.vim
+# Vim
+if [[ -d ~/.vim -s ~/.vim ]]; then
+    echo 'Vim folder exists before ' >> $log_file
+else
+    sudo rm -rf ~/.vim > /dev/null 2>&1
+    mkdir -p ~/.vim
 fi
-if [ ! -d $HOME/.zsh ]; then
-    mkdir -p $HOME/.zsh
+
+# UltiSnips
+if [[ ! -L ~/.vim/UltiSnips ]]; then
+    sudo rm -rf ~/.vim/UltiSnips > /dev/null 2>&1
+    ln -sf $DOTFILES/UltiSnips ~/.vim/UltiSnips
 fi
-ln -sf $DOTFILES/zsh/aliases.sh ~/.zsh/aliases.sh
-ln -sf $DOTFILES/zsh/functions.sh ~/.zsh/functions.sh
-ln -sf $DOTFILES/zshrc ~/.zshrc
-ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
-ln -sf $DOTFILES/vimrc ~/.vimrc
-ln -sf $DOTFILES/fonts ~/.fonts
-ln -sf $DOTFILES/UltiSnips ~/.vim/UltiSnips
-ln -sf $DOTFILES/dir_colors ~/.dir_colors
+
+# Zshrc
+if [[ ! -L ~/.zshrc ]]; then
+    sudo rm -rf ~/.zshrc > /dev/null 2>&1
+    ln -sf $DOTFILES/zshrc ~/.zshrc
+fi
+
+# Zsh
+if [[ ! -d ~/.zsh ]]; then
+    mkdir -p ~/.zsh
+fi
+
+if [[ ! -L ~/.zsh/aliases.sh ]]; then
+    ln -sf $DOTFILES/zsh/aliases.sh ~/.zsh/aliases.sh
+fi
+
+if [[ ! -L ~/.zsh/functions.sh ]]; then
+    ln -sf $DOTFILES/zsh/functions.sh ~/.zsh/functions.sh
+fi
+if [[ ! -L ~/.dir_colors ]]; then
+    ln -sf $DOTFILES/dir_colors ~/.dir_colors
+fi
+
+# Tmux.conf
+if [[ ! -L ~/.tmux.conf ]]; then
+    sudo rm -rf ~/.tmux.conf > /dev/null 2>&1
+    ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
+fi
+
+# Remove this files.
+if [[ -d ~/.bash ]]; then
+    sudo rm -rf ~/.bash > /dev/null 2>&1
+fi
+if [[ -f ~/.bashrc ]]; then
+    sudo rm -rf ~/.bashrc > /dev/null 2>&1
+fi
+if [[ ! -s ~/.tmux ]]; then
+    sudo rm -rf ~/.tmux > /dev/null 2>&1
+fi
+if [[ ! -L ~/.fonts ]]; then
+    sudo rm -rf ~/.fonts > /dev/null 2>&1
+    ln -sf $DOTFILES/fonts ~/.fonts
+fi
 
 echo "creating symlinks of :  " >> $log_file
-echo "bashrc " >> $log_file
 echo "zshrc " >> $log_file
 echo "tmux.conf " >> $log_file
 echo "vimrc " >> $log_file
 echo "fonts " >> $log_file
 echo "dir_colors " >> $log_file
+echo "UltiSnips " >> $log_file

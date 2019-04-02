@@ -9,15 +9,16 @@ echo "Web-dev-tools: " >> $log_file
 #============
 # Php 
 #============
-sudo apt update >> $output_file 2>> $error_file
-sudo apt upgrade >> $output_file 2>> $error_file
+sudo apt -y update >> $output_file 2>> $error_file
+sudo apt -y upgrade >> $output_file 2>> $error_file
+sudo apt -y install php >> $output_file 2>> $error_file
 echo "installing Php ..."
 if type -p php > /dev/null; then
     echo "Php Installed" >> $log_file
 else
     echo "Php FAILED TO INSTALL!!!" >> $log_file
 fi
-sudo apt install php-mbstring php-curl php-mcrypt php-gettext php-xml php-json >> $output_file 2>> $error_file
+sudo apt -y install php-mbstring php-curl php-mcrypt php-gettext php-xml php-json php-zip >> $output_file 2>> $error_file
 echo "Php Modules Installed ..." >> $log_file
 
 #============
@@ -35,7 +36,7 @@ fi
 # Composer 
 #============
 curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
+sudo mv composer.phar /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
 echo "Composer Installed ..." >> $log_file
 
