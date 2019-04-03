@@ -1,98 +1,17 @@
-#============
-# Main-packages 
-#============
-output_file=~/Repos/dotfiles/output.txt
-error_file=~/Repos/dotfiles/error.txt
-log_file=~/Repos/dotfiles/install_progress_log.txt
-echo "Main-packages: " >> $log_file
+#!/bin/zsh
 
-#============
-# Curl 
-#============
-sudo apt-get -y install curl >> $output_file 2>> $error_file
-echo "installing curl ..."
-if type -p curl > /dev/null; then
-    echo "CURL Installed" >> $log_file
-else
-    echo "CURL FAILED TO INSTALL!!!" >> $log_file
-fi
+source 'helper_functions'
 
-#============
-# SSH 
-#============
-sudo apt-get -y install openssh-server >> $output_file 2>> $error_file
-echo "installing SSH ..."
-if type -p ssh > /dev/null; then
-    echo "SSH-Server Installed" >> $log_file
-else
-    echo "SSH-Server FAILED TO INSTALL!!!" >> $log_file
-fi
+summary_title Main-packages
 
-#============
-# Zsh 
-#============
-sudo apt-get -y install zsh >> $output_file 2>> $error_file
-echo "installing zsh ..."
-if type -p zsh > /dev/null; then
-    echo "ZSH Installed" >> $log_file
-else
-    echo "ZSH FAILED TO INSTALL!!!" >> $log_file
-fi
-if [[ $SHELL == $(which zsh) ]]; then
-    echo 'Default Shell is ZSH' >> $log_file
-else 
-    chsh -s $(which zsh)
-    echo 'Change default shell to ZSH (need restart)' >> $log_file
-fi
+apt_packages=(vim tmux curl openssh-server)
+for i in $apt_packages; do
+    apt_install $i
+done
 
-#============
-# Zsh-plugins: base16-shell 
-#============
-if [[ -d ~/.config/base16-shell && -s ~/.config/base16-shell ]]; then
-    echo 'base16-shell installed before' >> $log_file
-else
-    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell >> $output_file 2>> $error_file
-    echo "Base16-shell Installed ..." >> $log_file
-fi
+sources=(chriskempson/base16-shell.git zsh-users/zsh-autosuggestions tmux-plugins/tpm)
+destinations=(~/.config/base16-shell ~/.zsh/zsh-autosuggestions ~/.tmux/plugins/tpm)
 
-#============
-# Zsh-plugins: zsh-autosuggestions 
-#============
-if [[ -d ~/.zsh/zsh-autosuggestions && -s ~/.zsh/zsh-autosuggestions ]]; then
-    echo 'Zsh-autosuggestions installed before' >> $log_file
-else 
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions >> $output_file 2>> $error_file
-    echo "Zsh-authsuggestions installed ... " >> $log_file
-fi
-
-#============
-# Tmux 
-#============
-sudo apt-get -y install tmux >> $output_file 2>> $error_file
-echo "installing tmux ..."
-if type -p tmux > /dev/null; then
-    echo "tmux Installed" >> $log_file
-else
-    echo "tmux FAILED TO INSTALL!!!" >> $log_file
-fi
-
-#============
-# Tmux-plugins: tmux-plugin-manager 
-#============
-if [[ -d ~/.tmux/plugins/tpm && -s ~/.tmux/plugins/tpm ]]; then
-    echo 'tpm installed before' >> $log_file
-else
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm >> $output_file 2>> $error_file
-    echo "tmux-Plugin-Manager Installed" >> $log_file
-fi
-
-#============
-# Vim 
-#============
-sudo apt-get -y install vim >> $output_file 2>> $error_file
-echo "installing vim ..."
-if type -p vim > /dev/null; then
-    echo "VIM Installed" >> $log_file
-else
-    echo "VIM FAILED TO INSTALL!!!" >> $log_file
-fi
+for (( i = 1; i <= ${#sources} ; i++ )); do
+    github_install $sources[$i] $destinations[$i]
+done

@@ -7,10 +7,13 @@ My Dotfiles.
 
 ## Dependencies 
 * git
+* zsh
 
 ## Installation
 
 ```sh
+$ # Make zsh default shell (restart computer is required)
+$ chsh -s $(which zsh)
 $ mkdir -p Repos/dotfiles && cd Repos/dotfiles
 $ git clone https://github.com/abdesselame17/dotfiles.git ~/Repos/dotfiles
 $ ./install

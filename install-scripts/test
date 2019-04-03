@@ -1,0 +1,9 @@
+#============
+# Vim-plugins
+#============
+VundleVim/Vundle.vim.git installed before
+build-essential not installed
+cmake installed
+python-dev not installed
+python3-dev not installed
+exuberant-ctags not installed

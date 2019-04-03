@@ -1,35 +1,14 @@
-#============
-# Vim-plugins: 
-#============
-output_file=~/Repos/dotfiles/output.txt
-error_file=~/Repos/dotfiles/error.txt
-log_file=~/Repos/dotfiles/install_progress_log.txt
-echo "Vim-plugins: " >> $log_file
+#!/bin/zsh
 
-#============
-# Vim-plugin: vundle
-#============
-if [[ -d ~/.vim/bundle/Vundle.vim && -s ~/.vim/bundle/Vundle.vim ]]; then
-    echo 'Vundle installed before' >> $log_file
-else
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    echo "Vundle-vim Installed ..." >> $log_file
-fi
+source 'helper_functions'
 
-#============
-# Vim-plugin-dependencies: YCM
-#============
-sudo apt-get -y install build-essential cmake >> $output_file 2>> $error_file
-sudo apt-get -y install python-dev python3-dev >> $output_file 2>> $error_file
-echo "YCM dependencies Installed ..." >> $log_file
+summary_title Vim-plugins
 
-#============
-# Vim-plugin-dependencies: phpcd & vim-php-namespace
-#============
-sudo apt-get -y install exuberant-ctags >> $output_file 2>> $error_file
+github_install VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-#============
-# Vim: Install plugins now.
-#============
+apt_packages=(build-essential cmake python-dev python3-dev exuberant-ctags)
+for i in $apt_packages; do
+    apt_install $i
+done
 
 # vim +PluginInstall +qall
