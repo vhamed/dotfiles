@@ -46,6 +46,7 @@ alias lstop='sudo /opt/lampp/lampp stop'
 alias lstatus='sudo /opt/lampp/lampp status'
 alias mstart='sudo /opt/lampp/lampp startmysql'
 alias mstop='sudo /opt/lampp/lampp stopmysql'
+alias mstatus='sudo /opt/lampp/lampp status | grep -h MySQL'
 alias manlampp='/opt/lampp/lampp help'
 
 # vim
