@@ -4,7 +4,7 @@ source 'helper_functions'
 
 summary_title Extra-packages
 
-apt_packages=(snapd keepassx figlet cowsay cmus rofi konsole)
+apt_packages=(snapd keepassx ranger figlet cowsay cmus rofi konsole)
 for i in $apt_packages ; do
     apt_install $i
 done
