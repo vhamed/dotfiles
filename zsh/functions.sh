@@ -37,13 +37,23 @@ color () {
             echo "color light [ocean|solarized|...]"
             echo 
             echo "Available Themes: "
-            ls $HOME/.config/base16-shell/scripts | sed -r 's|base16-||' |  sed -r 's|.sh$||'
+            ls -1 $HOME/.config/base16-shell/scripts | sed 's/^base16-*//' | sed 's/.sh$//' | sed -E 's/(-light$|-light-$)/ (light)/' | sed -E 's/(-dark$|-dark-$)/ (dark)/' | sed -E 's/[^)]$/& (dark)/' | less
             ;;
         * )
             echo error
             ;;
     esac
 }
+
+# dark-themes exceptions:
+# brushtrees
+# cupcake
+# cupertino
+# fruit soda
+# github
+# material-lighter
+# shapeshifter 
+# tomorrow
 
 # create dir and cd into it
 mk () {
@@ -98,7 +108,7 @@ artisan () {
 }
 
 route:list () {
-    php artisan route:list $@
+php artisan route:list $@
 }
 
 # Git 
@@ -114,6 +124,9 @@ gs () {
     git status $@ 
 }
 
+gd () {
+    git diff $@
+}
 co () {
     git checkout $@
 }
