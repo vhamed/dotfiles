@@ -1,0 +1,14 @@
+{
+    "diagnostic.enable": false,
+    "suggest.minTriggerInputLength": 2,
+    "tsserver.log": "verbose",
+    "tsserver.trace.server": "verbose",
+    "coc.preferences.hoverTarget": true,
+    "snippets.snipmate.enable": false,
+    "prettier.tabWidth": 4,
+    "snippets.extends": {
+        "javascriptreact": ["javascript"],
+        "javascript.jsx": ["javascript"],
+        "typescript": ["javascript"]
+    }
+}
