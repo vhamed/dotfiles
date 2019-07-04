@@ -16,8 +16,8 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 HISTIGNORE="ls:cd *:cd:cd ~:l:pwd:exit:date:* --help";
 MUSIC=$HOME/Music;
-EDITOR="vim";
-editor="vim";
+EDITOR="nvim";
+editor="nvim";
 REPOS=$HOME/Repos;
 DOTFILES=$REPOS/dotfiles;
 
