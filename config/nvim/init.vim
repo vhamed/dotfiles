@@ -177,7 +177,7 @@ let g:lightline = {
             \              ]
             \ },
             \'component': {
-            \'lineinfo': ' %3l / %-2v',
+            \'lineinfo': '%3p%% :   %3l/%-2v',
             \},
             \'component_function': {
             \'readonly': 'LightlineReadonly',
