@@ -1,0 +1,11 @@
+rofi.show-icons: true
+rofi.drun-icon-theme: Adwaita
+rofi.combi-modi: window,drun
+rofi.modi: combi
+rofi.font: Fira Code Regular 16
+rofi.width: 60
+rofi.window-format: {n}
+rofi.combi-hide-mode-prefix: false
+rofi.display-drun: > 
+rofi.display-window: (Open)
+rofi.theme: /usr/share/rofi/themes/gruvbox-light-soft.rasi
