@@ -39,6 +39,7 @@ alias .....='cd ../../../..'
 # quit 
 alias q='exit'
 alias :q='exit'
+alias :qa='exit'
 
 # lamp aliases
 alias lstart='sudo /opt/lampp/lampp start'
@@ -50,7 +51,7 @@ alias mstatus='sudo /opt/lampp/lampp status | grep -h MySQL'
 alias manlampp='/opt/lampp/lampp help'
 
 # vim
-alias v='vim'
+alias v='nvim'
 
 # tmux
 alias t='tmux'
