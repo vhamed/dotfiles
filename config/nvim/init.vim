@@ -8,6 +8,7 @@ set noshowmode
 set cursorline
 set nobackup
 set nowritebackup
+set noswapfile
 set clipboard=unnamedplus
 set autowrite     " Automatically :write before running commands
 set shortmess+=a
@@ -61,7 +62,7 @@ set splitbelow
 " Plugins
 set rtp+=~/.vim/bundle/Vundle.vim/ " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/
-call vundle#begin() 
+call vundle#begin('~/.config/nvim/plugins')
 " Plugin manager
 Plugin 'VundleVim/Vundle.vim' " Vim plugin manager, allows you keep track and configure your plugins right in .vimrc.
 
@@ -125,6 +126,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mustache/vim-mustache-handlebars'
 
+Plugin 'tpope/vim-repeat'
 Plugin 'mileszs/ack.vim'
 Plugin 'ryanoasis/vim-devicons'
 
