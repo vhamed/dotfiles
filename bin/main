@@ -68,6 +68,7 @@ echo 'Install NeoVim/ Vim ... '
 github_install VundleVim/Vundle.vim.git ~/.config/nvim/plugins/Vundle.vim
 github_install VundleVim/Vundle.vim.git ~/.config/vim/plugins/Vundle.vim
 
+~/.tmux/plugins/tpm/bin/./install_plugins
 nvim +PluginInstall +qall
 
 cat $summary
