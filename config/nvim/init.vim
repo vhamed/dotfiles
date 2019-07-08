@@ -15,13 +15,13 @@ set shortmess+=a
 set shortmess+=s
 set shortmess+=c
 set shortmess+=F
-set fillchars+=vert:│
+set fillchars+=vert:│,fold:-
 
 " Mappings
 let mapleader = ","
 nnoremap <silent> <leader>h :noh<cr>
 map <silent> <Leader>n <plug>NERDTreeTabsToggle<CR>
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <leader>ec :CocConfig<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>vs :vnew<cr>
@@ -60,7 +60,7 @@ set splitright
 set splitbelow
 
 " Plugins
-set rtp+=~/.vim/bundle/Vundle.vim/ " set the runtime path to include Vundle and initialize
+set rtp+=~/.config/nvim/plugins/Vundle.vim/ " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/
 call vundle#begin('~/.config/nvim/plugins')
 " Plugin manager
