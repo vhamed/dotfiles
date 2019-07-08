@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-source './utils'
-
 echo "#============" >> $summary
 echo "# Summary    " >> $summary
 echo "#============" >> $summary
@@ -53,13 +51,25 @@ sudo apt update
 
 apt_packages=(vim neovim tmux curl rofi)
 for i in $apt_packages; do
-    apt_install $i
+    echo "Insatlling: "$i" ... "
+    sudo apt -y install $i &>> $log   
+    if apt list --installed $i &>> $log | grep -hq installed ; then 
+        echo $i" installed." >> $summary
+    else
+        echo $i" not installed." >> $summary
+    fi
 done
 
 sources=(chriskempson/base16-shell.git zsh-users/zsh-autosuggestions tmux-plugins/tpm)
 destinations=(~/.config/base16-shell ~/.config/zsh/zsh-autosuggestions ~/.tmux/plugins/tpm)
 for (( i = 1; i <= ${#sources} ; i++ )); do
-    github_install $sources[$i] $destinations[$i]
+    echo "Cloning: "$sources[$i]" into "$destinations[$i]" ..."
+    if [[ -s $destination  ]]; then
+        echo "$1 installed before" >> $summary
+    else
+        git clone https://github.com/$sources[$i] $destination[$i] &>> $log 
+        echo "$1 installed" >> $summary
+    fi
 done
 
 echo '#============' >> $summary
@@ -67,8 +77,8 @@ echo '# NeoVim/ Vim ' >> $summary
 echo '#============' >> $summary
 echo 'Install NeoVim/ Vim ... '
 
-github_install VundleVim/Vundle.vim.git ~/.config/nvim/plugins/Vundle.vim
-github_install VundleVim/Vundle.vim.git ~/.config/vim/plugins/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/plugins/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/vim/plugins/Vundle.vim
 
 ~/.tmux/plugins/tpm/bin/./install_plugins
 nvim +PluginInstall +qall
