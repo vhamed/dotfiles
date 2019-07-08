@@ -21,7 +21,7 @@ if [ $# -eq 0 ]; then
     read REPLY
     case $REPLY in
         Y )  
-            /bin/./main
+            ./bin/./main
             exit 1 ;;
         N ) 
             echo "Quit ... "
