@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+apt_install () {
+    package_name=$1
+    echo "Insatlling: "$package_name" ... "
+    sudo apt -y install $package_name &>> $log   
+    if apt list --installed $package_name &>> $log | grep -hq installed ; then 
+        echo $package_name" installed." >> $summary
+    else
+        echo $package_name" not installed." >> $summary
+    fi
+}
+
+github_install () {
+    source=$1
+    destination=$2
+    echo "Cloning: "$source" into "$destination" ..."
+    if [[ -s $destination  ]]; then
+        echo "$1 installed before" >> $summary
+    else
+        git clone https://github.com/$source $destination &>> $log 
+        echo "$1 installed" >> $summary
+    fi
+}

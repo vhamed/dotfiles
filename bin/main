@@ -1,0 +1,73 @@
+#!/bin/zsh
+
+echo "#============" >> $summary
+echo "# Summary    " >> $summary
+echo "#============" >> $summary
+echo '#============' >> $summary
+echo '# Symlinks ' >> $summary
+echo '#============' >> $summary
+echo 'Create Symlinks ... '
+
+files_to_remove=(bashrc bash)
+for i in $files_to_remove ; do
+    if [[ -a ~/.$i ]]; then
+        sudo rm -rf ~/.$i > /dev/null 2>&1
+        echo "Remove: ".$i >> $summary
+    fi
+done
+
+dirs_to_create=(config/zsh config/vim/plugins config/nvim/plugins config/rofi tmux)
+for i in $dirs_to_create ; do
+    if [[ ! -a ~/.$i ]]; then
+        mkdir -p ~/.$i 
+        echo "Create Dirctory: ".$i >> $summary
+    fi
+done
+
+files_to_symlink=(vimrc zshrc tmux.conf config/nvim/init.vim config/nvim/coc-settings.json config/zsh/functions.sh config/zsh/aliases.sh config/rofi/config dir_colors fonts config/vim/UltiSnips)
+for i in $files_to_symlink; do
+    if [[ -a ~/.$i ]]; then
+        if [[ ! -L ~/.$i ]]; then
+            sudo rm -rf ~/.$i > /dev/null 2>&1
+            ln -sf $DOTFILES/$i ~/.$i
+            echo "Create Symlink: "$i >> $summary
+        else
+            echo "$i is a Symlink." >> $summary
+        fi
+    else
+        ln -sf $DOTFILES/$i ~/.$i
+        echo "Create Symlink: "$i >> $summary
+    fi
+done
+
+
+echo '#============' >> $summary
+echo '# Install Packages ' >> $summary
+echo '#============' >> $summary
+echo 'Install Packages ... '
+
+sudo add-apt-repository -y ppa:neovim-ppa/stable
+sudo apt update
+
+apt_packages=(vim neovim tmux curl rofi)
+for i in $apt_packages; do
+    apt_install $i
+done
+
+sources=(chriskempson/base16-shell.git zsh-users/zsh-autosuggestions tmux-plugins/tpm)
+destinations=(~/.config/base16-shell ~/.config/zsh/zsh-autosuggestions ~/.tmux/plugins/tpm)
+for (( i = 1; i <= ${#sources} ; i++ )); do
+    github_install $sources[$i] $destinations[$i]
+done
+
+echo '#============' >> $summary
+echo '# NeoVim/ Vim ' >> $summary
+echo '#============' >> $summary
+echo 'Install NeoVim/ Vim ... '
+
+github_install VundleVim/Vundle.vim.git ~/.config/nvim/plugins/Vundle.vim
+github_install VundleVim/Vundle.vim.git ~/.config/vim/plugins/Vundle.vim
+
+nvim +PluginInstall +qall
+
+cat $summary

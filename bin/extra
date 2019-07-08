@@ -1,0 +1,62 @@
+#!/bin/zsh
+
+# Install snap
+sudo apt -y install snapd
+
+# Install pip3
+sudo apt -y install python3-pip
+
+# Install Youtube-dl
+pip3 install youtube-dl
+
+# Install litecli
+pip3 install litecli
+
+# Install mycli
+sudo apt -y install mycli
+
+# Install php packages
+php_packages=(php php-mbstring php-curl php-mcrypt php-gettext php-xml php-json php-zip php-mysql)
+for i in $php_packages ; do
+    sudo apt -y install $i
+done
+
+# Install composer
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+chmod +x /usr/local/bin/composer
+
+# Install laravel
+composer global require "laravel/installer"
+
+# Install npm
+# Install nodejs
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt -y update
+sudo apt -y install nodejs
+
+# Install YCM packages
+# ycm_packages=(build-essential cmake python-dev python3-dev exuberant-ctags)
+# for i in $ycm_packages ; do
+#     sudo apt -y install $i
+# done
+
+# mailspring
+sudo snap install mailspring
+
+# Install google-chrome
+
+# Install chromium
+sudo apt -y install chromium-browser
+
+# Install uget
+sudo apt -y install uget
+
+# Install keepassx
+sudo apt -y install keepassx
+
+# Install konsole
+sudo apt -y install konsole
+
+# Install cli programs
+cli_packages=(cmus ranger konsole htop)
