@@ -48,8 +48,8 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-source $HOME/.zsh/aliases.sh
-source $HOME/.zsh/functions.sh 
+source $HOME/.config/zsh/aliases.sh
+source $HOME/.config/zsh/functions.sh 
 
 
 #
@@ -157,5 +157,5 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept

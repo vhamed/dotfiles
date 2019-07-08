@@ -25,11 +25,16 @@ color () {
 
     case $BACKGROUND in
         dark|light )
-            echo hello $BACKGROUND
-            FILE=$BASE16_SHELL"scripts/base16-"$SCHEME.sh
+            FILE=$BASE16_SHELL"scripts/base16-"$SCHEME-$BACKGROUND.sh
+            echo $FILE
             if [[ -a $FILE ]]; then
-                echo $SCHEME
-                echo $BACKGROUND
+                # base16_solarized-light
+                NAME="base16_"$SCHEME"-"$BACKGROUND
+                $NAME
+                printf '\033Ptmux;\033\033]50;%s\007\033\\' "colors=base16-$SCHEME-$BACKGROUND"
+            else
+                echo $PATH
+                echo Theme not found
             fi;
             ;;
         help )
@@ -126,9 +131,6 @@ gs () {
 
 gd () {
     git diff $@
-}
-co () {
-    git checkout $@
 }
 
 stash () {
