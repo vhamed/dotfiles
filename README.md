@@ -13,14 +13,3 @@ mkdir -p ~/Repos/dotfiles
 git clone https://github.com/abdesselame17/dotfiles.git ~/Repos/dotfiles
 ./install
 ```
-
-```sh
- ______________
-< Enjoy >
- --------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-```
