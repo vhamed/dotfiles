@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+source './utils'
+
 echo "#============" >> $summary
 echo "# Summary    " >> $summary
 echo "#============" >> $summary
