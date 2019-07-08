@@ -24,7 +24,7 @@ for i in $dirs_to_create ; do
     fi
 done
 
-files_to_symlink=(vimrc zshrc tmux.conf config/nvim/init.vim config/nvim/coc-settings.json config/zsh/functions.sh config/zsh/aliases.sh config/rofi/config dir_colors fonts config/vim/UltiSnips)
+files_to_symlink=(vimrc zshrc tmux.conf config/nvim/init.vim config/nvim/coc-settings.json config/zsh config/rofi/config dir_colors fonts config/vim/UltiSnips)
 for i in $files_to_symlink; do
     if [[ -a ~/.$i ]]; then
         if [[ ! -L ~/.$i ]]; then
