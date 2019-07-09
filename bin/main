@@ -72,7 +72,7 @@ for (( i = 1; i <= ${#sources} ; i++ )); do
     fi
 done
 
-if [ -d /usr/bin/konsole ]; then
+if [ -d /usr/shrae/konsole ]; then
     if [ -d ~/.config/base16-konsole ]; then
         cp ~/.config/base16-konsole/colorscheme-vim/* /usr/bin/konsole/
     fi
