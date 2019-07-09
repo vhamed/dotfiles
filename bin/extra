@@ -55,8 +55,8 @@ sudo apt -y install uget
 # Install keepassx
 sudo apt -y install keepassx
 
-# Install konsole
-sudo apt -y install konsole
-
 # Install cli programs
 cli_packages=(cmus ranger konsole htop)
+for i in $cli_packages ; do
+    sudo apt -y install $i
+done

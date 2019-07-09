@@ -1,7 +1,6 @@
 #!/bin/zsh
 
-touch ~/Repos/dotfiles/log.txt
-touch ~/Repos/dotfiles/summary.txt
+touch ~/Repos/dotfiles/log.txt ~/Repos/dotfiles/summary.txt
 export log=~/Repos/dotfiles/log.txt
 export summary=~/Repos/dotfiles/summary.txt
 export DOTFILES=~/Repos/dotfiles

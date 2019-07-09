@@ -49,7 +49,7 @@ echo 'Install Packages ... '
 sudo add-apt-repository -y ppa:neovim-ppa/stable
 sudo apt update
 
-apt_packages=(vim neovim tmux curl rofi)
+apt_packages=(vim neovim tmux konsole curl rofi)
 for i in $apt_packages; do
     echo "Insatlling: "$i" ... "
     sudo apt -y install $i &>> $log   
@@ -60,27 +60,37 @@ for i in $apt_packages; do
     fi
 done
 
-sources=(chriskempson/base16-shell.git zsh-users/zsh-autosuggestions tmux-plugins/tpm)
-destinations=(~/.config/base16-shell ~/.config/zsh/zsh-autosuggestions ~/.tmux/plugins/tpm)
+sources=(chriskempson/base16-shell.git cskeeters/base16-konsole zsh-users/zsh-autosuggestions tmux-plugins/tpm)
+destinations=(~/.config/base16-shell ~/.config/base16-konsole ~/.config/zsh/zsh-autosuggestions ~/.tmux/plugins/tpm)
 for (( i = 1; i <= ${#sources} ; i++ )); do
     echo "Cloning: "$sources[$i]" into "$destinations[$i]" ..."
-    if [[ -s $destination  ]]; then
-        echo "$1 installed before" >> $summary
+    if [[ -s $destinations[$i]  ]]; then
+        echo $destinations[$i] "cloned before" >> $summary
     else
-        git clone https://github.com/$sources[$i] $destination[$i] &>> $log 
-        echo "$1 installed" >> $summary
+        git clone https://github.com/$sources[$i] $destinations[$i] &>> $log 
+        echo $sources[$i]" cloned" >> $summary
     fi
 done
+
+if [ -d /usr/bin/konsole ]; then
+    if [ -d ~/.config/base16-konsole ]; then
+        cp ~/.config/base16-konsole/colorscheme-vim/* /usr/bin/konsole/
+    fi
+fi
 
 echo '#============' >> $summary
 echo '# NeoVim/ Vim ' >> $summary
 echo '#============' >> $summary
 echo 'Install NeoVim/ Vim ... '
 
+echo "Cloning: VundleVim into .config/nvim ..."
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/plugins/Vundle.vim
+echo "VundleVim/NeoVim cloned" >> $summary
+echo "Cloning: VundleVim into .config/nvim ..."
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/vim/plugins/Vundle.vim
+echo "VundleVim/Vim cloned" >> $summary
 
-~/.tmux/plugins/tpm/bin/./install_plugins
-nvim +PluginInstall +qall
+~/.tmux/plugins/tpm/bin/./install_plugins &>> $log
+nvim +PluginInstall +qall &>> $log
 
-cat $summary
+less $summary
