@@ -15,8 +15,8 @@ alias la='ls -A'
 alias colortest='$HOME/.config/base16-shell/./colortest'
 
 # edit aliases
-alias aliases='$EDITOR $HOME/.zsh/aliases.sh'
-alias functions='$EDITOR $HOME/.zsh/functions.sh'
+alias aliases='$EDITOR $HOME/config/zsh/aliases.sh'
+alias functions='$EDITOR $HOME/.config/zsh/functions.sh'
 alias zshrc='$EDITOR $HOME/.zshrc'
 alias vimrc='$EDITOR $HOME/.vimrc'
 alias tmuxconf='$EDITOR $HOME/.tmux.conf'
