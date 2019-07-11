@@ -86,51 +86,35 @@ set splitright
 set splitbelow
 
 " Plugins
-set rtp+=~/.config/vim/plugins/Vundle.vim/ " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/
-call vundle#begin('~/.config/vim/plugins') 
-" Plugin manager
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'itchyny/lightline.vim'  
-Plugin 'chriskempson/base16-vim'
-
-Plugin 'ycm-core/YouCompleteMe'
-
-Plugin 'SirVer/ultisnips' 
-Plugin 'honza/vim-snippets' 
-
-Plugin 'scrooloose/nerdtree.git'  
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vwxyutarooo/nerdtree-devicons-syntax'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-
-Plugin 'surround.vim'
-Plugin 'raimondi/delimitmate'
-Plugin 'tmhedberg/matchit'
-Plugin 'alvan/vim-closetag' 
-
-Plugin 'tComment' 
-
-Plugin 'yggdroot/indentline'
-
-Plugin 'christoomey/vim-tmux-navigator'
-
-Plugin 'danro/rename.vim'
-
-Plugin 'wincent/terminus'
-
-" Highlight 
-Plugin 'othree/html5.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'mxw/vim-jsx'
-Plugin 'stanangeloff/php.vim'
-Plugin 'jwalton512/vim-blade'
-
-Plugin 'ryanoasis/vim-devicons'
-call vundle#end()
+call plug#begin('~/.config/vim/plugins') 
+Plug 'itchyny/lightline.vim'  
+Plug 'chriskempson/base16-vim'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'SirVer/ultisnips' 
+Plug 'honza/vim-snippets' 
+Plug 'scrooloose/nerdtree'  
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-surround'
+Plug 'raimondi/delimitmate'
+Plug 'tmhedberg/matchit'
+Plug 'alvan/vim-closetag' 
+Plug 'vim-scripts/tComment' 
+Plug 'yggdroot/indentline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'danro/rename.vim'
+Plug 'wincent/terminus'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'mxw/vim-jsx'
+Plug 'stanangeloff/php.vim'
+Plug 'jwalton512/vim-blade'
+Plug 'ryanoasis/vim-devicons'
+call plug#end()
 
 " Restore settings for file detection
 filetype plugin indent on

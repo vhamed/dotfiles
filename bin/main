@@ -83,14 +83,14 @@ echo '# NeoVim/ Vim ' >> $summary
 echo '#============' >> $summary
 echo 'Install NeoVim/ Vim ... '
 
-echo "Cloning: VundleVim into .config/nvim ..."
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/plugins/Vundle.vim
-echo "VundleVim/NeoVim cloned" >> $summary
-echo "Cloning: VundleVim into .config/nvim ..."
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/vim/plugins/Vundle.vim
-echo "VundleVim/Vim cloned" >> $summary
+echo "Cloning: Vim-plug into .config/nvim ..."
+curl -fLo /home/hamed/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim &>> $log
+echo "Vim-plug for NeoVim cloned" >> $summary
+echo "Cloning: Vim-plug into .config/vim ..."
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+echo "Vim-plug for Vim cloned" >> $summary
 
 ~/.tmux/plugins/tpm/bin/./install_plugins &>> $log
-nvim +PluginInstall +qall &>> $log
+nvim +'PluginInstall --sync' +qa &>> $log
 
 less $summary

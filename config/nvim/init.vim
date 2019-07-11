@@ -60,77 +60,38 @@ set splitright
 set splitbelow
 
 " Plugins
-set rtp+=~/.config/nvim/plugins/Vundle.vim/ " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/
-call vundle#begin('~/.config/nvim/plugins')
-" Plugin manager
-Plugin 'VundleVim/Vundle.vim' " Vim plugin manager, allows you keep track and configure your plugins right in .vimrc.
-
-" Status line
-Plugin 'itchyny/lightline.vim'  " A light and configurable statusline/tabline plugin for Vim.
-
-" Vim/Bash Themes
-Plugin 'chriskempson/base16-vim'
-
-" Auto-Completion engine for vim
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
-
-" snippets
-Plugin 'honza/vim-snippets' " snippets files for various programming languages.
-
-" file explorer
-Plugin 'scrooloose/nerdtree.git'  "NERD tree allows you to explore your filesystem and to open files and directories.
-Plugin 'jistr/vim-nerdtree-tabs'
-" Plugin 'kien/ctrlp.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vwxyutarooo/nerdtree-devicons-syntax'
-
-" quotes, parentesis, tags ...
-Plugin 'surround.vim' " This plugin is a tool for dealing with pairs of surroundings.
-Plugin 'raimondi/delimitmate' " provides automatic closing of quotes, parenthesis, brackets, etc.
-Plugin 'tmhedberg/matchit'
-Plugin 'alvan/vim-closetag'  " close tage if you press >
-
-" comment
-Plugin 'tComment' " TComment will comment out/uncommented.
-
-" indention
-Plugin 'yggdroot/indentline' " show indention level
-
-" tmux-vim switch between
-Plugin 'christoomey/vim-tmux-navigator'
-
-" Rename current file
-Plugin 'danro/rename.vim'
-
-" Terminus enhances Vim's integration with the terminal
-Plugin 'wincent/terminus'
-
-" Php
-Plugin 'stanangeloff/php.vim'
-" Plugin '2072/PHP-Indenting-for-VIm'
-" Plugin 'lvht/phpcd.vim'
-" Plugin 'arnaud-lb/vim-php-namespace'
-
-" Laravel
-Plugin 'jwalton512/vim-blade'
-
-" Html5
-Plugin 'othree/html5.vim'
-
-" Css3
-Plugin 'hail2u/vim-css3-syntax'
-
-" Javascript
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'mustache/vim-mustache-handlebars'
-
-Plugin 'tpope/vim-repeat'
-Plugin 'mileszs/ack.vim'
-Plugin 'ryanoasis/vim-devicons'
-
-call vundle#end()
+" set rtp+=~/.config/nvim/plugins/Vundle.vim/ " set the runtime path to include Vundle and initialize
+" set rtp+=~/.vim/
+call plug#begin('~/.config/nvim/plugins')
+Plug 'itchyny/lightline.vim'  " A light and configurable statusline/tabline plugin for Vim.
+Plug 'chriskempson/base16-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'honza/vim-snippets'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+Plug 'tpope/vim-surround' " This plugin is a tool for dealing with pairs of surroundings.
+Plug 'raimondi/delimitmate' " provides automatic closing of quotes, parenthesis, brackets, etc.
+Plug 'tmhedberg/matchit'
+Plug 'alvan/vim-closetag'  " close tage if you press >
+Plug 'vim-scripts/tComment' " TComment will comment out/uncommented.
+Plug 'yggdroot/indentline' " show indention level
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'danro/rename.vim'
+Plug 'wincent/terminus'
+Plug 'stanangeloff/php.vim'
+Plug 'jwalton512/vim-blade'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-repeat'
+Plug 'mileszs/ack.vim'
+Plug 'ryanoasis/vim-devicons'
+call plug#end()
 
 " Plugins Configuration  
 " ----------- coc.nvim  ------------- 
@@ -184,7 +145,7 @@ let g:lightline = {
             \'component_function': {
             \'readonly': 'LightlineReadonly',
             \'filetype': 'MyFiletype',
-            \'fileformat': 'MyFileformat'
+            \'fileformat': 'MyFileformat',
             \},
             \'separator': { 'left': '', 'right': '' },
             \'subseparator': { 'left': '', 'right': '' }
