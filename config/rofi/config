@@ -8,4 +8,5 @@ rofi.window-format: {n}
 rofi.combi-hide-mode-prefix: false
 rofi.display-drun: > 
 rofi.display-window: (Open)
-rofi.theme: /usr/share/rofi/themes/gruvbox-light-soft.rasi
+rofi.monitor: -4
+rofi.theme: /usr/share/rofi/themes/gruvbox-dark-soft.rasi
