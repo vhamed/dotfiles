@@ -1,19 +1,7 @@
 {
-    "diagnostic.enable": false,
     "tsserver.log": "verbose",
     "tsserver.trace.server": "verbose",
     "tsserver.npm": "/usr/bin/npm",
     "tsserver.enable": true,
-    "typescript.suggest.enabled": false,
-    "typescript.validate.enable": false,
-    "javascript.suggest.enabled": false,
-    "javascript.validate.enable": false,
-    "coc.preferences.hoverTarget": true,
-    "snippets.snipmate.enable": false,
-    "prettier.tabWidth": 4,
-    "snippets.extends": {
-        "javascriptreact": ["javascript"],
-        "javascript.jsx": ["javascript"],
-        "typescript": ["javascript"]
-    }
+    "prettier.tabWidth": 2
 }
