@@ -39,7 +39,7 @@ set showmatch
 
 " Softtabs, 4 spaces
 set tabstop=4
-set shiftwidth=4
+set shiftwidth=2
 set shiftround
 set expandtab
 set smartindent
