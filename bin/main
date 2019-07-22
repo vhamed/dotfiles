@@ -94,3 +94,5 @@ echo "Vim-plug for Vim cloned" >> $summary
 nvim +'PluginInstall --sync' +qa &>> $log
 
 less $summary
+rm -rf $summary
+rm -rf $log
