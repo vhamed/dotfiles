@@ -52,7 +52,7 @@ let &showbreak='↳ '
 
 " Numbers
 set nonumber
-set numberwidth=2
+" set numberwidth=2
 set relativenumber
 
 " Splits
@@ -66,8 +66,8 @@ call plug#begin('~/.config/nvim/plugins')
 Plug 'itchyny/lightline.vim'  " A light and configurable statusline/tabline plugin for Vim.
 Plug 'chriskempson/base16-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -95,22 +95,9 @@ call plug#end()
 
 " Plugins Configuration  
 " ----------- coc.nvim  ------------- 
-" inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Use <C-Space> for trigger snippet expand.
-imap <C-Space> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+let g:UltiSnipsExpandTrigger = "<C-Space>"
 
 " ----------- NERDTree ------------- 
 let g:NERDTreeMinimalUI=1
@@ -132,24 +119,28 @@ endif
 
 " ----------- lightline ------------------------
 let g:lightline = {
-            \'colorscheme': 'solarized',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
-            \             [ 'readonly', 'relativepath', 'fileformat', 'modified'] ],
+            \             [ 'readonly', 'relativepath', 'myfileformat', 'modified'] ],
             \   'right': [ [ 'lineinfo']
             \              ]
             \ },
+            \'inactive': {
+            \ 'left': [ [ 'filename' ] ],
+            \ 'right': [ ],
+            \},
             \'component': {
             \'lineinfo': '%3p%% :   %3l/%-2v',
             \},
             \'component_function': {
             \'readonly': 'LightlineReadonly',
             \'filetype': 'MyFiletype',
-            \'fileformat': 'MyFileformat',
+            \'myfileformat': 'MyFileformat',
             \},
             \'separator': { 'left': '', 'right': '' },
             \'subseparator': { 'left': '', 'right': '' }
             \}
+let g:lightline.colorscheme = 'solarized'
 
 function! LightlineReadonly()
     return &readonly ? '' : ''
