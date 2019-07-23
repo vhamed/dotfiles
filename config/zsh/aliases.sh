@@ -51,8 +51,7 @@ alias mstatus='sudo /opt/lampp/lampp status | grep -h MySQL'
 alias manlampp='/opt/lampp/lampp help'
 
 # vim
-alias v='vim'
-alias n='nvim'
+alias v='nvim'
 
 # tmux
 alias t='tmux'
