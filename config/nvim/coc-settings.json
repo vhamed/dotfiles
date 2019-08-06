@@ -3,5 +3,8 @@
     "tsserver.trace.server": "verbose",
     "tsserver.npm": "/usr/bin/npm",
     "tsserver.enable": true,
+    "codeLens.enable": true,
+    "javascript.referencesCodeLens.enable": false,
+    "typescript.referencesCodeLens.enable": false,
     "prettier.tabWidth": 2
 }
