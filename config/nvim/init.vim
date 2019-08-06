@@ -17,6 +17,9 @@ set shortmess+=c
 set shortmess+=F
 set fillchars+=vert:│,fold:-
 
+set nowildmenu
+set updatetime=300
+
 " Mappings
 let mapleader = ","
 nnoremap <silent> <leader>h :noh<cr>
@@ -28,8 +31,10 @@ nnoremap <leader>vs :vnew<cr>
 nnoremap <leader>hs :new<cr>
 nnoremap <leader>in :IndentLinesToggle<cr>
 nnoremap <leader>f :Ack! 
-nnoremap <leader>= :CocCommand prettier.formatFile<cr>
+nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>rn <Plug>(coc-rename)
 
 " Make searching better set gdefault
 set gdefault
@@ -60,10 +65,8 @@ set splitright
 set splitbelow
 
 " Plugins
-" set rtp+=~/.config/nvim/plugins/Vundle.vim/ " set the runtime path to include Vundle and initialize
-" set rtp+=~/.vim/
 call plug#begin('~/.config/nvim/plugins')
-Plug 'itchyny/lightline.vim'  " A light and configurable statusline/tabline plugin for Vim.
+Plug 'itchyny/lightline.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
@@ -72,12 +75,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vwxyutarooo/nerdtree-devicons-syntax'
-Plug 'tpope/vim-surround' " This plugin is a tool for dealing with pairs of surroundings.
-Plug 'raimondi/delimitmate' " provides automatic closing of quotes, parenthesis, brackets, etc.
+Plug 'tpope/vim-surround'
+Plug 'raimondi/delimitmate'
 Plug 'tmhedberg/matchit'
-Plug 'alvan/vim-closetag'  " close tage if you press >
-Plug 'vim-scripts/tComment' " TComment will comment out/uncommented.
-Plug 'yggdroot/indentline' " show indention level
+Plug 'alvan/vim-closetag' 
+Plug 'vim-scripts/tComment'
+Plug 'yggdroot/indentline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'danro/rename.vim'
 Plug 'wincent/terminus'
