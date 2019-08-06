@@ -1,0 +1,11 @@
+[
+  {
+    "key": "ctrl+m",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "workbench.action.toggleSidebarVisibility"
+  }
+]
+

@@ -1,0 +1,61 @@
+{
+  "editor.tabSize": 2,
+  "eslint.nodePath": "/usr/bin/node",
+  "window.zoomLevel": 2,
+  "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontLigatures": true,
+  "editor.hideCursorInOverviewRuler": true,
+  "workbench.colorTheme": "Monokai",
+  "editor.minimap.enabled": false,
+  "keyboard.dispatch": "keyCode",
+  "editor.lineNumbers": "relative",
+  "explorer.openEditors.visible": 0,
+  "workbench.activityBar.visible": true,
+  "window.menuBarVisibility": "toggle",
+  "vim.hlsearch": true,
+  "vim.leader": ",",
+  "vim.substituteGlobalFlag": true,
+  "vim.useSystemClipboard": true,
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "h"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["<leader>", "v"],
+      "commands": [":vnew"]
+    },
+    {
+      "before": ["%"],
+      "commands": [
+        {
+          "command": "editor.emmet.action.matchTag"
+        }
+      ]
+    }
+  ],
+  "editor.insertSpaces": false,
+  "explorer.confirmDelete": false,
+  "editor.detectIndentation": false,
+  "editor.tabCompletion": "on",
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/bin/nvim",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f"
+  },
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.renderControlCharacters": false,
+  "breadcrumbs.enabled": false,
+  "eslint.alwaysShowStatus": true,
+  "vim.highlightedyank.enable": true,
+  "vim.mouseSelectionGoesIntoVisualMode": false,
+  "git.enabled": false,
+  "editor.wordWrap": "on"
+}
+
