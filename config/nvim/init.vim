@@ -173,7 +173,7 @@ endfunction
 " autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 
 " ---------- vim-closetag -----------------------
-let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml"
+let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.js"
 au FileType xml,html,phtml,php,blade.php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " ---------- delimitMate -----------------------
