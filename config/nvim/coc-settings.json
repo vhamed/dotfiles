@@ -6,5 +6,6 @@
     "codeLens.enable": true,
     "javascript.referencesCodeLens.enable": false,
     "typescript.referencesCodeLens.enable": false,
-    "prettier.tabWidth": 2
+    "prettier.tabWidth": 2,
+    "diagnostic.enableSign": false
 }
