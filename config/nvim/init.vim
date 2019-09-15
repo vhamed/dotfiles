@@ -77,6 +77,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vwxyutarooo/nerdtree-devicons-syntax'
@@ -152,7 +153,6 @@ let g:lightline = {
             \'filetype': 'MyFiletype',
             \'myfileformat': 'MyFileformat',
             \},
-            \'separator': { 'left': '', 'right': '' },
             \'subseparator': { 'left': '', 'right': '' }
             \}
 let g:lightline.colorscheme = 'solarized'
@@ -176,6 +176,10 @@ endfunction
 function! MyFileformat()
   return WebDevIconsGetFileTypeSymbol()
 endfunction
+
+
+" ----------- vim-commentary ------------------------
+" autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
 
 " ----------- vim-php-namespace ------------------------
 " function! IPhpInsertUse()
