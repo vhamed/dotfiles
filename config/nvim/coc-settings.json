@@ -7,5 +7,6 @@
     "javascript.referencesCodeLens.enable": false,
     "typescript.referencesCodeLens.enable": false,
     "prettier.tabWidth": 2,
-    "diagnostic.enableSign": false
+    "diagnostic.enableSign": false,
+    "suggest.floatEnable": false
 }
