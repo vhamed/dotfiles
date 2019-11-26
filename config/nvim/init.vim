@@ -18,6 +18,7 @@ set shortmess+=F
 set fillchars+=vert:│,fold:-
 
 set nowildmenu
+set hidden
 set updatetime=300
 
 " Mappings
@@ -99,6 +100,7 @@ Plug 'mxw/vim-jsx'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-repeat'
 Plug 'mileszs/ack.vim'
+Plug 'liuchengxu/vista.vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
@@ -107,6 +109,16 @@ call plug#end()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:UltiSnipsExpandTrigger = "<C-Space>"
+
+" ----------- Vista  ------------- 
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'coc'
+let g:vista#renderer#enable_icon = 1
+
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 
 " ----------- NERDTree ------------- 
 let g:NERDTreeMinimalUI=1
@@ -140,6 +152,7 @@ let g:airline#extensions#coc#enabled = 0
 let g:airline#extensions#csv#enabled = 0
 let g:airline#extensions#cursormode#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 
 
 " ----------- lightline ------------------------
@@ -226,9 +239,9 @@ execute 'highlight link VertSplit LineNr'
 
 
 " ---- Gnvim 
-set guifont=Fira\ Code:h12
+" set guifont=Fira\ Code:h12
 " set guifont=Operator\ Mono\ Lig\ bold:h12:w1
-set linespace=6
+" set linespace=6
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
 \,sm:block-blinkwait175-blinkoff150-blinkon175
