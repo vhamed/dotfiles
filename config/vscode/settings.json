@@ -62,6 +62,8 @@
 	"vsicons.dontShowNewVersionMessage": true,
 	"editor.fontLigatures": true,
 	"editor.lineHeight": 24,
-	"editor.fontWeight": "bold"
+	"editor.fontWeight": "bold",
+	"vscode-neovim.neovimPath": "/usr/bin/nvim",
+	"editor.scrollBeyondLastLine": false
 }
 

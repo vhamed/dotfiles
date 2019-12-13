@@ -1,11 +1,15 @@
 [
   {
-    "key": "ctrl+m",
-    "command": "workbench.action.terminal.toggleTerminal"
-  },
-  {
-    "key": "ctrl+a",
-    "command": "workbench.action.toggleSidebarVisibility"
-  }
+		"key": "ctrl+m",
+		"command": "workbench.action.terminal.toggleTerminal"
+	},
+	{
+		"key": "ctrl+a",
+		"command": "workbench.action.toggleSidebarVisibility"
+	},
+	{
+		"key": "Escape",
+		"command": "vscode-neovim.escape",
+		"when": "editorTextFocus && neovim.mode != normal"
+	}
 ]
-
