@@ -1,7 +1,7 @@
 if exists('g:GtkGuiLoaded')
   " call rpcnotify(1, 'Gui', 'Font', 'Fira Code 14')
   call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
-  call rpcnotify(1, 'Gui', 'Linespace', '5')
+  call rpcnotify(1, 'Gui', 'Linespace', '6')
 endif
 let s:default_fontsize = 14
 let s:fontsize = s:default_fontsize
