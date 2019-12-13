@@ -145,7 +145,7 @@ export RPROMPT=$RPROMPT_BASE
 export SPROMPT="zsh: correct %F{red}'%R'%f to %F{red}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]? "
 
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
-eval $(dircolors ~/.dir_colors)
+# eval $(dircolors ~/.dir_colors)
 # man xkeyboard-config 
 
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
