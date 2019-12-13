@@ -2,8 +2,6 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
 " Basics configurations 
-" set term=screen-256color
-set guicursor=
 set noshowmode
 set cursorline
 set nobackup
@@ -69,11 +67,9 @@ set splitbelow
 
 " Plugins
 call plug#begin('~/.config/nvim/plugins')
-" Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
 Plug 'chriskempson/base16-vim'
+Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
@@ -131,12 +127,8 @@ let g:ctrlp_open_new_file = 't'
 set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv
 
 " ----------- base16 ------------------------
-if exists('$KONSOLE_PROFILE_NAME') !~ 1
-    let base16colorspace=256
-endif
-if filereadable(expand("~/.vimrc_background"))
-    source ~/.vimrc_background
-endif
+color base16-gruvbox-dark-medium
+set termguicolors
 
 " ----------- airline ------------------------
 " let g:airline_theme='base16'
@@ -236,12 +228,13 @@ nnoremap <C-t>     :tabnew<CR>
 execute 'highlight link EndOfBuffer ColorColumn'
 execute 'highlight clear VertSplit'
 execute 'highlight link VertSplit LineNr'
+execute 'highlight clear NonText'
 
 
 " ---- Gnvim 
 " set guifont=Fira\ Code:h12
 " set guifont=Operator\ Mono\ Lig\ bold:h12:w1
 " set linespace=6
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-\,sm:block-blinkwait175-blinkoff150-blinkon175
+" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+" \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+" \,sm:block-blinkwait175-blinkoff150-blinkon175
