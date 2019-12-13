@@ -88,8 +88,6 @@ set splitbelow
 " Plugins
 call plug#begin('~/.config/vim/plugins') 
 Plug 'itchyny/lightline.vim'  
-Plug 'chriskempson/base16-vim'
-Plug 'ycm-core/YouCompleteMe'
 Plug 'SirVer/ultisnips' 
 Plug 'honza/vim-snippets' 
 Plug 'scrooloose/nerdtree'  
@@ -104,8 +102,6 @@ Plug 'alvan/vim-closetag'
 Plug 'vim-scripts/tComment' 
 Plug 'yggdroot/indentline'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'danro/rename.vim'
-Plug 'wincent/terminus'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
@@ -130,22 +126,11 @@ let g:ctrlp_open_multiple_files = 't'
 let g:ctrlp_open_new_file = 't'
 set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv
 
-" ----------- YCM ------------- 
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_show_diagnostics_ui = 0
-
 " ----------- ultisnips ------------- 
 let g:UltiSnipsExpandTrigger = "<c-space>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-" ----------- base16 ------------------------
-if exists('$KONSOLE_PROFILE_NAME') !~ 1
-    let base16colorspace=256
-endif
-if filereadable(expand("~/.vimrc_background"))
-    source ~/.vimrc_background
-endif
 
 " ----------- lightline ------------------------
 let g:lightline = {
