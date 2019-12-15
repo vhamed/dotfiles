@@ -96,7 +96,6 @@ Plug 'mxw/vim-jsx'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-repeat'
 Plug 'mileszs/ack.vim'
-Plug 'liuchengxu/vista.vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
@@ -105,16 +104,6 @@ call plug#end()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:UltiSnipsExpandTrigger = "<C-Space>"
-
-" ----------- Vista  ------------- 
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'coc'
-let g:vista#renderer#enable_icon = 1
-
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
 
 " ----------- NERDTree ------------- 
 let g:NERDTreeMinimalUI=1
