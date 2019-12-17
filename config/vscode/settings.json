@@ -10,7 +10,7 @@
   "editor.lineNumbers": "relative",
   "explorer.openEditors.visible": 0,
   "workbench.activityBar.visible": true,
-  "window.menuBarVisibility": "toggle",
+  "window.menuBarVisibility": "default",
   "vim.hlsearch": true,
   "vim.leader": ",",
   "vim.substituteGlobalFlag": true,
@@ -64,6 +64,7 @@
 	"editor.lineHeight": 24,
 	"editor.fontWeight": "bold",
 	"vscode-neovim.neovimPath": "/usr/bin/nvim",
-	"editor.scrollBeyondLastLine": false
+	"editor.scrollBeyondLastLine": false,
+	"telemetry.enableTelemetry": false
 }
 
