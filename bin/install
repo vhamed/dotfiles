@@ -4,78 +4,78 @@ echo "#============" >> $summary
 echo "# Summary    " >> $summary
 echo "#============" >> $summary
 echo '#============' >> $summary
-echo '# Symlinks ' >> $summary
+echo '# Creating Symlinks ' >> $summary
 echo '#============' >> $summary
-echo 'Create Symlinks ... '
+echo 'Creating Symlinks ... '
 
 files_to_remove=(bashrc bash)
 for i in $files_to_remove ; do
-    if [[ -a ~/.$i ]]; then
-        sudo rm -rf ~/.$i > /dev/null 2>&1
-        echo "Remove: ".$i >> $summary
-    fi
+  if [[ -a ~/.$i ]]; then
+    sudo rm -rf ~/.$i > /dev/null 2>&1
+    echo "Remove: ".$i >> $summary
+  fi
 done
 
 dirs_to_create=(config/zsh config/vim/plugins config/nvim/plugins config/vscode config/rofi tmux)
 for i in $dirs_to_create ; do
-    if [[ ! -a ~/.$i ]]; then
-        mkdir -p ~/.$i 
-        echo "Create Dirctory: ".$i >> $summary
-    fi
+  if [[ ! -a ~/.$i ]]; then
+    mkdir -p ~/.$i 
+    echo "Create Dirctory: ".$i >> $summary
+  fi
 done
 
 files_to_symlink=(vimrc zshrc tmux.conf config/nvim/init.vim config/nvim/ginit.vim config/nvim/coc-settings.json config/nvim/vscode.vim config/zsh/aliases.sh config/zsh/functions.sh config/rofi/config config/vscode/settings.json config/vscode/keybindings.json fonts)
 for i in $files_to_symlink; do
-    if [[ -a ~/.$i ]]; then
-        if [[ ! -L ~/.$i ]]; then
-            sudo rm -rf ~/.$i > /dev/null 2>&1
-            ln -sf $DOTFILES/$i ~/.$i
-            echo "Create Symlink: "$i >> $summary
-        else
-            echo "$i is a Symlink." >> $summary
-        fi
+  if [[ -a ~/.$i ]]; then
+    if [[ ! -L ~/.$i ]]; then
+      sudo rm -rf ~/.$i > /dev/null 2>&1
+      ln -sf $DOTFILES/$i ~/.$i
+      echo "Create Symlink: "$i >> $summary
     else
-        ln -sf $DOTFILES/$i ~/.$i
-        echo "Create Symlink: "$i >> $summary
+      echo "$i is a Symlink." >> $summary
     fi
+  else
+    ln -sf $DOTFILES/$i ~/.$i
+    echo "Create Symlink: "$i >> $summary
+  fi
 done
 
 
 echo '#============' >> $summary
-echo '# Install Packages ' >> $summary
+echo '# Installing Packages ' >> $summary
 echo '#============' >> $summary
-echo 'Install Packages ... '
+echo 'Installing Packages ... '
 
 sudo add-apt-repository -y ppa:neovim-ppa/unstable
 sudo apt update
 
 apt_packages=(vim neovim tmux konsole curl rofi)
 for i in $apt_packages; do
-    echo "Insatlling: "$i" ... "
-    sudo apt -y install $i &>> $log   
-    if apt list --installed $i &>> $log | grep -hq installed ; then 
-        echo $i" installed." >> $summary
-    else
-        echo $i" not installed." >> $summary
-    fi
+  echo "Installing: "$i" ... "
+  sudo apt -y install $i &>> $log   
+  if apt list --installed $i &>> $log | grep -hq installed ; then 
+    echo $i" Installed." >> $summary
+  else
+    echo $i" Not installed." >> $summary
+  fi
 done
 
 sources=(zsh-users/zsh-autosuggestions tmux-plugins/tpm)
 destinations=(~/.config/zsh/zsh-autosuggestions ~/.tmux/plugins/tpm)
 for (( i = 1; i <= ${#sources} ; i++ )); do
-    echo "Cloning: "$sources[$i]" into "$destinations[$i]" ..."
-    if [[ -s $destinations[$i]  ]]; then
-        echo $destinations[$i] "cloned before" >> $summary
-    else
-        git clone https://github.com/$sources[$i] $destinations[$i] &>> $log 
-        echo $sources[$i]" cloned" >> $summary
-    fi
+  echo "Cloning: "$sources[$i]" into "$destinations[$i]" ..."
+  if [[ -s $destinations[$i]  ]]; then
+    echo $destinations[$i] "cloned before" >> $summary
+  else
+    git clone https://github.com/$sources[$i] $destinations[$i] &>> $log 
+    echo $sources[$i]" cloned" >> $summary
+  fi
 done
 
 if [ -d /usr/shrae/konsole ]; then
-    if [ -d ~/.config/base16-konsole ]; then
-        cp ~/.config/base16-konsole/colorscheme-vim/* /usr/bin/konsole/
-    fi
+  if [ -d ~/.config/base16-konsole ]; then
+    cp ~/.config/base16-konsole/colorscheme-vim/* /usr/bin/konsole/
+  fi
 fi
 
 echo '#============' >> $summary
