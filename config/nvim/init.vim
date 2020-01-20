@@ -69,6 +69,7 @@ set splitbelow
 call plug#begin('~/.config/nvim/plugins')
 Plug 'vim-airline/vim-airline'
 Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
@@ -101,8 +102,8 @@ call plug#end()
 
 " Plugins Configuration  
 " ----------- coc.nvim  ------------- 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:UltiSnipsExpandTrigger = "<C-Space>"
 
 " ----------- NERDTree ------------- 
@@ -117,6 +118,7 @@ set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pd
 
 " ----------- base16 ------------------------
 color base16-gruvbox-dark-medium
+" color gruvbox
 set termguicolors
 
 " ----------- airline ------------------------
@@ -218,12 +220,3 @@ execute 'highlight link EndOfBuffer ColorColumn'
 execute 'highlight clear VertSplit'
 execute 'highlight link VertSplit LineNr'
 execute 'highlight clear NonText'
-
-
-" ---- Gnvim 
-" set guifont=Fira\ Code:h12
-" set guifont=Operator\ Mono\ Lig\ bold:h12:w1
-" set linespace=6
-" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-" \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-" \,sm:block-blinkwait175-blinkoff150-blinkon175
