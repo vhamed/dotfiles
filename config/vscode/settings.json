@@ -2,70 +2,34 @@
   "editor.tabSize": 2,
   "eslint.nodePath": "/usr/bin/node",
   "window.zoomLevel": 1,
-	"editor.fontFamily": "'Operator Mono Lig', 'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-	"editor.hideCursorInOverviewRuler": true,
-	"editor.minimap.enabled": false,
-	"editor.parameterHints.enabled": false,
+  "editor.fontFamily": "'Operator Mono Lig', 'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.minimap.enabled": false,
+  "editor.parameterHints.enabled": false,
   "keyboard.dispatch": "keyCode",
   "editor.lineNumbers": "relative",
   "explorer.openEditors.visible": 0,
   "workbench.activityBar.visible": true,
   "window.menuBarVisibility": "default",
-  "vim.hlsearch": true,
-  "vim.leader": ",",
-  "vim.substituteGlobalFlag": true,
-  "vim.useSystemClipboard": true,
-  "vim.normalModeKeyBindings": [
-    {
-      "before": ["<leader>", "p"],
-      "commands": ["workbench.action.quickOpen"]
-    },
-    {
-      "before": ["<leader>", "h"],
-      "commands": [":nohl"]
-    },
-    {
-      "before": ["<leader>", "v"],
-      "commands": [":vnew"]
-    },
-    // {
-    //   "before": ["C-5"],
-    //   "commands": [
-    //     {
-    //       "command": "editor.emmet.action.matchTag"
-    //     }
-    //   ]
-    // }
-    {
-      "before": ["<C-5>"],
-      "commands": [
-				"editor.emmet.action.matchTag"
-      ]
-    }
-  ],
   "editor.insertSpaces": false,
   "explorer.confirmDelete": false,
   "editor.detectIndentation": false,
   "editor.tabCompletion": "on",
-  "vim.enableNeovim": true,
-  "vim.neovimPath": "/usr/bin/nvim",
   "workbench.startupEditor": "newUntitledFile",
   "editor.renderControlCharacters": false,
   "breadcrumbs.enabled": false,
   "eslint.alwaysShowStatus": true,
-  "vim.highlightedyank.enable": true,
-	"vim.mouseSelectionGoesIntoVisualMode": false,
-	"editor.wordWrap": "on",
-	"workbench.colorTheme": "Monokai",
-	"workbench.statusBar.visible": true,
-	"workbench.iconTheme": "vscode-icons",
-	"vsicons.dontShowNewVersionMessage": true,
-	"editor.fontLigatures": true,
-	"editor.lineHeight": 24,
-	"editor.fontWeight": "bold",
-	"vscode-neovim.neovimPath": "/usr/bin/nvim",
-	"editor.scrollBeyondLastLine": false,
-	"telemetry.enableTelemetry": false,
-	"vscode-neovim.neovimInitPath": "/home/hamed/.config/nvim/vscode.vim"
+  "editor.wordWrap": "on",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.statusBar.visible": true,
+  "workbench.iconTheme": "vscode-icons",
+  "vsicons.dontShowNewVersionMessage": true,
+  "editor.fontLigatures": true,
+  "editor.lineHeight": 24,
+  "editor.fontWeight": "bold",
+  "editor.scrollBeyondLastLine": false,
+  "telemetry.enableTelemetry": false,
+  "vscode-neovim.neovimPath": "/usr/bin/nvim",
+  "vscode-neovim.neovimInitPath": "/home/hamed/.config/nvim/vscode.vim"
 }
 
