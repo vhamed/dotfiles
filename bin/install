@@ -14,6 +14,7 @@ for i in $files_to_remove ; do
     echo "Remove: ".$i >> $summary
   fi
 done
+rm -f ~/.local/share/konsole/konsole.profile
 
 dirs_to_create=(config/zsh config/vim/plugins config/nvim/plugins config/vscode config/rofi tmux)
 for i in $dirs_to_create ; do
