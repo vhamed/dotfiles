@@ -4,18 +4,22 @@
 # uncomment package to install it
 
 # cli
-cli_packages=(cmus ranger htop)
-for i in $cli_packages ; do
-  sudo apt -y install $i
-done
+# cli_packages=(cmus ranger htop)
+# for i in $cli_packages ; do
+#   sudo apt -y install $i
+# done
 
 # uget
 # sudo apt -y install uget
 
 # keepassx
-sudo apt -y install keepassx
+# sudo apt -y install keepassx
 
 # google-chrome
+# wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+# sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+# sudo apt update
+# sudo apt install google-chrome-stable
 
 # chromium
 # sudo apt -y install chromium-browser
@@ -26,8 +30,8 @@ sudo apt -y install keepassx
 # mailspring
 # sudo snap install mailspring
 
-# pip3
-# sudo apt -y install python3-pip
+# pip3 & nvim dependencies
+# sudo apt -y install python-dev python-pip python3-dev python3-pip python-neovim python3-neovim
 
 # youtube-dl
 # pip3 install youtube-dl
@@ -39,28 +43,30 @@ sudo apt -y install keepassx
 # sudo apt -y install mycli
 
 # php packages
-php_packages=(php php-mbstring php-curl php-mcrypt php-gettext php-xml php-json php-zip php-mysql)
-for i in $php_packages ; do
-  sudo apt -y install $i
-done
+# php_packages=(php php-mbstring php-curl php-mcrypt php-gettext php-xml php-json php-zip php-mysql)
+# for i in $php_packages ; do
+#   sudo apt -y install $i
+# done
 
 # composer
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-chmod +x /usr/local/bin/composer
+# curl -sS https://getcomposer.org/installer | php
+# sudo mv composer.phar /usr/local/bin/composer
+# chmod +x /usr/local/bin/composer
 
 # laravel
-composer global require "laravel/installer"
+# composer global require "laravel/installer"
 
 # npm && nodejs
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt -y update
-sudo apt -y install nodejs
+# curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+# sudo apt -y update
+# sudo apt -y install nodejs
 
 # Install global npm modules
-npm install -g neovim
-npm install -g create-react-app
-npm install -g gatsby-cli
+# sudo npm install -g neovim
+# npm install -g create-react-app
+# npm install -g gatsby-cli
+# cd ~/.config/coc/extensions 
+# npm install coc-json coc-tsserver coc-html coc-css coc-phpls coc-snippets --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 
 # yarn
 # curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
