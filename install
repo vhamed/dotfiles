@@ -6,22 +6,22 @@ export summary=~/Repos/dotfiles/summary.txt
 export DOTFILES=~/Repos/dotfiles
 
 if [ $# -eq 0 ]; then
-    clear
-    echo "
-    #===============================================
-    #  Start Installing dotfiles ....                 
-    #  Continue ?
-    #  Y/N
-    #                                              
-    #===============================================
-    "
-    read REPLY
-    case $REPLY in
-        Y )  
-            ./bin/./main
-            exit 1 ;;
-        N ) 
-            echo "Quit ... "
-            exit 1 ;;
-    esac
+  clear
+  echo "
+  #===============================================
+  #  Start Installing dotfiles ....                 
+  #  Continue ?
+  #  Y/N
+  #                                              
+  #===============================================
+  "
+  read REPLY
+  case $REPLY in
+    Y )  
+      ./bin/./install
+      exit 1 ;;
+    N ) 
+      echo "Quit ... "
+      exit 1 ;;
+  esac
 fi
