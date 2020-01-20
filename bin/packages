@@ -1,0 +1,79 @@
+#!/bin/zsh
+
+# This is file contain list of packages I used
+# uncomment package to install it
+
+# cli
+cli_packages=(cmus ranger htop)
+for i in $cli_packages ; do
+  sudo apt -y install $i
+done
+
+# uget
+# sudo apt -y install uget
+
+# keepassx
+sudo apt -y install keepassx
+
+# google-chrome
+
+# chromium
+# sudo apt -y install chromium-browser
+
+# snap
+# sudo apt -y install snapd
+
+# mailspring
+# sudo snap install mailspring
+
+# pip3
+# sudo apt -y install python3-pip
+
+# youtube-dl
+# pip3 install youtube-dl
+
+# litecli
+# pip3 install litecli
+
+# mycli
+# sudo apt -y install mycli
+
+# php packages
+php_packages=(php php-mbstring php-curl php-mcrypt php-gettext php-xml php-json php-zip php-mysql)
+for i in $php_packages ; do
+  sudo apt -y install $i
+done
+
+# composer
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+chmod +x /usr/local/bin/composer
+
+# laravel
+composer global require "laravel/installer"
+
+# npm && nodejs
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt -y update
+sudo apt -y install nodejs
+
+# Install global npm modules
+npm install -g neovim
+npm install -g create-react-app
+npm install -g gatsby-cli
+
+# yarn
+# curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+# echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+# sudo apt -y update
+# sudo apt install yarn
+
+# slack
+
+# mysql-workbench
+
+# vscode
+
+# postman
+
+# postwoman
