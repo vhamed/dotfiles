@@ -10,6 +10,6 @@ sudo apt install git zsh
 # Make zsh your default shell (logout user is required for zsh to work)
 chsh -s $(which zsh)
 mkdir -p ~/Repos/dotfiles
-git clone https://github.com/abdesselame17/dotfiles.git ~/Repos/dotfiles
+git clone https://github.com/vhamed/dotfiles.git ~/Repos/dotfiles
 ./install
 ```
