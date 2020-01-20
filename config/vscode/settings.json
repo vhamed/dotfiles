@@ -65,6 +65,7 @@
 	"editor.fontWeight": "bold",
 	"vscode-neovim.neovimPath": "/usr/bin/nvim",
 	"editor.scrollBeyondLastLine": false,
-	"telemetry.enableTelemetry": false
+	"telemetry.enableTelemetry": false,
+	"vscode-neovim.neovimInitPath": "/home/hamed/.config/nvim/vscode.vim"
 }
 
