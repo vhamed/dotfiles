@@ -20,7 +20,7 @@
   "breadcrumbs.enabled": false,
   "eslint.alwaysShowStatus": true,
   "editor.wordWrap": "on",
-  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.colorTheme": "Monokai",
   "workbench.statusBar.visible": true,
   "workbench.iconTheme": "vscode-icons",
   "vsicons.dontShowNewVersionMessage": true,
