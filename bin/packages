@@ -66,7 +66,7 @@
 # npm install -g create-react-app
 # npm install -g gatsby-cli
 # cd ~/.config/coc/extensions 
-# npm install coc-json coc-tsserver coc-html coc-css coc-phpls coc-snippets --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+# npm install coc-json coc-tsserver coc-html coc-css coc-phpls coc-snippets coc-prettier --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 
 # yarn
 # curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
