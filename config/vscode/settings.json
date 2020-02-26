@@ -30,6 +30,8 @@
   "editor.scrollBeyondLastLine": false,
   "telemetry.enableTelemetry": false,
   "vscode-neovim.neovimPath": "/usr/bin/nvim",
-  "vscode-neovim.neovimInitPath": "/home/hamed/.config/nvim/vscode.vim"
+  "vscode-neovim.neovimInitPath": "/home/hamed/.config/nvim/vscode.vim",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
-
