@@ -30,6 +30,6 @@ ScrollBarPosition=2
 
 [Terminal Features]
 BidiRenderingEnabled=true
-BlinkingCursorEnabled=false
+BlinkingCursorEnabled=true
 BlinkingTextEnabled=true
 FlowControlEnabled=false
