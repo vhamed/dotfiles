@@ -67,7 +67,7 @@ mk () {
 
 # download mp3 from youtube
 mp3 () {
-    youtube-dl --no-playlist -o "~/Music/%(title)s.%(ext)s" --extract-audio --audio-format mp3 "$1"
+    youtube-dl --no-playlist -o "~/Music/%(title)s.%(ext)s" --extract-audio -x --audio-format mp3 "$1"
 }
 
 # mp3 playlist
