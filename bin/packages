@@ -48,6 +48,9 @@
 # mycli
 # sudo apt -y install mycli
 
+# lamp server
+# sudo apt -y install lamp-server^
+
 # php packages
 # php_packages=(php php-mbstring php-curl php-mcrypt php-gettext php-xml php-json php-zip php-mysql)
 # for i in $php_packages ; do
