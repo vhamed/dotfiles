@@ -95,6 +95,12 @@ aptUnlock () {
     sudo rm /var/lib/dpkg/lock
 }
 
+aptUnlock2 () {
+  sudo apt clean
+  sudo rm -rf /var/lib/apt/lists/*
+  sudo apt clean
+}
+
 blue() { 
     tput setaf 4; echo $@; tput sgr0; 
 }
