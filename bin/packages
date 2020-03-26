@@ -51,11 +51,16 @@
 # lamp server
 # sudo apt -y install lamp-server^
 
-# php packages
-# php_packages=(php php-mbstring php-curl php-mcrypt php-gettext php-xml php-json php-zip php-mysql)
-# for i in $php_packages ; do
-#   sudo apt -y install $i
-# done
+# php (latest version)
+# sudo apt -y install software-properties-common
+# sudo add-apt-repository ppa:ondrej/php
+# sudo apt -y install php # install latest php version
+
+# php extensions 
+# sudo apt -y install php7.x-{common,curl,json,mbstring,mysql,xml,zip}
+
+# install nginx & php-fpm
+# sudo apt -y install nginx php7.x-fpm
 
 # composer
 # curl -sS https://getcomposer.org/installer | php
@@ -63,7 +68,7 @@
 # chmod +x /usr/local/bin/composer
 
 # laravel
-# composer global require "laravel/installer"
+# composer global require laravel/installer
 
 # npm && nodejs
 # curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
