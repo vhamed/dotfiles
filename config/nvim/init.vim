@@ -31,7 +31,7 @@ nnoremap <silent> <leader>vs :vnew<cr>
 nnoremap <silent> <leader>hs :new<cr>
 nnoremap <silent> <leader>in :IndentLinesToggle<cr>
 nnoremap <leader>f :Ack! 
-nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
+autocmd FileType javascript nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>rn <Plug>(coc-rename)
@@ -115,7 +115,7 @@ let g:ctrlp_map = '<leader>p'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_multiple_files = 't'
 let g:ctrlp_open_new_file = 't'
-set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv
+set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv
 
 " ----------- base16 ------------------------
 color base16-gruvbox-dark-medium
