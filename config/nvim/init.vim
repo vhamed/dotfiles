@@ -33,8 +33,13 @@ nnoremap <silent> <leader>in :IndentLinesToggle<cr>
 nnoremap <leader>f :Ack! 
 autocmd FileType javascript nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
+vnoremap <leader>/ y/<C-r>"<cr>
 nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-reference)
 nmap <silent> <leader>rn <Plug>(coc-rename)
+nnoremap <buffer> <leader>cr :CocRestart
 " autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 " Make searching better set gdefault
