@@ -39,7 +39,7 @@ nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-reference)
 nmap <silent> <leader>rn <Plug>(coc-rename)
-nnoremap <buffer> <leader>cr :CocRestart
+nnoremap <silent> <leader>cr :CocRestart<cr>
 " autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 " Make searching better set gdefault
