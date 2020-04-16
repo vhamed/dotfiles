@@ -3,7 +3,7 @@ AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=Monokai-Flat
 Font=Fira Code,12,-1,5,50,0,0,0,0,0
-LineSpacing=8
+LineSpacing=15
 UseFontLineChararacters=false
 
 [Cursor Options]
