@@ -32,6 +32,9 @@ nnoremap <silent> <leader>hs :new<cr>
 nnoremap <silent> <leader>in :IndentLinesToggle<cr>
 nnoremap <leader>f :Ack! 
 autocmd FileType javascript nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
+if exists('##TextYankPost')
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Substitute', 200)
+endif
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 vnoremap <leader>/ y/<C-r>"<cr>
 nmap <silent> <leader>gd <Plug>(coc-definition)
@@ -39,6 +42,8 @@ nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-reference)
 nmap <silent> <leader>rn <Plug>(coc-rename)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <silent> <leader>cr :CocRestart<cr>
 " autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
