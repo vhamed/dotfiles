@@ -4,7 +4,7 @@
   "window.zoomLevel": 1,
   "editor.fontFamily": "'Operator Mono Lig', 'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.hideCursorInOverviewRuler": true,
-  "editor.minimap.enabled": false,
+  "editor.minimap.enabled": true,
   "editor.parameterHints.enabled": false,
   "keyboard.dispatch": "keyCode",
   "editor.lineNumbers": "relative",
@@ -17,12 +17,10 @@
   "editor.tabCompletion": "on",
   "workbench.startupEditor": "newUntitledFile",
   "editor.renderControlCharacters": false,
-  "breadcrumbs.enabled": false,
+  "breadcrumbs.enabled": true,
   "eslint.alwaysShowStatus": true,
   "editor.wordWrap": "on",
-  "workbench.colorTheme": "Monokai",
   "workbench.statusBar.visible": true,
-  "workbench.iconTheme": "vscode-icons",
   "vsicons.dontShowNewVersionMessage": true,
   "editor.fontLigatures": true,
   "editor.lineHeight": 24,
@@ -33,5 +31,46 @@
   "vscode-neovim.neovimInitPath": "/home/hamed/.config/nvim/vscode.vim",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "prettier.arrowParens": "avoid",
+  "prettier.trailingComma": "none",
+  "workbench.iconTheme": "vscode-icons",
+  "terminal.explorerKind": "external",
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.visualstar": true,
+  "vim.highlightedyank.enable": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "h"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    }
+  ],
+  "vim.leader": ",",
+  "workbench.colorTheme": "Gruvbox Dark Hard"
 }
