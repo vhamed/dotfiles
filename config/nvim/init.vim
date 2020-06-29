@@ -78,6 +78,7 @@ set splitbelow
 " Plugins
 call plug#begin('~/.config/nvim/plugins')
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
@@ -127,11 +128,6 @@ let g:ctrlp_open_multiple_files = 't'
 let g:ctrlp_open_new_file = 't'
 set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv
 
-" ----------- base16 ------------------------
-color base16-gruvbox-dark-medium
-" color gruvbox
-set termguicolors
-
 " ----------- airline ------------------------
 " let g:airline_theme='base16'
 let g:airline_powerline_fonts=1
@@ -148,6 +144,16 @@ let g:airline#extensions#cursormode#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 
+" Gruvbox
+set background=dark 
+" let g:gruvbox_termcolors=16
+let g:gruvbox_italic=1
+let g:gruvbox_invert_selection=0
+
+" ----------- base16 ------------------------
+" color base16-gruvbox-dark-medium
+color gruvbox
+set termguicolors
 
 " ----------- lightline ------------------------
 " let g:lightline = {
@@ -231,3 +237,7 @@ execute 'highlight link EndOfBuffer ColorColumn'
 execute 'highlight clear VertSplit'
 execute 'highlight link VertSplit LineNr'
 execute 'highlight clear NonText'
+
+" Enable Italics
+set t_ZH=^[[3m
+set t_ZR=^[[23m
