@@ -1,7 +1,7 @@
 [Appearance]
 AntiAliasFonts=true
 BoldIntense=true
-ColorScheme=Monokai-Flat
+ColorScheme=Gruvbox
 Font=Fira Code,12,-1,5,50,0,0,0,0,0
 LineSpacing=12
 UseFontLineChararacters=false
