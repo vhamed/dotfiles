@@ -41,7 +41,7 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-reference)
-nmap <silent> <leader>rn <Plug>(coc-rename)
+nmap <silent> <leader>rr <Plug>(coc-rename)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <silent> <leader>cr :CocRestart<cr>
@@ -129,7 +129,7 @@ let g:ctrlp_open_new_file = 't'
 set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv
 
 " ----------- airline ------------------------
-" let g:airline_theme='base16'
+let g:airline_theme='solarized_flood'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_detect_paste = 0
@@ -146,9 +146,10 @@ let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 
 " Gruvbox
 set background=dark 
-" let g:gruvbox_termcolors=16
+let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 let g:gruvbox_invert_selection=0
+" let g:gruvbox_termcolors=16
 
 " ----------- base16 ------------------------
 " color base16-gruvbox-dark-medium
