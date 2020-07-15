@@ -42,6 +42,7 @@ nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-reference)
 nmap <silent> <leader>rr <Plug>(coc-rename)
+nmap <silent> <F2> <Plug>(coc-rename)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <silent> <leader>cr :CocRestart<cr>
