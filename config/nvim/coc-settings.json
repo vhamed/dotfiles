@@ -19,5 +19,6 @@
   "diagnostic.enableSign": true,
   "diagnostic.signOffset": 9999999,
   "suggest.floatEnable": false,
-  "yank.highlight.duration": 200
+  "yank.highlight.duration": 200,
+  "yank.enableCompletion": false
 }
