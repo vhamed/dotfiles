@@ -13,7 +13,7 @@
   "prettier.trailingComma": "none",
   "prettier.arrowParens": "avoid",
   "diagnostic.enable": true,
-  "diagnostic.enableHighlightLineNumber": true,
+  "diagnostic.enableHighlightLineNumber": false,
   "diagnostic.messageTarget": "float",
   "diagnostic.warningSign": "⚠",
   "diagnostic.enableSign": true,
