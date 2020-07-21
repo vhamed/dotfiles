@@ -21,7 +21,10 @@ set updatetime=300
 
 " Mappings
 let mapleader = ","
+" fugitive
 nnoremap <leader>g :G<cr>
+nnoremap <leader>gj :diffget //3<cr>
+nnoremap <leader>gf :diffget //2<cr>
 nnoremap <silent> <leader>h :noh<cr>
 map <silent> <Leader>n <plug>NERDTreeTabsToggle<CR>
 nnoremap <silent> <leader>ev :tabnew $MYVIMRC<cr>
