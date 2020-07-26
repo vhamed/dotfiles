@@ -1,6 +1,7 @@
 if exists('g:fvim_loaded')
-  " good old 'set guifont' compatibility
   set guifont=Fira\ Code:h20
+  " set guifont=Source\ Code\ Variable:h20
+  " set guifont=Fira\ Code\ Retina:h20
   " Ctrl-ScrollWheel for zooming in/out
   nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
   nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
