@@ -85,6 +85,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ayu-theme/ayu-vim'
+Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
@@ -93,8 +97,9 @@ Plug 'duggiefresh/vim-easydir'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
+" Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
 Plug 'raimondi/delimitmate'
@@ -124,6 +129,7 @@ let g:UltiSnipsExpandTrigger = "<C-Space>"
 
 " ----------- NERDTree ------------- 
 let g:NERDTreeMinimalUI=1
+let NERDTreeIgnore = ['\.jsc$']
 
 " ----------- ctrlp ------------- 
 let g:ctrlp_map = '<leader>p'
@@ -133,7 +139,7 @@ let g:ctrlp_open_new_file = 't'
 set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv,*.jsc
 
 " ----------- airline ------------------------
-let g:airline_theme='solarized_flood'
+" let g:airline_theme='onedark'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_detect_paste = 0
@@ -154,11 +160,13 @@ let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 let g:gruvbox_invert_selection=0
 " let g:gruvbox_termcolors=16
+let ayucolor="dark"
+
 
 " ----------- base16 ------------------------
 " color base16-gruvbox-dark-medium
-color gruvbox
 set termguicolors
+color onedark
 
 " ----------- lightline ------------------------
 " let g:lightline = {
@@ -225,7 +233,7 @@ au FileType mail let b:delimitMate_expand_cr = 1
 " ---------- indentline -----------------------
 let g:indentLine_enabled = 1
 let g:indentLine_char = '│' " let g:indentLine_char = '┊'
-let g:indentLine_bufTyepExlude = ['Nerd_tree.*']
+let g:indentLine_bufTypeExlude = ['Nerd_tree.*']
 let g:indentLine_fileTypeExclude = ['help', 'markdown', 'reason']
 let g:vim_json_syntax_conceal = 1
 
