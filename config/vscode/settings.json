@@ -72,5 +72,8 @@
     }
   ],
   "vim.leader": ",",
-  "workbench.colorTheme": "Gruvbox Dark Hard"
+	"workbench.colorTheme": "Gruvbox Dark Hard",
+	"files.exclude": {
+		"**/*.jsc": true
+	}
 }
