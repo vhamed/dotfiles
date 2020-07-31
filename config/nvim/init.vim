@@ -33,11 +33,12 @@ nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 nnoremap <silent> <leader>vs :vnew<cr>
 nnoremap <silent> <leader>hs :new<cr>
 nnoremap <silent> <leader>in :IndentLinesToggle<cr>
-nnoremap <leader>f :Ack! 
+nnoremap <silent> <leader>f :CocSearch 
 autocmd FileType javascript nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
-if exists('##TextYankPost')
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Substitute', 200)
-endif
+augroup highlight_yank
+  autocmd!
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 vnoremap <leader>/ y/<C-r>"<cr>
 nmap <silent> <leader>gd <Plug>(coc-definition)
@@ -138,7 +139,7 @@ let g:ctrlp_open_new_file = 't'
 set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv,*.jsc
 
 " ----------- airline ------------------------
-" let g:airline_theme='onedark'
+let g:airline_theme='solarized_flood'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_detect_paste = 0
@@ -165,7 +166,7 @@ let ayucolor="dark"
 " ----------- base16 ------------------------
 " color base16-gruvbox-dark-medium
 set termguicolors
-color onedark
+color gruvbox
 
 " ----------- lightline ------------------------
 " let g:lightline = {
