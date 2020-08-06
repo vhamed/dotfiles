@@ -86,6 +86,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
+Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ayu-theme/ayu-vim'
@@ -139,7 +140,6 @@ let g:ctrlp_open_new_file = 't'
 set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv,*.jsc
 
 " ----------- airline ------------------------
-let g:airline_theme='solarized_flood'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_detect_paste = 0
@@ -155,17 +155,22 @@ let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 
 " Gruvbox
+set termguicolors
 set background=dark 
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 let g:gruvbox_invert_selection=0
 " let g:gruvbox_termcolors=16
+
+" Ayu
 let ayucolor="dark"
 
+" Onedark
+" let g:onedark_termcolors=16
+let g:onedark_terminal_italics=1
 
-" ----------- base16 ------------------------
-" color base16-gruvbox-dark-medium
-set termguicolors
+" Choose theme
+" let g:airline_theme='solarized_flood'
 color gruvbox
 
 " ----------- lightline ------------------------
