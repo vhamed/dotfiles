@@ -3,7 +3,7 @@ AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=Monokai-Flat
 Font=Fira Code,12,-1,5,50,0,0,0,0,0
-LineSpacing=12
+LineSpacing=15
 UseFontLineChararacters=false
 
 [Cursor Options]
@@ -19,7 +19,7 @@ Name=konsole
 Parent=FALLBACK/
 StartInCurrentSessionDir=false
 TerminalColumns=82
-TerminalMargin=1
+TerminalMargin=0
 
 [Interaction Options]
 UnderlineLinksEnabled=false
