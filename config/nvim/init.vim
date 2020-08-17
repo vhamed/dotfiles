@@ -88,6 +88,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ayu-theme/ayu-vim'
 Plug 'tomasr/molokai'
@@ -168,6 +169,9 @@ let ayucolor="dark"
 " Onedark
 " let g:onedark_termcolors=16
 let g:onedark_terminal_italics=1
+
+" One
+let g:one_allow_italics = 1 " I love italic for comments
 
 " Choose theme
 " let g:airline_theme='solarized_flood'
@@ -259,3 +263,5 @@ execute 'highlight clear NonText'
 " Enable Italics
 set t_ZH=^[[3m
 set t_ZR=^[[23m
+set t_8b=^[[48;2;%lu;%lu;%lum
+set t_8f=^[[38;2;%lu;%lu;%lum
