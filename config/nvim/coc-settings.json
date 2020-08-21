@@ -14,11 +14,9 @@
   "prettier.arrowParens": "avoid",
   "diagnostic.enable": true,
   "diagnostic.enableHighlightLineNumber": false,
-  "diagnostic.messageTarget": "float",
+  "diagnostic.messageTarget": "echo",
   "diagnostic.warningSign": "⚠",
   "diagnostic.enableSign": true,
   "diagnostic.signOffset": 9999999,
-  "suggest.floatEnable": false,
-  "yank.highlight.duration": 200,
-  "yank.enableCompletion": false
+  "suggest.floatEnable": false
 }
