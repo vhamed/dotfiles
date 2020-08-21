@@ -21,26 +21,41 @@ set updatetime=300
 
 " Mappings
 let mapleader = ","
+
 " fugitive
 nnoremap <leader>g :G<cr>
 nnoremap <leader>gj :diffget //3<cr>
 nnoremap <leader>gf :diffget //2<cr>
+
 nnoremap <silent> <leader>h :noh<cr>
-map <silent> <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+noremap <silent> <Leader>n <plug>NERDTreeTabsToggle<CR>
+
 nnoremap <silent> <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <silent> <leader>ec :CocConfig<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 nnoremap <silent> <leader>vs :vnew<cr>
 nnoremap <silent> <leader>hs :new<cr>
+
 nnoremap <silent> <leader>in :IndentLinesToggle<cr>
+
 nnoremap <silent> <leader>f :CocSearch 
+
 autocmd FileType javascript nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
+
 augroup highlight_yank
   autocmd!
   autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
+
+augroup SyntaxSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+augroup END
+
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 vnoremap <leader>/ y/<C-r>"<cr>
+
 nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
@@ -116,7 +131,7 @@ Plug 'jwalton512/vim-blade'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'  
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-repeat'
 Plug 'mileszs/ack.vim'
@@ -128,6 +143,7 @@ call plug#end()
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:UltiSnipsExpandTrigger = "<C-Space>"
+
 
 " ----------- NERDTree ------------- 
 let g:NERDTreeMinimalUI=1
@@ -149,7 +165,7 @@ let g:airline_detect_spell = 0
 let g:airline#extensions#ale#enabled = 0
 let g:airline#extensions#ctrlspace#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#coc#enabled = 0
+let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#csv#enabled = 0
 let g:airline#extensions#cursormode#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
@@ -171,11 +187,11 @@ let ayucolor="dark"
 let g:onedark_terminal_italics=1
 
 " One
-let g:one_allow_italics = 1 " I love italic for comments
+let g:one_allow_italics = 1 
 
 " Choose theme
 " let g:airline_theme='solarized_flood'
-color gruvbox
+color one
 
 " ----------- lightline ------------------------
 " let g:lightline = {
