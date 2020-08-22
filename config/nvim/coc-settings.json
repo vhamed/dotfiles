@@ -9,6 +9,8 @@
   "codeLens.enable": true,
   "javascript.referencesCodeLens.enable": false,
   "typescript.referencesCodeLens.enable": false,
+  "prettier.requireConfig":true,
+  "prettier.onlyUseLocalVersion":true,
   "prettier.tabWidth": 2,
   "prettier.trailingComma": "none",
   "prettier.arrowParens": "avoid",
