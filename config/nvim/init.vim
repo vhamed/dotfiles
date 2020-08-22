@@ -29,7 +29,7 @@ nnoremap <leader>gf :diffget //2<cr>
 
 nnoremap <silent> <leader>h :noh<cr>
 
-noremap <silent> <Leader>n <plug>NERDTreeTabsToggle<CR>
+map <silent> <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 nnoremap <silent> <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <silent> <leader>ec :CocConfig<cr>
@@ -165,7 +165,7 @@ let g:airline_detect_spell = 0
 let g:airline#extensions#ale#enabled = 0
 let g:airline#extensions#ctrlspace#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#coc#enabled = 0
 let g:airline#extensions#csv#enabled = 0
 let g:airline#extensions#cursormode#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
