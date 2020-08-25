@@ -115,8 +115,7 @@ Plug 'duggiefresh/vim-easydir'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
@@ -150,14 +149,12 @@ let g:UltiSnipsExpandTrigger = "<C-Space>"
 let g:NERDTreeMinimalUI=1
 let NERDTreeIgnore = ['\.jsc$']
 
-" ----------- fzf ------------- 
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-nnoremap <leader>p :GFiles<CR>
-if has('nvim') && !exists('g:fzf_layout')
-  autocmd! FileType fzf
-  autocmd  FileType fzf set laststatus=0 noshowmode noruler
-    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-endif
+" ----------- ctrlp ------------- 
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_open_multiple_files = 't'
+let g:ctrlp_open_new_file = 't'
+set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv,*.jsc
 
 " ----------- airline ------------------------
 let g:airline_powerline_fonts=1
@@ -267,6 +264,7 @@ let g:vim_json_syntax_conceal = 1
 
 " ---------- devicons -----------------------
 " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:webdevicons_enable_ctrlp = 1
 let g:webdevicons_enable_nerdtree = 1
 
 " Tab navigation like Firefox.
