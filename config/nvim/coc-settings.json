@@ -14,9 +14,11 @@
   "prettier.arrowParens": "avoid",
   "diagnostic.enable": true,
   "diagnostic.enableHighlightLineNumber": false,
-  "diagnostic.messageTarget": "echo",
+  "diagnostic.messageTarget": "float",
   "diagnostic.warningSign": "⚠",
   "diagnostic.enableSign": true,
   "diagnostic.signOffset": 9999999,
-  "suggest.floatEnable": false
+  "suggest.floatEnable": false,
+  "typescript.suggest.autoImports": true,
+  "prettier.requireConfig": true
 }

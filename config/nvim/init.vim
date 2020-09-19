@@ -50,7 +50,7 @@ augroup END
 
 augroup SyntaxSettings
     autocmd!
-    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+    autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 augroup END
 
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>

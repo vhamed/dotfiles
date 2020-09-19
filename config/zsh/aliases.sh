@@ -60,9 +60,6 @@ alias t='tmux'
 # tmux -2
 alias t2='tmux -2'
 
-# laravel artisan aliases 
-alias serve='php artisan serve'
-
 # home
 alias hm='cd $HOME'
 
