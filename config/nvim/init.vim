@@ -41,7 +41,8 @@ nnoremap <silent> <leader>in :IndentLinesToggle<cr>
 
 nnoremap <silent> <leader>f :CocSearch 
 
-autocmd FileType javascript nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
+" autocmd FileType javascript nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
+nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
 
 augroup highlight_yank
   autocmd!
@@ -143,6 +144,7 @@ call plug#end()
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:UltiSnipsExpandTrigger = "<C-Space>"
+let g:coc_disable_startup_warning = 1
 
 
 " ----------- NERDTree ------------- 
@@ -281,3 +283,21 @@ set t_ZH=^[[3m
 set t_ZR=^[[23m
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum
+
+if exists('g:fvim_loaded')
+  set guifont=Fira\ Code:h20
+  " set guifont=Source\ Code\ Variable:h20
+  " set guifont=Fira\ Code\ Retina:h20
+  " Ctrl-ScrollWheel for zooming in/out
+  nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
+  nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
+  nnoremap <silent> <C-+> :set guifont=+<CR>
+  nnoremap <silent> <C--> :set guifont=-<CR>
+  nnoremap <A-CR> :FVimToggleFullScreen<CR>
+  FVimUIPopupMenu v:false
+  FVimFontNormalWeight 400
+  FVimFontBoldWeight 700
+  FVimFontLineHeight '+8.0'
+  FVimCursorSmoothMove v:true
+  FVimCursorSmoothBlink v:true
+endif

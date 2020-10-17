@@ -159,5 +159,6 @@ export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
 # yarn 
 export PATH="$(yarn global bin):$PATH"
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
