@@ -2,6 +2,7 @@
 
 ln -sfn $DOTFILES/vimrc ~/.vimrc 
 ln -sfn $DOTFILES/zshrc ~/.zshrc 
+ln -sfn $DOTFILES/bashrc ~/.bashrc 
 ln -sfn $DOTFILES/tmux.conf ~/.tmux.conf 
 ln -sfn $DOTFILES/init.vim ~/.config/nvim/init.vim 
 ln -sfn $DOTFILES/coc-settings.json ~/.config/nvim/coc-settings.json 
