@@ -11,9 +11,6 @@ fi
 alias ll='ls -halF'
 alias la='ls -A'
 
-# try base16 colors
-alias colortest='$HOME/.config/base16-shell/./colortest'
-
 # edit aliases
 alias aliases='$EDITOR $HOME/config/zsh/aliases.sh'
 alias functions='$EDITOR $HOME/.config/zsh/functions.sh'
@@ -41,15 +38,6 @@ alias .....='cd ../../../..'
 alias q='exit'
 alias :q='exit'
 alias :qa='exit'
-
-# lamp aliases
-alias lstart='sudo /opt/lampp/lampp start'
-alias lstop='sudo /opt/lampp/lampp stop'
-alias lstatus='sudo /opt/lampp/lampp status'
-alias mstart='sudo /opt/lampp/lampp startmysql'
-alias mstop='sudo /opt/lampp/lampp stopmysql'
-alias mstatus='sudo /opt/lampp/lampp status | grep -h MySQL'
-alias manlampp='/opt/lampp/lampp help'
 
 # vim
 alias v='nvim'

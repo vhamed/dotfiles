@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# zsh-autosuggestions plugin
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/zsh-autosuggestions 

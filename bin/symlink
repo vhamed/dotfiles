@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+ln -sfn $DOTFILES/vimrc ~/.vimrc 
+ln -sfn $DOTFILES/zshrc ~/.zshrc 
+ln -sfn $DOTFILES/tmux.conf ~/.tmux.conf 
+ln -sfn $DOTFILES/init.vim ~/.config/nvim/init.vim 
+ln -sfn $DOTFILES/coc-settings.json ~/.config/nvim/coc-settings.json 
+ln -sfn $DOTFILES/rofi ~/.config/rofi/config 
+mkdir -p  ~/.config/zsh/ && ln -sf $DOTFILES/config/zsh/* ~/.config/zsh/
+cp $DOTFILES/gitconfig ~/.gitconfig
+ln -sfn $DOTFILES/extra ~/.extra 
+ln -sfn $DOTFILES/fonts ~/.fonts
