@@ -1,17 +1,8 @@
-export PATH=$HOME/.config/composer/vendor/bin:$PATH
-export PATH="$(yarn global bin):$PATH"
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
-
 export HISTSIZE=1000
 export HISTFILESIZE=2000
 export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
 export HISTIGNORE="ls:cd *:cd:cd ~:l:pwd:exit:date:* --help";
-
-export MUSIC=$HOME/Music;
-export EDITOR="nvim";
-export REPOS=$HOME/Repos;
-export DOTFILES=$REPOS/dotfiles;
 
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink

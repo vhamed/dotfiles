@@ -1,2 +1,30 @@
+[alias]
+	abbrev = !sh -c 'git rev-parse --short ${1-`echo HEAD`}' -
+	co = checkout
+	br = branch
+
+	# Show just the HEAD commit message (no indent) and nothing else
+	message = !git --paginate log -1 --pretty=format:%B
+	msg = message
+
+	amend = commit --amend -v
+	count = !git --no-pager log --oneline | wc -l
+	cp = cherry-pick
+
+	# requires Git 1.5.4 or later
+	p = add -p
+	patch = add -p
+
+	# requires Git 1.6.2 or later
+	rollback = !sh -c 'git reset --merge HEAD~${1-1}' -
+
+	st = status
+	staged = diff --cached --ignore-submodules=dirty
+
+	wc = whatchanged
+
+	# similar to whatchanged, but gives a dir-level overview:
+	# usage: git wd [diff-against=HEAD] [max-depth=4]
+	wd = "!f() { git --paginate diff --dirstat=cumulative,files,0 ${1:-HEAD} | awk '{print $2}' | cut -d / -f1-${2:-4} | sort | uniq; }; f"
 [core]
     editor = nvim
