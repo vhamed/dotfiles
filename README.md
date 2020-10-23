@@ -1,8 +1,8 @@
 # Dotfiles
 
-![nvim-screenshot](https://i.imgur.com/5Au4jFZ.png)
+![terminal-screenshot](https://i.imgur.com/69kGTG0.png)
 
-![terminal-screenshot](https://i.imgur.com/7Bn2nfW.png)
+![nvim-screenshot](https://i.imgur.com/5Au4jFZ.png)
 
 ## Installation
 
