@@ -11,6 +11,13 @@ fi
 alias ll='ls -halF'
 alias la='ls -A'
 
+# Get week number
+alias week='date +%V'
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
 # edit aliases
 alias aliases='$EDITOR $HOME/config/zsh/aliases.sh'
 alias functions='$EDITOR $HOME/.config/zsh/functions.sh'
@@ -18,8 +25,11 @@ alias zshrc='$EDITOR $HOME/.zshrc'
 alias vimrc='$EDITOR $HOME/.vimrc'
 alias tmuxconf='$EDITOR $HOME/.tmux.conf'
 
-# source zsh
-alias sourcezsh='source $HOME/.zshrc'
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec ${SHELL} -l"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
 
 # pwd
 alias p='pwd'
