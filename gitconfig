@@ -9,6 +9,7 @@
 
 	amend = commit --amend -v
 	count = !git --no-pager log --oneline | wc -l
+	oneline = !git --paginate log --pretty=format:'%C(auto)%h%Creset %s%C(auto)%d%Creset %C(magenta bold)(%cr)%Creset %C(cyan)%Creset'
 	cp = cherry-pick
 
 	# requires Git 1.5.4 or later

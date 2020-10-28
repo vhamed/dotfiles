@@ -33,6 +33,9 @@ alias path='echo -e ${PATH//:/\\n}'
 
 alias p='pwd'
 alias l='clear'
+alias f='find . -name'
+alias g=git
+alias o='git oneline'
 alias bye='tmux kill-server'
 alias leave='poweroff'
 alias update='sudo apt -y update && sudo apt -y upgrade'
