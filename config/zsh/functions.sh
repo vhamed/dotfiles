@@ -82,12 +82,12 @@ gl () {
   git log $@
 }
 
-glo () {
-  git log --format=oneline $@
-}
-
 gs () {
   git status $@ 
+}
+
+gt () {
+  git stats
 }
 
 gd () {
