@@ -97,3 +97,7 @@ gd () {
 whoeatmyram () {
   ps aux | awk '{print $6/1024 " MB\t\t" $11}' | sort -rn | head -25 
 }
+
+git_change_author_info () {
+  git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Hamed Bensaad'; GIT_AUTHOR_EMAIL='freelancerlwjgl@gmail.com'; GIT_COMMITTER_NAME='Hamed Bensaad'; GIT_COMMITTER_EMAIL='freelancerlwjgl@gmail.com';" HEAD
+}

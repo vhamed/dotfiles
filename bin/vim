@@ -11,6 +11,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 
 nvim +"PluginInstall --sync" +qa
 
-# sudo apt -y install xsel python-dev python-pip python3-dev python3-pip python-neovim python3-neovim
+# sudo apt -y install xsel python-dev python-pip python3-dev python3-pip python-neovim python3-neovim ripgrep
 # cd ~/.config/coc/extensions 
 # npm install coc-json coc-tsserver coc-html coc-css coc-phpls coc-snippets coc-prettier --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
