@@ -25,7 +25,8 @@
 # sudo apt -y install vlc
 # sudo apt -y install chromium-browser
 # sudo snap install mailspring
-# sudo snap install youtube-dl
+# sudo curl -L https://github.com/l1ving/youtube-dl/releases/latest/download/youtube-dl -o /usr/local/bin/youtube-dl
+# sudo chmod a+rx /usr/local/bin/youtube-dl
 
 #---- dev tools ----
 # pip3 install litecli
