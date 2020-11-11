@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+# symlink
 ln -sfn $DOTFILES/vimrc ~/.vimrc 
 ln -sfn $DOTFILES/zshrc ~/.zshrc 
 ln -sfn $DOTFILES/bashrc ~/.bashrc 
 ln -sfn $DOTFILES/tmux.conf ~/.tmux.conf 
+ln -sfn $DOTFILES/tmux.conf.local ~/.tmux.conf.local
 ln -sfn $DOTFILES/init.vim ~/.config/nvim/init.vim 
 ln -sfn $DOTFILES/coc-settings.json ~/.config/nvim/coc-settings.json 
 ln -sfn $DOTFILES/rofi ~/.config/rofi/config 
@@ -11,3 +13,16 @@ mkdir -p  ~/.config/zsh/ && ln -sf $DOTFILES/config/zsh/* ~/.config/zsh/
 cp $DOTFILES/gitconfig ~/.gitconfig
 ln -sfn $DOTFILES/extra ~/.extra 
 ln -sfn $DOTFILES/fonts ~/.fonts
+
+# copy
+# cp $DOTFILES/vimrc ~/.vimrc 
+# cp $DOTFILES/zshrc ~/.zshrc 
+# cp $DOTFILES/bashrc ~/.bashrc 
+# cp $DOTFILES/tmux.conf ~/.tmux.conf 
+# cp $DOTFILES/init.vim ~/.config/nvim/init.vim 
+# cp $DOTFILES/coc-settings.json ~/.config/nvim/coc-settings.json 
+# cp $DOTFILES/rofi ~/.config/rofi/config 
+# mkdir -p  ~/.config/zsh/ && cp -r $DOTFILES/config/zsh/* ~/.config/zsh/
+# cp $DOTFILES/gitconfig ~/.gitconfig
+# cp $DOTFILES/extra ~/.extra 
+# cp -r $DOTFILES/fonts ~/.fonts
