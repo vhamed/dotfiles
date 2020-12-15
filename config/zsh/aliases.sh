@@ -67,6 +67,9 @@ alias hm='cd $HOME'
 # cd Repos
 alias rp='cd $REPOS'
 
+# cd Work
+alias wk='cd $HOME/Work'
+
 # cd Music
 alias music='cd $MUSIC'
 
@@ -80,3 +83,6 @@ alias dwl='cd $HOME/Downloads'
 if [ $XDG_CURRENT_DESKTOP = "X-Cinnamon" ]; then
   alias afk='bash -c "cinnamon-screensaver-command -l; xset dpms force off;"'
 fi;
+
+# list all files 
+# alias details = find . -path ./node_modules -prune -o -name '*.js' | xargs wc -l
