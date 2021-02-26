@@ -145,6 +145,15 @@ inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:UltiSnipsExpandTrigger = "<C-Space>"
 let g:coc_disable_startup_warning = 1
+" coc wants javascriptreact and typescriptreact, the others are to support
+" honza/vim-snippets snippets
+" autocmd BufRead,BufNewFile *.jsx setlocal filetype=javascriptreact.javascript.javascript-react.javascript_react
+" autocmd BufRead,BufNewFile *.tsx setlocal filetype=typescriptreact.javascript.typescript.javascriptreact.javascript-react.javascript_react
+" let g:coc_filetype_map = {
+"   \ '': 'html',
+"   \ 'javascriptreact.javascript.javascript-react.javascript_react': 'javascriptreact',
+"   \ 'typescriptreact.javascript.typescript.javascriptreact.javascript-react.javascript_react': 'typescriptreact'
+"   \ }
 
 
 " ----------- NERDTree ------------- 
@@ -156,7 +165,7 @@ let g:ctrlp_map = '<leader>p'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_multiple_files = 't'
 let g:ctrlp_open_new_file = 't'
-set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv,*.jsc
+set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*/.next/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv,*.jsc
 
 " ----------- airline ------------------------
 let g:airline_powerline_fonts=1
@@ -193,7 +202,7 @@ let g:one_allow_italics = 1
 
 " Choose theme
 " let g:airline_theme='solarized_flood'
-color one
+color gruvbox
 
 " ----------- lightline ------------------------
 " let g:lightline = {
@@ -285,8 +294,8 @@ set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum
 
 if exists('g:fvim_loaded')
-  set guifont=Fira\ Code:h20
-  " set guifont=Source\ Code\ Variable:h20
+  " set guifont=Fira\ Code:h20
+  set guifont=Source\ Code\ Variable:h20
   " set guifont=Fira\ Code\ Retina:h20
   " Ctrl-ScrollWheel for zooming in/out
   nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
