@@ -4,9 +4,9 @@
 # uncomment package to install it
 
 #---- required (at least for me)
-# sudo apt -y install curl 
-# sudo apt -y install git 
-# sudo apt -y install rofi
+sudo apt -y install curl 
+sudo apt -y install git 
+sudo apt -y install rofi
 
 #---- snap (package management system from canonical)
 # sudo apt -y install snapd
@@ -15,18 +15,19 @@
 # sudo apt -y install python3-pip
 
 # sudo apt -y install konsole 
-# sudo apt -y install cmus
-# sudo apt -y install ranger
-# sudo apt -y install htop
+sudo apt -y install kitty 
+sudo apt -y install cmus
+sudo apt -y install ranger
+sudo apt -y install htop
 # sudo apt -y install uget
 
 #---- utilities
-# sudo apt -y install keepassx
+sudo apt -y install keepassx
 # sudo apt -y install vlc
 # sudo apt -y install chromium-browser
+sudo apt install youtube-dl
 # sudo snap install mailspring
-# sudo curl -L https://github.com/l1ving/youtube-dl/releases/latest/download/youtube-dl -o /usr/local/bin/youtube-dl
-# sudo chmod a+rx /usr/local/bin/youtube-dl
+# sudo snap install discord
 
 #---- dev tools ----
 # pip3 install litecli
@@ -34,7 +35,7 @@
 # sudo snap install postman
 
 #---- npm && node
-# curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+# curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 # sudo apt -y update
 # sudo apt -y install nodejs
 
@@ -48,6 +49,12 @@
 # sudo npm install -g neovim
 # npm install -g create-react-app
 # npm install -g gatsby-cli
+
+#---- brave-browser
+# curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+# echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+# sudo apt -y update
+# sudo apt install brave-browser
 
 #---- google-chrome
 # wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -

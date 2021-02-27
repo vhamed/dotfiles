@@ -5,7 +5,7 @@ tmuxlistcolors () {
 }
 
 # Determine size of a file or total size of a directory
-function fs() {
+fs() {
 	if du -b /dev/null > /dev/null 2>&1; then
 		local arg=-sbh;
 	else
@@ -20,7 +20,7 @@ function fs() {
 
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
-function o() {
+o() {
 	if [ $# -eq 0 ]; then
 		gio open .;
 	else
@@ -100,4 +100,23 @@ whoeatmyram () {
 
 git_change_author_info () {
   git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Hamed Bensaad'; GIT_AUTHOR_EMAIL='freelancerlwjgl@gmail.com'; GIT_COMMITTER_NAME='Hamed Bensaad'; GIT_COMMITTER_EMAIL='freelancerlwjgl@gmail.com';" HEAD
+}
+
+backup () { 
+  sudo rsync -aPv \
+    --exclude '.tox' \
+    --exclude 'node_modules' \
+    --exclude 'Dropbox/' \
+    --exclude 'Desktop/' \
+    --exclude 'snap/' \
+    --exclude '.cache' \
+    --exclude '.config' \
+    --exclude '.local' \
+    --info=progress2 \
+  /home/hamed/ /media/hamed/disk/files-backup
+}
+
+restore () {
+  rsync --progress \
+    /media/hamed/disk/files-backup /home/hamed
 }

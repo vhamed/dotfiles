@@ -1,7 +1,5 @@
 # Dotfiles
 
-![terminal-screenshot](https://i.imgur.com/69kGTG0.png)
-
 ![nvim-screenshot](https://i.imgur.com/5Au4jFZ.png)
 
 ## Installation
@@ -14,30 +12,23 @@ git clone https://github.com/vhamed/dotfiles.git && cd dotfiles && source instal
 
 ### Custom your dotfiles via ~/.extra file
 
-If `~/.extra` exists, it will be sourced along with the other files.
-Here’s an example `~/.extra`:
+You could use this to add a few custom commands without the need to fork this entire repository.
 
-```bash
-# Custom Environment Variables
-export EDITOR="nvim";
-export REPOS=$HOME/Repos;
-export DOTFILES=$REPOS/dotfiles;
+This is mine [extra](./extra)
 
-# Git credentials
-GIT_AUTHOR_NAME="Your Name"
-GIT_AUTHOR_EMAIL="Your Email"
-GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-git config --global user.name "$GIT_AUTHOR_NAME"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
+You could copy in your home directory
+```
+cp $DOTFILES/extra ~/.extra 
+```
 
-# Your custom commands 
-# any custom shell command
+or symlink
+```
+ln -sfn $DOTFILES/extra ~/.extra 
 ```
 
 ### Exlude Vim, Tmux, Zsh
 
-If you don't want any of this cli programs to install and configure you can just drop them from bin/ folder and they will not run
+If you don't want any of this cli programs to install and configure you can just drop them from [bin](./bin) folder
 
 ### Vim or NeoVim
 
