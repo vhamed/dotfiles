@@ -39,7 +39,7 @@ nnoremap <silent> <leader>hs :new<cr>
 
 nnoremap <silent> <leader>in :IndentLinesToggle<cr>
 
-nnoremap <silent> <leader>f :CocSearch 
+" nnoremap <silent> <leader>f :CocSearch 
 
 " autocmd FileType javascript nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
 nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
@@ -117,6 +117,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
@@ -147,13 +152,13 @@ let g:UltiSnipsExpandTrigger = "<C-Space>"
 let g:coc_disable_startup_warning = 1
 " coc wants javascriptreact and typescriptreact, the others are to support
 " honza/vim-snippets snippets
-" autocmd BufRead,BufNewFile *.jsx setlocal filetype=javascriptreact.javascript.javascript-react.javascript_react
-" autocmd BufRead,BufNewFile *.tsx setlocal filetype=typescriptreact.javascript.typescript.javascriptreact.javascript-react.javascript_react
-" let g:coc_filetype_map = {
-"   \ '': 'html',
-"   \ 'javascriptreact.javascript.javascript-react.javascript_react': 'javascriptreact',
-"   \ 'typescriptreact.javascript.typescript.javascriptreact.javascript-react.javascript_react': 'typescriptreact'
-"   \ }
+autocmd BufRead,BufNewFile *.jsx setlocal filetype=javascriptreact.javascript.javascript-react.javascript_react
+autocmd BufRead,BufNewFile *.tsx setlocal filetype=typescriptreact.javascript.typescript.javascriptreact.javascript-react.javascript_react
+let g:coc_filetype_map = {
+  \ '': 'html',
+  \ 'javascriptreact.javascript.javascript-react.javascript_react': 'javascriptreact',
+  \ 'typescriptreact.javascript.typescript.javascriptreact.javascript-react.javascript_react': 'typescriptreact'
+  \ }
 
 
 " ----------- NERDTree ------------- 
@@ -161,11 +166,112 @@ let g:NERDTreeMinimalUI=1
 let NERDTreeIgnore = ['\.jsc$']
 
 " ----------- ctrlp ------------- 
-let g:ctrlp_map = '<leader>p'
+" let g:ctrlp_map = '<leader>p'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_multiple_files = 't'
 let g:ctrlp_open_new_file = 't'
 set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*/.next/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv,*.jsc
+" Using lua functions
+nnoremap <leader>d <cmd>lua search_dotfiles()<cr>
+nnoremap <leader>t <cmd>lua require('telescope.builtin').colorscheme()<cr>
+nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false})<cr>
+" nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({}))<cr>
+nnoremap <leader>f <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+" nnoremap <leader>ph <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <c-j> <cmd>lua require('telescope.builtin').help_tags()<cr>
+lua <<EOF
+search_dotfiles = function() 
+    require("telescope.builtin").find_files({
+        prompt_title = "< Dotfiles >",
+        cwd = "$HOME/Repos/dotfiles",
+    })
+end
+local actions = require('telescope.actions')
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+    },
+    prompt_position = "bottom",
+    prompt_prefix = "> ",
+    selection_caret = "> ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_defaults = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    shorten_path = true,
+    winblend = 0,
+    width = 1,
+    preview_cutoff = 120,
+    results_height = 1,
+    results_width = 0.8,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
+    mappings = {
+      i = {
+        -- To disable a keymap, put [map] = false
+        -- So, to not map "<C-n>", just put
+        ["<c-c>"] = false,
+        ["<esc>"] = actions.close,
+
+        -- Otherwise, just set the mapping to the function that you want it to be.
+        ["<C-i>"] = actions.select_horizontal,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+      },
+    },
+  }
+}
+require'nvim-web-devicons'.setup {
+ -- your personnal icons can go here (to override)
+ -- DevIcon will be appended to `name`
+ override = {
+  zsh = {
+    icon = "",
+    color = "#428850",
+    name = "Zsh"
+  }
+ };
+ -- globally enable default icons (default to false)
+ -- will get overriden by `get_icons` option
+ default = true;
+}
+-- require'nvim-treesitter.configs'.setup {
+--   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+--   highlight = {
+--     enable = true,              -- false will disable the whole extension
+--     disable = { "c", "rust" },  -- list of language that will be disabled
+--   }
+-- }
+EOF
 
 " ----------- airline ------------------------
 let g:airline_powerline_fonts=1
