@@ -2,6 +2,14 @@
 
 ![nvim-screenshot](https://i.imgur.com/5Au4jFZ.png)
 
+## Requirements
+
+### install git
+
+```bash
+sudo apt-get install git
+```
+
 ## Installation
 
 ### Using Git and the install script
@@ -14,15 +22,11 @@ git clone https://github.com/vhamed/dotfiles.git && cd dotfiles && source instal
 
 You could use this to add a few custom commands without the need to fork this entire repository.
 
-This is mine [extra](./extra)
+This is example [extra](./extra_template)
 
-You could copy in your home directory
-```
-cp $DOTFILES/extra ~/.extra 
-```
+Put this file in your home directory or symlink it
 
-or symlink
-```
+```bash
 ln -sfn $DOTFILES/extra ~/.extra 
 ```
 

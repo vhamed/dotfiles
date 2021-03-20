@@ -1,3 +1,7 @@
+export EDITOR="nvim";
+export REPOS=$HOME/Repos;
+export DOTFILES=$REPOS/dotfiles;
+
 export HISTSIZE=1000
 export HISTFILESIZE=2000
 export SAVEHIST=1000

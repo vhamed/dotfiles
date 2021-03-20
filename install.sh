@@ -3,7 +3,7 @@
 export DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 function doIt() {
-  for file in $DOTFILES/bin/{symlink,zsh,tmux,vim}; do
+  for file in $DOTFILES/bin/{packages,symlink,zsh,tmux,vim}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
   done;
   unset file;

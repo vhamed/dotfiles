@@ -86,7 +86,7 @@ set splitright
 set splitbelow
 
 " Plugins
-call plug#begin('~/.config/vim/plugins') 
+call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'  
 Plug 'SirVer/ultisnips' 
 Plug 'honza/vim-snippets' 
