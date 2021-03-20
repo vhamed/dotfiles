@@ -4,7 +4,7 @@
 
 ## Requirements
 
-### install git
+### Install git
 
 ```bash
 sudo apt-get install git
