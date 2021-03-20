@@ -15,5 +15,5 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 nvim +"PluginInstall --sync" +qa
 
 sudo apt -y install xsel ripgrep python3-dev python3-pip python3-neovim 
-cd ~/.config/coc/extensions 
+mkdir -p ~/.config/coc/extensions && cd ~/.config/coc/extensions 
 npm install coc-json coc-tsserver coc-html coc-css coc-phpls coc-snippets coc-prettier --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
