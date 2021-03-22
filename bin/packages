@@ -6,7 +6,7 @@
 #---- required (at least for me)
 sudo apt-get -y install curl 
 sudo apt-get -y install git 
-# sudo apt-get -y install rofi
+sudo apt-get -y install rofi
 
 #---- snap (package management system from canonical)
 # sudo apt-get -y install snapd
@@ -35,9 +35,9 @@ sudo apt-get -y install git
 # sudo snap install postman
 
 #---- npm && node
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt-get -y update
-sudo apt-get -y install nodejs
+# curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+# sudo apt-get -y update
+# sudo apt-get -y install nodejs
 
 #---- yarn
 # curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
@@ -46,7 +46,6 @@ sudo apt-get -y install nodejs
 # sudo apt install yarn
 
 #---- global npm modules 
-sudo npm install -g neovim
 # npm install -g create-react-app
 # npm install -g gatsby-cli
 
