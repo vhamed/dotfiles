@@ -36,6 +36,7 @@ nnoremap <silent> <leader>ec :CocConfig<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 nnoremap <silent> <leader>vs :vnew<cr>
 nnoremap <silent> <leader>hs :new<cr>
+nnoremap <silent> <leader>0 :tabmove 0<cr>
 
 nnoremap <silent> <leader>in :IndentLinesToggle<cr>
 
@@ -174,7 +175,9 @@ set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*/.next/*,*.so,*.sw
 " Using lua functions
 nnoremap <leader>d <cmd>lua search_dotfiles()<cr>
 nnoremap <leader>t <cmd>lua require('telescope.builtin').colorscheme()<cr>
-nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false})<cr>
+nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>gp <cmd>lua require('telescope.builtin').git_files()<cr>
+" nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false})<cr>
 " nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({}))<cr>
 nnoremap <leader>f <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
