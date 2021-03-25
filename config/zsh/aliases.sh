@@ -39,8 +39,6 @@ alias go='git oneline'
 alias gr='git remote -v'
 alias bye='tmux kill-server'
 alias leave='poweroff'
-alias update='sudo apt-get -y update && sudo apt-get -y upgrade'
-alias upgrade='sudo apt-get upgrade'
 alias clean='sudo apt-get autoclean && sudo apt-get autoremove'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -60,6 +58,9 @@ alias t='tmux'
 
 # tmux -2
 alias t2='tmux -2'
+
+# ranger
+alias r='ranger'
 
 # home
 alias hm='cd $HOME'

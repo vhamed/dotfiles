@@ -1,3 +1,16 @@
+update () {
+  sudo apt-get -y update
+  apt list --upgradable
+  read -q "REPLY?Do you want to update ?"
+  echo    # move to a new line
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    sudo apt-get -y upgrade
+  else
+    echo "Don't worry, you can update later"
+  fi
+}
+
 tmuxlistcolors () {
     for i in {0..255}; do
         printf "\x1b[38;5;${i}mcolour${i}\x1b[0m\n"
