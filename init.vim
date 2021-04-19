@@ -122,6 +122,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-surround'
@@ -175,9 +176,9 @@ set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*/.next/*,*.so,*.sw
 " Using lua functions
 nnoremap <leader>d <cmd>lua search_dotfiles()<cr>
 nnoremap <leader>t <cmd>lua require('telescope.builtin').colorscheme()<cr>
-nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files()<cr>
+" nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false})<cr>
 nnoremap <leader>gp <cmd>lua require('telescope.builtin').git_files()<cr>
-" nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false})<cr>
 " nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({}))<cr>
 nnoremap <leader>f <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
@@ -267,13 +268,13 @@ require'nvim-web-devicons'.setup {
  -- will get overriden by `get_icons` option
  default = true;
 }
--- require'nvim-treesitter.configs'.setup {
---   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
---   highlight = {
---     enable = true,              -- false will disable the whole extension
---     disable = { "c", "rust" },  -- list of language that will be disabled
---   }
--- }
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  }
+}
 EOF
 
 " ----------- airline ------------------------

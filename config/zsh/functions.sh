@@ -1,4 +1,4 @@
-update () {
+u () {
   sudo apt-get -y update
   apt list --upgradable
   read -q "REPLY?Do you want to update ?"
@@ -132,4 +132,12 @@ backup () {
 restore () {
   rsync --progress \
     /media/hamed/disk/files-backup /home/hamed
+}
+
+# update neovim
+uv () {
+  cd $REPOS/neovim
+  git pull origin master
+  sudo make CMAKE_BUILD_TYPE=Release && sudo make install
+  cd -
 }

@@ -62,6 +62,9 @@ alias t2='tmux -2'
 # ranger
 alias r='ranger'
 
+# cmus
+alias c='cd $HOME/Music && cmus'
+
 # home
 alias hm='cd $HOME'
 
