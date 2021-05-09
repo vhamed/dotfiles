@@ -4,7 +4,7 @@ filetype off
 " Basics configurations 
 set noshowmode
 set cursorline
-" set linespace=3 " work only for gvim, for vim console check terminal options
+set linespace=10 " work only for gvim, for vim console check terminal options
 set wildmenu    " command-line completion operates in an enhanced mode.
 set completeopt-=preview
 set showcmd       " display incomplete command
@@ -102,6 +102,7 @@ Plug 'alvan/vim-closetag'
 Plug 'vim-scripts/tComment' 
 Plug 'yggdroot/indentline'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'morhetz/gruvbox'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
@@ -133,26 +134,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 
 " ----------- lightline ------------------------
-let g:lightline = {
-            \'colorscheme': 'solarized',
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ],
-            \             [ 'readonly', 'relativepath', 'fileformat', 'modified'] ],
-            \   'right': [ [ 'lineinfo']
-            \              ]
-            \ },
-            \'component': {
-            \'lineinfo': '%3p%% :   %3l/%-2v',
-            \},
-            \'component_function': {
-            \'readonly': 'LightlineReadonly',
-            \'filetype': 'MyFiletype',
-            \'fileformat': 'MyFileformat'
-            \},
-            \'separator': { 'left': '', 'right': '' },
-            \'subseparator': { 'left': '', 'right': '' }
-            \}
-
 function! LightlineReadonly()
     return &readonly ? '' : ''
 endfunction
@@ -193,3 +174,14 @@ nnoremap <C-t>     :tabnew<CR>
 execute 'highlight link EndOfBuffer ColorColumn'
 execute 'highlight clear VertSplit'
 execute 'highlight link VertSplit LineNr'
+
+set background=dark
+colorscheme gruvbox
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_italic=1
+let g:gruvbox_invert_selection=0
+
+if(has("gui")) 
+    set guifont=Fira\ Code\ 16
+endif
+

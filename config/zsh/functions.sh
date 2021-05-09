@@ -86,10 +86,6 @@ blue() {
   tput setaf 4; echo $@; tput sgr0; 
 }
 
-artisan () {
-  php artisan $@ 
-}
-
 # Git 
 gl () {
   git log $@
@@ -134,7 +130,7 @@ restore () {
     /media/hamed/disk/files-backup /home/hamed
 }
 
-# update neovim
+# update neovim from source
 uv () {
   cd $REPOS/neovim
   git pull origin master
