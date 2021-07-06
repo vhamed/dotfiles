@@ -1,8 +1,6 @@
 # Dotfiles
 
-![nvim-screenshot](https://imgur.com/EhAfPiv.png)
-
-![telescope-screenshot](https://i.imgur.com/y0m9V99.png)
+![nvim-screenshot](https://imgur.com/cVfIwW3.png)
 
 ## Requirements
 
