@@ -17,7 +17,7 @@ bindkey '^ ' autosuggest-accept
 
 typeset -ga sources
 sources+="$HOME/.config/zsh/exports.sh"
-sources+="$HOME/.extra"
+sources+="$HOME/.secrets"
 sources+="$HOME/.config/zsh/prompt.sh"
 sources+="$HOME/.config/zsh/aliases.sh"
 sources+="$HOME/.config/zsh/functions.sh"
@@ -27,6 +27,10 @@ foreach file (`echo $sources`)
         source $file
     fi
 end
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook

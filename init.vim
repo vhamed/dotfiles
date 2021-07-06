@@ -14,8 +14,8 @@ set shortmess+=s
 set shortmess+=c
 set shortmess+=F
 set fillchars+=vert:│,fold:-
+set showtabline=2
 
-set nowildmenu
 set hidden
 set updatetime=300
 
@@ -24,8 +24,10 @@ let mapleader = ","
 
 " fugitive
 nnoremap <leader>g :G<cr>
+nnoremap <leader>gg :G<cr>
 nnoremap <leader>gj :diffget //3<cr>
 nnoremap <leader>gf :diffget //2<cr>
+nnoremap <leader>gb :BlamerToggle<cr>
 
 nnoremap <silent> <leader>h :noh<cr>
 
@@ -89,7 +91,7 @@ let &showbreak='↳ '
 " set cc=+1
 
 " Numbers
-set nonumber
+set number
 set numberwidth=3
 set relativenumber
 
@@ -97,12 +99,13 @@ set relativenumber
 set splitright
 set splitbelow
 
-" Plugins
+" List Plugins
 call plug#begin('~/.config/nvim/plugins')
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'hoob3rt/lualine.nvim'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
+Plug 'eddyekofo94/gruvbox-flat.nvim'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
 Plug 'rakr/vim-one'
@@ -114,24 +117,23 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'duggiefresh/vim-easydir'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'fannheyward/telescope-coc.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
+Plug 'junegunn/vim-easy-align'
 Plug 'raimondi/delimitmate'
 Plug 'tmhedberg/matchit'
 Plug 'alvan/vim-closetag' 
 Plug 'tpope/vim-commentary'
 Plug 'yggdroot/indentline'
+" Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'wincent/terminus'
 Plug 'stanangeloff/php.vim'
@@ -143,8 +145,18 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-repeat'
 Plug 'mileszs/ack.vim'
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'sindrets/diffview.nvim'
+Plug 'APZelos/blamer.nvim'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'jistr/vim-nerdtree-tabs'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
+
 
 " Plugins Configuration  
 " ----------- coc.nvim  ------------- 
@@ -164,8 +176,8 @@ let g:coc_filetype_map = {
 
 
 " ----------- NERDTree ------------- 
-let g:NERDTreeMinimalUI=1
-let NERDTreeIgnore = ['\.jsc$']
+" let g:NERDTreeMinimalUI=1
+" let NERDTreeIgnore = ['\.jsc$']
 
 " ----------- ctrlp ------------- 
 " let g:ctrlp_map = '<leader>p'
@@ -173,146 +185,53 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_multiple_files = 't'
 let g:ctrlp_open_new_file = 't'
 set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*/.next/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv,*.jsc
-" Using lua functions
-nnoremap <leader>d <cmd>lua search_dotfiles()<cr>
-nnoremap <leader>t <cmd>lua require('telescope.builtin').colorscheme()<cr>
+
+" ----------- Telescope  ------------- 
+nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false, layout_config={width=80}})<cr>
 " nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false})<cr>
 nnoremap <leader>gp <cmd>lua require('telescope.builtin').git_files()<cr>
-" nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({}))<cr>
 nnoremap <leader>f <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>d <cmd>lua search_dotfiles()<cr>
 nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
-" nnoremap <leader>ph <cmd>lua require('telescope.builtin').help_tags()<cr>
-nnoremap <c-j> <cmd>lua require('telescope.builtin').help_tags()<cr>
-lua <<EOF
-search_dotfiles = function() 
-    require("telescope.builtin").find_files({
-        prompt_title = "< Dotfiles >",
-        cwd = "$HOME/Repos/dotfiles",
-    })
-end
-local actions = require('telescope.actions')
-require('telescope').setup{
-  defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case'
-    },
-    prompt_position = "bottom",
-    prompt_prefix = "> ",
-    selection_caret = "> ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
-    layout_defaults = {
-      horizontal = {
-        mirror = false,
-      },
-      vertical = {
-        mirror = false,
-      },
-    },
-    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {},
-    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-    shorten_path = true,
-    winblend = 0,
-    width = 1,
-    preview_cutoff = 120,
-    results_height = 1,
-    results_width = 0.8,
-    border = {},
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-    color_devicons = true,
-    use_less = true,
-    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
-    file_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+nnoremap <leader>t <cmd>lua require('telescope.builtin').colorscheme()<cr>
 
-    -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
-    mappings = {
-      i = {
-        -- To disable a keymap, put [map] = false
-        -- So, to not map "<C-n>", just put
-        ["<c-c>"] = false,
-        ["<esc>"] = actions.close,
 
-        -- Otherwise, just set the mapping to the function that you want it to be.
-        ["<C-i>"] = actions.select_horizontal,
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<C-j>"] = actions.move_selection_next,
-      },
-    },
-  }
-}
-require'nvim-web-devicons'.setup {
- -- your personnal icons can go here (to override)
- -- DevIcon will be appended to `name`
- override = {
-  zsh = {
-    icon = "",
-    color = "#428850",
-    name = "Zsh"
-  }
- };
- -- globally enable default icons (default to false)
- -- will get overriden by `get_icons` option
- default = true;
-}
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
-  }
-}
-EOF
+lua require("first_config")
 
 " ----------- airline ------------------------
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_detect_paste = 0
-let g:airline_detect_crypt = 0
-let g:airline_detect_spell = 0
-let g:airline#extensions#ale#enabled = 0
-let g:airline#extensions#ctrlspace#enabled = 0
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#coc#enabled = 0
-let g:airline#extensions#csv#enabled = 0
-let g:airline#extensions#cursormode#enabled = 0
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+" let g:airline_powerline_fonts=1
+" let g:airline#extensions#tabline#formatter = 'unique_tail'
+" let g:airline_detect_paste = 0
+" let g:airline_detect_crypt = 0
+" let g:airline_detect_spell = 0
+" let g:airline#extensions#ale#enabled = 0
+" let g:airline#extensions#ctrlspace#enabled = 0
+" let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#coc#enabled = 0
+" let g:airline#extensions#csv#enabled = 0
+" let g:airline#extensions#cursormode#enabled = 0
+" let g:airline#extensions#hunks#enabled = 0
+" let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+" let g:airline_theme='solarized_flood'
 
-" Gruvbox
+" Gruvbox colorscheme
 set termguicolors
 set background=dark 
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 let g:gruvbox_invert_selection=0
-" let g:gruvbox_termcolors=16
 
-" Ayu
+" Ayu colorscheme
 let ayucolor="dark"
 
-" Onedark
-" let g:onedark_termcolors=16
+" Onedark colorscheme
 let g:onedark_terminal_italics=1
 
-" One
+" One colorscheme
 let g:one_allow_italics = 1 
 
 " Choose theme
-" let g:airline_theme='solarized_flood'
-color gruvbox
+color gruvbox8_hard
 
 " ----------- lightline ------------------------
 " let g:lightline = {
@@ -357,7 +276,6 @@ color gruvbox
 "   return WebDevIconsGetFileTypeSymbol()
 " endfunction
 
-
 " ----------- vim-commentary ------------------------
 " autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
 
@@ -383,10 +301,121 @@ let g:indentLine_bufTypeExlude = ['Nerd_tree.*']
 let g:indentLine_fileTypeExclude = ['help', 'markdown', 'reason']
 let g:vim_json_syntax_conceal = 1
 
+" ---------- indent-blanklin -----------------------
+" highlight IndentBlanklineSpaceChar guifg=#FF0000 gui=nocombine
+" highlight IndentBlanklineSpaceCharBlankline guifg=#00FF00 gui=nocombine
+" highlight IndentBlanklineContextChar guifg=#00FF00 gui=nocombine
+" let g:indent_blankline_char_highlight = "#FF0000"
+" let g:indentLine_char = '│'
+" let g:indent_blankline_char = "│"
+" let g:indent_blankline_filetype_exclude = [ "help", "defx", "vimwiki", "man", "gitmessengerpopup", "diagnosticpopup" ]
+" let g:indent_blankline_buftype_exclude = ["terminal"]
+" let g:indent_blankline_space_char_blankline = " "
+" let g:indent_blankline_strict_tabs = v:true
+" let g:indent_blankline_debug = v:true
+" let g:indent_blankline_show_current_context = v:true
+" let g:indent_blankline_context_patterns = ["class", "function", "method", "^if", "while", "for", "with", "func_literal", "block", "try", "except", "argument_list", "object", "dictionary" ]
+
+" ---------- vim-easy-align -----------------------
+
+xmap ga <Plug>(EasyAlign)    " Start interactive EasyAlign in visual mode (e.g. vipga)
+nmap ga <Plug>(EasyAlign)    " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+
 " ---------- devicons -----------------------
 " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:webdevicons_enable_ctrlp = 1
-let g:webdevicons_enable_nerdtree = 1
+" let g:webdevicons_enable_ctrlp = 1
+" let g:webdevicons_enable_nerdtree = 1
+
+" ---------- nvim-tree -----------------------
+let g:nvim_tree_width = 30 "30 by default
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
+let g:nvim_tree_gitignore = 1 "0 by default
+let g:nvim_tree_auto_open = 0 "0 by default, opens the tree when typing `vim $DIR` or `vim`
+let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
+let g:nvim_tree_auto_ignore_ft = [ 'startify', 'dashboard' ] "empty by default, don't auto open tree on specific filetypes.
+let g:nvim_tree_quit_on_open = 0 "0 by default, closes the tree when you open a file
+let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
+let g:nvim_tree_indent_markers = 0 "0 by default, this option shows indent markers when folders are open
+let g:nvim_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
+let g:nvim_tree_git_hl = 0 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
+let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
+let g:nvim_tree_tab_open = 1 "0 by default, will open the tree when entering a new tab and the tree was previously open
+let g:nvim_tree_width_allow_resize  = 1 "0 by default, will not resize the tree when opening a file
+let g:nvim_tree_disable_netrw = 0 "1 by default, disables netrw
+let g:nvim_tree_hijack_netrw = 0 "1 by default, prevents netrw from automatically opening when opening directories (but lets you keep its other utilities)
+let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
+let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
+let g:nvim_tree_lsp_diagnostics = 1 "0 by default, will show lsp diagnostics in the signcolumn. See :help nvim_tree_lsp_diagnostics
+let g:nvim_tree_disable_window_picker = 1 "0 by default, will disable the window picker.
+let g:nvim_tree_hijack_cursor = 0 "1 by default, when moving cursor in the tree, will position the cursor at the start of the file on the current line
+let g:nvim_tree_icon_padding = '  ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
+let g:nvim_tree_update_cwd = 1 "0 by default, will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
+let g:nvim_tree_window_picker_exclude = {
+    \   'filetype': [
+    \     'packer',
+    \     'qf'
+    \   ],
+    \   'buftype': [
+    \     'terminal'
+    \   ]
+    \ }
+" Dictionary of buffer option names mapped to a list of option values that
+" indicates to the window picker that the buffer's window should not be
+" selectable.
+let g:nvim_tree_special_files = [ 'README.md', 'Makefile', 'MAKEFILE' ] " List of filenames that gets highlighted with NvimTreeSpecialFile
+let g:nvim_tree_show_icons = {
+    \ 'git': 0,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
+    \ }
+"If 0, do not show the icons for one of 'git' 'folder' and 'files'
+"1 by default, notice that if 'files' is 1, it will only display
+"if nvim-web-devicons is installed and on your runtimepath.
+"if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
+"but this will not work when you set indent_markers (because of UI conflict)
+
+" default will show icon by default if no icon is provided
+" default shows no icon by default
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "",
+    \   'ignored': "◌"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   },
+    \   'lsp': {
+    \     'hint': "",
+    \     'info': "",
+    \     'warning': "",
+    \     'error': "",
+    \   }
+    \ }
+
+nnoremap <leader>n :NvimTreeToggle<CR>
+" nnoremap <C-n> :NvimTreeToggle<CR>
+" nnoremap <leader>r :NvimTreeRefresh<CR>
+" nnoremap <leader>n :NvimTreeFindFile<CR>
+" NvimTreeOpen and NvimTreeClose are also available if you need them
+
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
 
 " Tab navigation like Firefox.
 nnoremap <C-t>     :tabnew<CR>

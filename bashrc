@@ -1,7 +1,7 @@
 # Use vi keybindings
 set -o vi 
 
-for file in ~/.config/zsh/{exports.sh,extra,bash_prompt.sh,aliases.sh,functions.sh}; do
+for file in ~/.config/zsh/{exports.sh,secrets,bash_prompt.sh,aliases.sh,functions.sh}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 
