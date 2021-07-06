@@ -7,6 +7,10 @@ ln -sfn $DOTFILES/bashrc ~/.bashrc
 ln -sfn $DOTFILES/tmux.conf ~/.tmux.conf 
 ln -sfn $DOTFILES/tmux.conf.local ~/.tmux.conf.local
 mkdir -p ~/.config/nvim && ln -sfn $DOTFILES/init.vim ~/.config/nvim/init.vim 
+ln -sfn $DOTFILES/config/nvim/settings.vim ~/.config/nvim/settings.vim
+ln -sfn $DOTFILES/config/nvim/plugins.vim ~/.config/nvim/plugins.vim
+ln -sfn $DOTFILES/config/nvim/mappings.vim ~/.config/nvim/mappings.vim
+ln -sfn $DOTFILES/config/nvim/autocmds.vim ~/.config/nvim/autocmds.vim
 mkdir -p ~/.config/nvim/lua && ln -sfn $DOTFILES/config/nvim/lua/first_config.lua ~/.config/nvim/lua/first_config.lua
 ln -sfn $DOTFILES/coc-settings.json ~/.config/nvim/coc-settings.json 
 mkdir -p  ~/.config/kitty && ln -sfn $DOTFILES/config/kitty/kitty.conf ~/.config/kitty/kitty.conf 
