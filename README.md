@@ -1,6 +1,6 @@
 # Dotfiles
 
-![nvim-screenshot](https://imgur.com/cVfIwW3.png)
+![nvim-screenshot](https://imgur.com/2dcC9DR.png)
 
 ## Requirements
 
