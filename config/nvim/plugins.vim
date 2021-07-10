@@ -33,8 +33,8 @@ Plug 'raimondi/delimitmate'
 Plug 'tmhedberg/matchit'
 Plug 'alvan/vim-closetag' 
 Plug 'tpope/vim-commentary'
-Plug 'yggdroot/indentline'
-" Plug 'lukas-reineke/indent-blankline.nvim'
+" Plug 'yggdroot/indentline'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'wincent/terminus'
 Plug 'stanangeloff/php.vim'
@@ -111,11 +111,11 @@ au FileType mail let b:delimitMate_expand_cr = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Indentline 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:indentLine_enabled = 1
-let g:indentLine_char = '│' " let g:indentLine_char = '┊'
-let g:indentLine_bufTypeExlude = ['Nerd_tree.*']
-let g:indentLine_fileTypeExclude = ['help', 'markdown', 'reason']
-let g:vim_json_syntax_conceal = 1
+" let g:indentLine_enabled = 1
+" let g:indentLine_char = '│' " let g:indentLine_char = '┊'
+" let g:indentLine_bufTypeExlude = ['Nerd_tree.*']
+" let g:indentLine_fileTypeExclude = ['help', 'markdown', 'reason']
+" let g:vim_json_syntax_conceal = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -312,7 +312,7 @@ set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*/.next/*,*.so,*.sw
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Indent-blanklin
+" => Indent-blankline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " highlight IndentBlanklineSpaceChar guifg=#FF0000 gui=nocombine
 " highlight IndentBlanklineSpaceCharBlankline guifg=#00FF00 gui=nocombine

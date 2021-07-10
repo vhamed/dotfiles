@@ -66,7 +66,7 @@ require('lualine').setup({
     lualine_a = {'mode'},
     lualine_b = {'branch'},
     lualine_c = {'filename'},
-    lualine_x = {'fileformat', 'filetype'},
+    lualine_x = {'fileformat', 'filetype', 'diff'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
@@ -78,7 +78,7 @@ require('lualine').setup({
     lualine_y = {},
     lualine_z = {}
   },
-  extensions = {'nvim-tree', 'fugitive'}
+  extensions = {'nvim-tree', 'fugitive', 'quickfix'},
 })
 local cb = require'diffview.config'.diffview_callback
 require'diffview'.setup {
@@ -116,3 +116,122 @@ require'diffview'.setup {
     }
   }
 }
+
+-- indent_blankline plugin
+vim.g.indent_blankline_char = "│" -- 
+vim.g.indent_blankline_show_foldtext = false
+vim.g.indent_blankline_show_first_indent_level = true
+vim.g.indent_blankline_filetype_exclude = {
+  "startify",
+  "dashboard",
+  "log",
+  "fugitive",
+  "gitcommit",
+  "packer",
+  "vimwiki",
+  "markdown",
+  "json",
+  "txt",
+  "vista",
+  "help",
+  "NvimTree",
+  "git",
+  "TelescopePrompt",
+  "undotree",
+  "flutterToolsOutline",
+  "org",
+  "orgagenda",
+  "", -- for all buffers without a file type
+}
+vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
+vim.g.indent_blankline_show_current_context = true
+vim.g.indent_blankline_context_patterns = {
+  "class",
+  "function",
+  "method",
+  "block",
+  "list_literal",
+  "selector",
+  "^if",
+  "^table",
+  "if_statement",
+  "while",
+  "for",
+}
+-- require("nvim-treesitter.configs").setup {
+--   ensure_installed = "maintained",
+--   highlight = {
+--     enable = true,
+--   },
+--   incremental_selection = {
+--     enable = true,
+--     keymaps = {
+--       -- mappings for incremental selection (visual mappings)
+--       init_selection = "<leader>v", -- maps in normal mode to init the node/scope selection
+--       node_incremental = "<leader>v", -- increment to the upper named parent
+--       node_decremental = "<leader>V", -- decrement to the previous node
+--       scope_incremental = "grc", -- increment to the upper scope (as defined in locals.scm)
+--     },
+--   },
+--   indent = {
+--     enable = true,
+--   },
+--   textobjects = {
+--     lookahead = true,
+--     select = {
+--       enable = true,
+--       keymaps = {
+--         ["af"] = "@function.outer",
+--         ["if"] = "@function.inner",
+--         ["ac"] = "@class.outer",
+--         ["ic"] = "@class.inner",
+--         ["aC"] = "@conditional.outer",
+--         ["iC"] = "@conditional.inner",
+--       },
+--     },
+--     swap = {
+--       enable = true,
+--       swap_next = {
+--         ["[w"] = "@parameter.inner",
+--       },
+--       swap_previous = {
+--         ["]w"] = "@parameter.inner",
+--       },
+--     },
+--     move = {
+--       enable = true,
+--       set_jumps = true, -- whether to set jumps in the jumplist
+--       goto_next_start = {
+--         ["]m"] = "@function.outer",
+--         ["]]"] = "@class.outer",
+--       },
+--       goto_previous_start = {
+--         ["[m"] = "@function.outer",
+--         ["[["] = "@class.outer",
+--       },
+--     },
+--   },
+--   textsubjects = {
+--     enable = true,
+--     keymaps = {
+--       ["<CR>"] = "textsubjects-smart",
+--     },
+--   },
+--   rainbow = {
+--     enable = true,
+--     disable = { "lua", "json" },
+--     colors = {
+--       "royalblue3",
+--       "darkorange3",
+--       "seagreen3",
+--       "firebrick",
+--       "darkorchid3",
+--     },
+--   },
+--   autopairs = { enable = true },
+--   query_linter = {
+--     enable = true,
+--     use_virtual_text = true,
+--     lint_events = { "BufWrite", "CursorHold" },
+--   },
+-- }
