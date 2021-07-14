@@ -23,7 +23,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'fannheyward/telescope-coc.nvim'
+" Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'tpope/vim-surround'

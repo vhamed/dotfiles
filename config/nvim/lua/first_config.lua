@@ -58,7 +58,6 @@ require'nvim-treesitter.configs'.setup {
     disable = { "c", "rust" },  -- list of language that will be disabled
   }
 }
-require('telescope').load_extension('coc')
 require('telescope').load_extension('fzf')
 require('lualine').setup({
   theme = 'gruvbox',
@@ -144,7 +143,7 @@ vim.g.indent_blankline_filetype_exclude = {
   "", -- for all buffers without a file type
 }
 vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
-vim.g.indent_blankline_show_current_context = true
+vim.g.indent_blankline_show_current_context = false
 vim.g.indent_blankline_context_patterns = {
   "class",
   "function",
@@ -235,3 +234,6 @@ vim.g.indent_blankline_context_patterns = {
 --     lint_events = { "BufWrite", "CursorHold" },
 --   },
 -- }
+-- require'lspconfig'.pyright.setup{}
+-- require'lspconfig'.denols.setup{}
+-- require'lspconfig'.tsserver.setup{}

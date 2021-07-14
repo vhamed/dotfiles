@@ -21,6 +21,7 @@
   "suggest.floatEnable": false,
   "typescript.suggest.autoImports": true,
   "prettier.requireConfig": true,
+  "suggest.removeDuplicateItems": true,
   "suggest.completionItemKindLabels": {
       "method": "  ",
       "function": "  ",

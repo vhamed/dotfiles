@@ -28,14 +28,14 @@ vnoremap <leader>/ y/<C-r>"<cr>
 "                 ||     ||
 "                 
 " normal mode
-nnoremap <silent> <leader>gd <Plug>(coc-definition)
-nnoremap <silent> <leader>rr <Plug>(coc-rename)
-nnoremap <silent> <F2> <Plug>(coc-rename)
-nnoremap <silent> <leader>cr :CocRestart<cr>
-nnoremap <silent> <leader>[ <Plug>(coc-diagnostic-prev)
-nnoremap <silent> <leader>] <Plug>(coc-diagnostic-next)
-nnoremap <silent> <leader>= :CocCommand prettier.formatFile<cr>
-nnoremap <silent> <leader>ec :CocConfig<cr>
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>rr <Plug>(coc-rename)
+nmap <silent> <F2> <Plug>(coc-rename)
+nmap <silent> <leader>cr :CocRestart<cr>
+nmap <silent> <leader>[ <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>] <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>= :CocCommand prettier.formatFile<cr>
+nmap <silent> <leader>ec :CocConfig<cr>
 " insert mode
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
