@@ -24,7 +24,7 @@ zstyle ':vcs_info:*' stagedstr "%F{green}● %f" # default 'S'
 zstyle ':vcs_info:*' unstagedstr "%F{red}● %f" # default 'U'
 zstyle ':vcs_info:*' use-simple true
 zstyle ':vcs_info:git+set-message:*' hooks git-untracked
-zstyle ':vcs_info:git*:*' formats '%F{white}on %F{magenta} %b %F{white}[ %m%c%u] ' # default ' (%s)-[%b]%c%u-'
+zstyle ':vcs_info:git*:*' formats '%F{white}on %F{magenta} %b %F{white}  %m%c%u ' 
 zstyle ':vcs_info:git*:*' actionformats '[%b|%a%m%c%u] ' # default ' (%s)-[%b|%a]%c%u-'
 zstyle ':vcs_info:hg*:*' formats '[%m%b] '
 zstyle ':vcs_info:hg*:*' actionformats '[%b|%a%m] '
@@ -80,7 +80,7 @@ function () {
   if [[ $EUID -eq 0 ]]; then
     local SUFFIX=$(printf '#%.0s' {1..$LVL})
   else
-    local SUFFIX="%F{green}->$(printf '%.0s' {1..$LVL})"
+    local SUFFIX="%B%F{cyan} $(printf '%.0s' {1..$LVL})"
   fi
   if [[ -n "$TMUX" ]]; then
     # Note use a non-breaking space at the end of the prompt because we can use it as
@@ -98,3 +98,7 @@ function () {
 
 export RPROMPT=$RPROMPT_BASE
 export SPROMPT="zsh: correct %F{red}'%R'%f to %F{red}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]? "
+
+# original prompt
+# zstyle ':vcs_info:git*:*' formats '[%b%m%c%u] '
+# RPROMPT_BASE="\${vcs_info_msg_0_}%F{blue}%~%f"
