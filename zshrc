@@ -18,7 +18,8 @@ bindkey '^ ' autosuggest-accept
 typeset -ga sources
 sources+="$HOME/.config/zsh/exports.sh"
 sources+="$HOME/.secrets"
-sources+="$HOME/.config/zsh/prompt.sh"
+# sources+="$HOME/.config/zsh/prompt.sh"
+sources+="$HOME/.config/zsh/wincent_prompt.sh"
 sources+="$HOME/.config/zsh/aliases.sh"
 sources+="$HOME/.config/zsh/functions.sh"
 
