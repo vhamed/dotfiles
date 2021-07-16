@@ -24,7 +24,7 @@ zstyle ':vcs_info:*' stagedstr "%F{green}● %f" # default 'S'
 zstyle ':vcs_info:*' unstagedstr "%F{red}● %f" # default 'U'
 zstyle ':vcs_info:*' use-simple true
 zstyle ':vcs_info:git+set-message:*' hooks git-untracked
-zstyle ':vcs_info:git*:*' formats '[%b%m%c%u] ' # default ' (%s)-[%b]%c%u-'
+zstyle ':vcs_info:git*:*' formats '%F{white}on %F{magenta} %b %F{white}[ %m%c%u] ' # default ' (%s)-[%b]%c%u-'
 zstyle ':vcs_info:git*:*' actionformats '[%b|%a%m%c%u] ' # default ' (%s)-[%b|%a]%c%u-'
 zstyle ':vcs_info:hg*:*' formats '[%m%b] '
 zstyle ':vcs_info:hg*:*' actionformats '[%b|%a%m] '
@@ -65,7 +65,8 @@ function +vi-git-untracked() {
 }
 
 
-RPROMPT_BASE="\${vcs_info_msg_0_}%F{blue}%~%f"
+RPROMPT_BASE="%B%F{cyan}%~%f"
+GIT_INFO=" \${vcs_info_msg_0_}"
 setopt PROMPT_SUBST
 
 
@@ -79,18 +80,18 @@ function () {
   if [[ $EUID -eq 0 ]]; then
     local SUFFIX=$(printf '#%.0s' {1..$LVL})
   else
-    local SUFFIX=$(printf '\$%.0s' {1..$LVL})
+    local SUFFIX="%F{green}->$(printf '%.0s' {1..$LVL})"
   fi
   if [[ -n "$TMUX" ]]; then
     # Note use a non-breaking space at the end of the prompt because we can use it as
     # a find pattern to jump back in tmux.
     local NBSP=' '
-    export PS1="%F{green}${SSH_TTY:+%n@%m}%f%B${SSH_TTY:+:}%b%F{blue}%1~%F{yellow}%B%(1j.*.)%(?..!)%b%f%F{red}%B${SUFFIX}%b%f${NBSP}"
+    export PS1="%F{green}${SSH_TTY:+%n@%m}%f%B${SSH_TTY:+:}%F{cyan}%1~%F{yellow}%B%(1j.*.)%(?..!)%b%f%F{red}%B%F{white}${GIT_INFO}${SUFFIX}%b%f${NBSP}"
     export ZLE_RPROMPT_INDENT=0
   else
     # Don't bother with ZLE_RPROMPT_INDENT here, because it ends up eating the
     # space after PS1.
-    export PS1="%F{green}${SSH_TTY:+%n@%m}%f%B${SSH_TTY:+:}%b%F{blue}%1~%F{yellow}%B%(1j.*.)%(?..!)%b%f%F{red}%B${SUFFIX}%b%f "
+    export PS1="%F{green}${SSH_TTY:+%n@%m}%f%B${SSH_TTY:+:}%F{cyan}%1~%F{yellow}%B%(1j.*.)%(?..!)%b%f%F{red}%B%F{white}${GIT_INFO}${SUFFIX}%b%f "
   fi
 }
 
