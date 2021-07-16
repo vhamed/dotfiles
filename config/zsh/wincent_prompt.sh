@@ -80,18 +80,18 @@ function () {
   if [[ $EUID -eq 0 ]]; then
     local SUFFIX=$(printf '#%.0s' {1..$LVL})
   else
-    local SUFFIX="%B%F{cyan} $(printf '%.0s' {1..$LVL})"
+    local SUFFIX="%B%F{cyan}  $(printf '%.0s' {1..$LVL})"
   fi
   if [[ -n "$TMUX" ]]; then
     # Note use a non-breaking space at the end of the prompt because we can use it as
     # a find pattern to jump back in tmux.
     local NBSP=' '
-    export PS1="%F{green}${SSH_TTY:+%n@%m}%f%B${SSH_TTY:+:}%F{cyan}%1~%F{yellow}%B%(1j.*.)%(?..!)%b%f%F{red}%B%F{white}${GIT_INFO}${SUFFIX}%b%f${NBSP}"
+    export PS1="%F{green}${SSH_TTY:+%n@%m}%f%B${SSH_TTY:+:}%F{cyan}%1~%F{yellow}%B%(1j.*.)%(?..!)%b%f%F{red}%B%F{white}${GIT_INFO}${SUFFIX}%B%f${NBSP}"
     export ZLE_RPROMPT_INDENT=0
   else
     # Don't bother with ZLE_RPROMPT_INDENT here, because it ends up eating the
     # space after PS1.
-    export PS1="%F{green}${SSH_TTY:+%n@%m}%f%B${SSH_TTY:+:}%F{cyan}%1~%F{yellow}%B%(1j.*.)%(?..!)%b%f%F{red}%B%F{white}${GIT_INFO}${SUFFIX}%b%f "
+    export PS1="%F{green}${SSH_TTY:+%n@%m}%f%B${SSH_TTY:+:}%F{cyan}%1~%F{yellow}%B%(1j.*.)%(?..!)%b%f%F{red}%B%F{white}${GIT_INFO}${SUFFIX}%B%f "
   fi
 }
 
