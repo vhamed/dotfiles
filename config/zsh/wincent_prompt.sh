@@ -24,7 +24,7 @@ zstyle ':vcs_info:*' stagedstr "%F{green}● %f" # default 'S'
 zstyle ':vcs_info:*' unstagedstr "%F{red}● %f" # default 'U'
 zstyle ':vcs_info:*' use-simple true
 zstyle ':vcs_info:git+set-message:*' hooks git-untracked
-zstyle ':vcs_info:git*:*' formats '%F{white}on %F{magenta} %b %F{white}  %m%c%u ' 
+zstyle ':vcs_info:git*:*' formats '%F{white}on %F{magenta} %b %m%c%u' 
 zstyle ':vcs_info:git*:*' actionformats '[%b|%a%m%c%u] ' # default ' (%s)-[%b|%a]%c%u-'
 zstyle ':vcs_info:hg*:*' formats '[%m%b] '
 zstyle ':vcs_info:hg*:*' actionformats '[%b|%a%m] '
