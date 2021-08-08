@@ -12,6 +12,8 @@ require('telescope').setup{
         width = 0.9
       }
     },
+    prompt_prefix = "  ",
+    set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     file_previewer = require'telescope.previewers'.vim_buffer_cat.new, -- default
     -- file_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
     mappings = {

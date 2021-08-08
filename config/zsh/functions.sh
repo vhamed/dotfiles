@@ -133,7 +133,7 @@ restore () {
 # update neovim from source
 uv () {
   cd $REPOS/neovim
-  git pull origin master
+  git pull
   sudo make CMAKE_BUILD_TYPE=Release && sudo make install
   cd -
 }
