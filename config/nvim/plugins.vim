@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => List plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.config/nvim/plugins')
+call plug#begin()
 Plug 'hoob3rt/lualine.nvim'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
@@ -16,14 +16,12 @@ Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
 Plug 'duggiefresh/vim-easydir'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-" Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'tpope/vim-surround'
@@ -61,13 +59,13 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc.nvim 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger = "<C-Space>"
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-phpls', 'coc-snippets', 'coc-prettier']
 let g:coc_disable_startup_warning = 1
-let g:coc_filetype_map = {
-  \ '': 'html',
-  \ 'javascriptreact.javascript.javascript-react.javascript_react': 'javascriptreact',
-  \ 'typescriptreact.javascript.typescript.javascriptreact.javascript-react.javascript_react': 'typescriptreact'
-  \ }
+imap <C-space> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Gruvbox colorscheme

@@ -48,5 +48,9 @@
       "constructor": "  ",
       "value": "  ",
       "enumMember": "  "
+    },
+    "snippets.extends": {
+      "javascriptreact": ["javascript"],
+      "typescript": ["javascript"]
     }
 }
