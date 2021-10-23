@@ -67,7 +67,7 @@ nnoremap <leader>gb :BlamerToggle<cr>
 "                 ||----w |
 "                 ||     ||
 "
-nnoremap <silent> <Leader>n <plug>NERDTreeTabsToggle<CR>
+" nnoremap <silent> <Leader>n <plug>NERDTreeTabsToggle<CR>
 nnoremap <silent> <leader>n :NvimTreeToggle<CR>
 
 
@@ -81,9 +81,10 @@ nnoremap <silent> <leader>n :NvimTreeToggle<CR>
 "                 ||----w |
 "                 ||     ||
 "
-nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false, layout_config={width=80}})<cr>
+nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false, layout_config={width=80}, hidden = true})<cr>
 " nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>gp <cmd>lua require('telescope.builtin').git_files()<cr>
+nnoremap <leader>gl <cmd>lua require('telescope.builtin').git_branches()<cr>
 nnoremap <leader>f <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>d <cmd>lua search_dotfiles()<cr>
 nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>

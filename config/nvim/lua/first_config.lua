@@ -13,6 +13,7 @@ require('telescope').setup{
       }
     },
     prompt_prefix = "  ",
+    file_ignore_patterns = {".git"},
     set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     file_previewer = require'telescope.previewers'.vim_buffer_cat.new, -- default
     -- file_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
@@ -81,6 +82,7 @@ require('lualine').setup({
   },
   extensions = {'nvim-tree', 'fugitive', 'quickfix'},
 })
+require'nvim-tree'.setup()
 local cb = require'diffview.config'.diffview_callback
 require'diffview'.setup {
   diff_binaries = false,    -- Show diffs for binaries
