@@ -19,7 +19,7 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # edit aliases
-alias aliases='$EDITOR $HOME/config/zsh/aliases.sh'
+alias aliases='$EDITOR $HOME/.config/zsh/aliases.sh'
 alias functions='$EDITOR $HOME/.config/zsh/functions.sh'
 alias zshrc='$EDITOR $HOME/.zshrc'
 alias vimrc='$EDITOR $HOME/.vimrc'
