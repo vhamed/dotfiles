@@ -16,6 +16,7 @@ nnoremap <silent> <leader>0 :tabmove 0<cr>
 nnoremap <silent> <leader>h :noh<cr>
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 vnoremap <leader>/ y/<C-r>"<cr>
+tnoremap <leader>q <C-\><C-n>
 
 
 "  ___________________

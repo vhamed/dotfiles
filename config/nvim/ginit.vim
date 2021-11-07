@@ -7,7 +7,8 @@ let s:default_fontsize = 14
 let s:fontsize = s:default_fontsize
 " let s:font = 'Operator MonoLig Bold'
 let s:font = 'Fira Code'
-" GuiLinespace 2
+
+GuiLinespace 12
 
 function! SetFont() abort
   if exists('g:GtkGuiLoaded')
