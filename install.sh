@@ -1,28 +1,15 @@
 #!/usr/bin/env bash
-# Make script executable with: chmod u+x install.sh
 
-# Ask for the administrator password upfront.
-sudo -v
+set -e
 
-# Keep-alive: update existing `sudo` time stamp until the script has finished.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+CONFIG="install-config.yaml"
+DOTBOT_DIR="dotbot"
 
-export DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-function doIt() {
-  for file in $DOTFILES/bin/{packages,symlink,zsh,tmux,vim}; do
-    [ -r "$file" ] && [ -f "$file" ] && source "$file";
-  done;
-  unset file;
-}
+cd "${BASEDIR}"
+git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+git submodule update --init --recursive "${DOTBOT_DIR}"
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-  doIt;
-else
-  read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-  echo "";
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-    doIt;
-  fi;
-fi;
-unset doIt;
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"

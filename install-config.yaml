@@ -1,0 +1,27 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~', '~/.config']
+
+- link:
+    ~/.vimrc: vimrc
+    ~/.zshrc: zshrc
+    ~/.bashrc: bashrc
+    ~/.tmux.conf: tmux.conf
+    ~/.gitconfig: gitconfig
+    ~/.config/nvim/init.vim: init.vim
+    ~/.config/nvim: config/nvim/
+    ~/.config/kitty: config/kitty/
+    ~/.config/rofi: config/rofi/
+    ~/.config/zsh: config/zsh/
+    ~/.fonts: fonts
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [mkdir -p ~/Repos ~/Work, Create Repos dir]
+  # - [~/.tmux/plugins/tpm/bin/install_plugins; true, Installing tmux plugins]
+  # - [~/.tmux/plugins/tpm/bin/update_plugins all; true, Updating tmux plugins]
+  # - ["nvim +PlugUpdate +PlugClean! +qa", Installing and updating nvim plugins]
+  # - [cd ~/.config/coc/extensions/ && yarn --emoji true, Installing coc-nvim extension]
