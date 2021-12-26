@@ -3,7 +3,11 @@
       create: true
       relink: true
 
-- clean: ['~', '~/.config']
+- clean: ["~", "~/.config"]
+
+- create:
+    - ~/Repos
+    - ~/Work
 
 - link:
     ~/.vimrc: vimrc
@@ -12,16 +16,22 @@
     ~/.tmux.conf: tmux.conf
     ~/.gitconfig: gitconfig
     ~/.config/nvim/init.vim: init.vim
-    ~/.config/nvim: config/nvim/
-    ~/.config/kitty: config/kitty/
-    ~/.config/rofi: config/rofi/
-    ~/.config/zsh: config/zsh/
+    ~/.config/nvim: config/nvim
+    ~/.config/kitty: config/kitty
+    ~/.config/rofi/config: rofi
+    ~/.config/zsh: config/zsh
     ~/.fonts: fonts
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - [mkdir -p ~/Repos ~/Work, Create Repos dir]
-  # - [~/.tmux/plugins/tpm/bin/install_plugins; true, Installing tmux plugins]
-  # - [~/.tmux/plugins/tpm/bin/update_plugins all; true, Updating tmux plugins]
-  # - ["nvim +PlugUpdate +PlugClean! +qa", Installing and updating nvim plugins]
-  # - [cd ~/.config/coc/extensions/ && yarn --emoji true, Installing coc-nvim extension]
+    - [git submodule update --init --recursive, Installing submodules]
+    - [~/.tmux/plugins/tpm/bin/install_plugins; true, Installing tmux plugins]
+    - [nvim +PlugUpdate +PlugClean! +qa, Installing vim plugins]
+    - [cd ~/.config/coc/extensions/ && yarn --emoji true, Installing coc-nvim extension]
+    - [sudo apt install -y git tmux zsh, Installing git, tmux, zsh]
+    - 
+      command: chsh -s $(which zsh)
+      description: Making zsh the default shell
+      stdin: true
+      stdout: true
+      stderr: true
+      quiet: true
