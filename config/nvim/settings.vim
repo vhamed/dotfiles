@@ -5,6 +5,7 @@ let &showbreak='↳ '
 set number
 set numberwidth=3
 set relativenumber
+set signcolumn=number
 
 " Splits
 set splitright

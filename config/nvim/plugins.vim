@@ -13,6 +13,7 @@ Plug 'rakr/vim-one'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ayu-theme/ayu-vim'
 Plug 'tomasr/molokai'
+Plug 'tomlion/vim-solidity'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
@@ -106,6 +107,7 @@ au FileType xml,html,phtml,php,blade.php,xhtml,js let b:delimitMate_matchpairs =
 " => Delimitmate 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let delimitMate_expand_cr = 1
+let delimitMate_excluded_ft = "mail,txt"
 au FileType mail let b:delimitMate_expand_cr = 1
 
 

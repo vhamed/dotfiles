@@ -90,3 +90,7 @@ fi;
 
 # list all files 
 # alias details = find . -path ./node_modules -prune -o -name '*.js' | xargs wc -l
+
+# restore cursor blinking
+alias restoreCursor='echo -en "\e[?25h"'
+alias start_portainer='docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer'

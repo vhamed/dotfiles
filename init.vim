@@ -8,25 +8,15 @@
 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
+let &showbreak='↳ ' 
 
 source ~/.config/nvim/settings.vim 
-source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/mappings.vim
+source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/autocmds.vim
-lua require("first_config")
+" lua require("user.options")
+" lua require("user.mappings")
+lua require("user.plugins")
 
 " Choose colorscheme
 color gruvbox8_hard
-
-
-" tmp commands
-" execute 'highlight link EndOfBuffer ColorColumn'
-" execute 'highlight clear VertSplit'
-" execute 'highlight link VertSplit LineNr'
-" execute 'highlight clear NonText'
-
-" Enable Italics
-" set t_ZH=^[[3m
-" set t_ZR=^[[23m
-" set t_8b=^[[48;2;%lu;%lu;%lum
-" set t_8f=^[[38;2;%lu;%lu;%lum

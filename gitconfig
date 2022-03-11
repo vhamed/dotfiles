@@ -1,5 +1,6 @@
 [alias]
 	abbrev = !sh -c 'git rev-parse --short ${1-`echo HEAD`}' -
+	sw = switch
 	co = checkout
 	br = branch
 

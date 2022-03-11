@@ -13,7 +13,7 @@ require('telescope').setup{
       }
     },
     prompt_prefix = "  ",
-    file_ignore_patterns = {".git"},
+    file_ignore_patterns = {".git", "dotbot"},
     set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     file_previewer = require'telescope.previewers'.vim_buffer_cat.new, -- default
     -- file_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
