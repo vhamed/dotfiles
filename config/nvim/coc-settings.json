@@ -2,7 +2,7 @@
   "coc.preferences.formatOnSaveFiletypes": [],
   "tsserver.log": "verbose",
   "tsserver.trace.server": "verbose",
-  "tsserver.npm": "/usr/bin/npm",
+  "tsserver.disableAutomaticTypeAcquisition": true,
   "tsserver.enable": true,
   "tsserver.enableJavascript": true,
   "javascript.suggest.autoImports": true,

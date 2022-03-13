@@ -2,8 +2,7 @@
 " => List plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin()
-Plug 'hoob3rt/lualine.nvim'
-Plug 'chriskempson/base16-vim'
+" colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'eddyekofo94/gruvbox-flat.nvim'
 Plug 'lifepillar/vim-gruvbox8'
@@ -13,41 +12,75 @@ Plug 'rakr/vim-one'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ayu-theme/ayu-vim'
 Plug 'tomasr/molokai'
-Plug 'tomlion/vim-solidity'
+Plug 'chriskempson/base16-vim'
+
+" statusline
+Plug 'hoob3rt/lualine.nvim'
+
+" git
 Plug 'tpope/vim-fugitive'
+Plug 'APZelos/blamer.nvim'
+Plug 'sindrets/diffview.nvim'
+
+" autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
-Plug 'duggiefresh/vim-easydir'
-Plug 'ctrlpvim/ctrlp.vim'
+
+" lsp
+" Plug 'neovim/nvim-lspconfig'
+
+" telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-eunuch'
-Plug 'junegunn/vim-easy-align'
-Plug 'raimondi/delimitmate'
-Plug 'tmhedberg/matchit'
-Plug 'alvan/vim-closetag' 
-Plug 'tpope/vim-commentary'
-" Plug 'yggdroot/indentline'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'wincent/terminus'
+
+" syntax highlight
+" solidity
+Plug 'tomlion/vim-solidity'
+" html
+Plug 'othree/html5.vim'
+" css
+Plug 'hail2u/vim-css3-syntax'
+" javascript
+Plug 'pangloss/vim-javascript'
+" jsx
+Plug 'maxmellon/vim-jsx-pretty'  
+" mustache
+Plug 'mustache/vim-mustache-handlebars'
+" php
 Plug 'stanangeloff/php.vim'
 Plug 'jwalton512/vim-blade'
-Plug 'othree/html5.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'  
-Plug 'mustache/vim-mustache-handlebars'
+
+" icons
+Plug 'kyazdani42/nvim-web-devicons'
+
+" tpope
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
-Plug 'mileszs/ack.vim'
+
+" indentation
+Plug 'lukas-reineke/indent-blankline.nvim'
+
+" others
+Plug 'duggiefresh/vim-easydir'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'junegunn/vim-easy-align'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'sindrets/diffview.nvim'
-Plug 'APZelos/blamer.nvim'
+
+" not sure archived
+" Plug 'wincent/terminus'
+" Plug 'mileszs/ack.vim'
+" Plug 'raimondi/delimitmate'
+" Plug 'tmhedberg/matchit'
+" Plug 'alvan/vim-closetag' 
+" Plug 'yggdroot/indentline'
+"
+" archived
 " Plug 'ryanoasis/vim-devicons'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
@@ -60,15 +93,50 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc.nvim 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:coc_node_path="~/.nvm/versions/node/v16.13.0/bin/node"
+" let g:coc_node_path="~/.nvm/versions/node/v16.13.0/bin/node"
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-phpls', 'coc-snippets', 'coc-prettier']
 let g:coc_disable_startup_warning = 1
-imap <C-space> <Plug>(coc-snippets-expand)
-vmap <C-j> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
+" normal-mode
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" GoTo code navigation.
+" nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" rename 
+nmap <leader>rr <Plug>(coc-rename)
+nmap <silent> <F2> <Plug>(coc-rename)
+" diagnostic
+nmap <silent> <leader>dn <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>dp <Plug>(coc-diagnostic-next)
+" restart coc
+nmap <silent> <leader>cr :CocRestart<cr>
+" nmap <silent> <leader>= :CocCommand prettier.formatFile<cr>
+nmap <silent> <leader>= :CocCommand prettier.formatFile<cr>
+nmap <silent> <leader>ec :CocConfig<cr>
+" insert-mode
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+imap <C-space> <Plug>(coc-snippets-expand)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" visual-mode
+vmap <C-j> <Plug>(coc-snippets-select)
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -99,16 +167,16 @@ let g:one_allow_italics = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-closetag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.js"
-au FileType xml,html,phtml,php,blade.php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
+" let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.js"
+" au FileType xml,html,phtml,php,blade.php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Delimitmate 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let delimitMate_expand_cr = 1
-let delimitMate_excluded_ft = "mail,txt"
-au FileType mail let b:delimitMate_expand_cr = 1
+" let delimitMate_expand_cr = 1
+" let delimitMate_excluded_ft = "mail,txt"
+" au FileType mail let b:delimitMate_expand_cr = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -312,21 +380,3 @@ set wildignore+=*/vendor/*,*/node_modules/*,*/tmp/*,*/dist/*,*/.next/*,*.so,*.sw
 " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 " let g:webdevicons_enable_ctrlp = 1
 " let g:webdevicons_enable_nerdtree = 1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Indent-blankline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" highlight IndentBlanklineSpaceChar guifg=#FF0000 gui=nocombine
-" highlight IndentBlanklineSpaceCharBlankline guifg=#00FF00 gui=nocombine
-" highlight IndentBlanklineContextChar guifg=#00FF00 gui=nocombine
-" let g:indent_blankline_char_highlight = "#FF0000"
-" let g:indentLine_char = '│'
-" let g:indent_blankline_char = "│"
-" let g:indent_blankline_filetype_exclude = [ "help", "defx", "vimwiki", "man", "gitmessengerpopup", "diagnosticpopup" ]
-" let g:indent_blankline_buftype_exclude = ["terminal"]
-" let g:indent_blankline_space_char_blankline = " "
-" let g:indent_blankline_strict_tabs = v:true
-" let g:indent_blankline_debug = v:true
-" let g:indent_blankline_show_current_context = v:true
-" let g:indent_blankline_context_patterns = ["class", "function", "method", "^if", "while", "for", "with", "func_literal", "block", "try", "except", "argument_list", "object", "dictionary" ]
