@@ -1,6 +1,12 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => List plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  _________________
+" < List plugins   >
+"  -----------------
+"         \   ^__^
+"          \  (oo)\_______
+"             (__)\       )\/\
+"                 ||----w |
+"                 ||     ||
+"
 call plug#begin()
 " colorschemes
 Plug 'morhetz/gruvbox'
@@ -98,7 +104,6 @@ let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-css'
 let g:coc_disable_startup_warning = 1
 let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
-" normal-mode
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()

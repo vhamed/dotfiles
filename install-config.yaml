@@ -18,22 +18,17 @@
     ~/.config/rofi/config: rofi
     ~/.config/zsh: config/zsh
     ~/.fonts: fonts
+    ~/.config/nvim/init.vim: init.vim
+    ~/.config/nvim/plugins.vim: config/nvim/plugins.vim
+    ~/.config/nvim/coc-settings.json: config/nvim/coc-settings.json
+    ~/.config/nvim/ginit.vim: config/nvim/ginit.vim
+    ~/.config/nvim/lua/user/plugins.lua: config/lua/plugins.lua
     # nvim lua
     # ~/.config/nvim/init.lua: init.lua
     # ~/.config/nvim/lua/user/options.lua: config/lua/options.lua
     # ~/.config/nvim/lua/user/mappings.lua: config/lua/mappings.lua
     # ~/.config/nvim/lua/user/vimplug.lua: config/lua/vimplug.lua
     # ~/.config/nvim/lua/user/lsp.lua: config/lua/lsp.lua
-    ~/.config/nvim/lua/user/plugins.lua: config/lua/plugins.lua
-    # nvim
-    ~/.config/nvim/init.vim: init.vim
-    ~/.config/nvim/mappings.vim: config/nvim/mappings.vim
-    ~/.config/nvim/plugins.vim: config/nvim/plugins.vim
-    ~/.config/nvim/settings.vim: config/nvim/settings.vim
-    ~/.config/nvim/autocmds.vim: config/nvim/autocmds.vim
-    ~/.config/nvim/coc-settings.json: config/nvim/coc-settings.json
-    # gnvim
-    ~/.config/nvim/ginit.vim: config/nvim/ginit.vim
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
