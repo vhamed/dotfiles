@@ -70,6 +70,8 @@ set shiftround
 set expandtab
 set smartindent
 
+" Statusline
+set laststatus=3
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings

@@ -23,7 +23,7 @@
     ~/.config/nvim/coc-settings.json: config/nvim/coc-settings.json
     ~/.config/nvim/ginit.vim: config/nvim/ginit.vim
     ~/.config/nvim/lua/user/plugins.lua: config/lua/plugins.lua
-    # nvim lua
+    # TODO: NVIM LUA CONFIG
     # ~/.config/nvim/init.lua: init.lua
     # ~/.config/nvim/lua/user/options.lua: config/lua/options.lua
     # ~/.config/nvim/lua/user/mappings.lua: config/lua/mappings.lua
@@ -32,13 +32,12 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [~/.tmux/plugins/tpm/bin/install_plugins; true, Installing tmux plugins]
-    - [nvim +PlugUpdate +PlugClean! +qa, Installing vim plugins]
-    - [cd ~/.config/coc/extensions/ && yarn --emoji true, Installing coc-nvim extension]
-    - [sudo apt install -y git tmux zsh, Installing git, tmux, zsh]
+    - command: bash install-packages.sh 
+      description: Installing and setting git, tmux, zsh, vim, nvim and nvim with all dependencies and plugins
+      # stderr: true
     # - 
     #   command: chsh -s $(which zsh)
-    #   description: Making zsh the default shell
+    #   description: Making zsh default shell
     #   stdin: true
     #   stdout: true
     #   stderr: true

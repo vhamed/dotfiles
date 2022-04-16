@@ -1,36 +1,54 @@
-# Dotfiles
+# Dotfiles (zsh, tmux, nvim)
 
 ![nvim-screenshot](https://imgur.com/2dcC9DR.png)
 
-## Requirements
-
-### git
-
-```bash
-sudo apt-get install git
-```
-
-## Installation
-
-### Using Git and the install script
+## Steps
+### Clone repo
 
 ```bash
-git clone https://github.com/vhamed/dotfiles.git && cd dotfiles && source install.sh
+DESTINATION=~/Repos/dotfiles 
+git clone https://github.com/vhamed/dotfiles.git $DESTINATION
+```
+### cd into dotfiles
+
+```
+cd $DESTINATION
+```
+### Add execute permission
+
+```
+chmod +x install.sh
+```
+### Install 
+
+```bash 
+bash install.sh
+```
+### More installation options
+```bash
+bash install.sh --only link
+```
+```bash
+bash install.sh --only create
+```
+```bash
+bash install.sh --except shell
 ```
 
-### Custom your dotfiles via ~/.secrets file
-
-You could use this to add a few custom commands without the need to fork this entire repository.
-
-This is example [secrets](./secrets_template)
-
-Put this file in your home directory or symlink it
+### Generate global gitconfig file
 
 ```bash
-ln -sfn $DOTFILES/secrets ~/.secrets 
-```
+DOTFILES_PATH=~/Repos/dotfiles
+NAME=Your name
+EMAIL=name@email.com
+cat > ~/.gitconfig <<EOF
+[include] 
+    path = ${DOTFILES_PATH}/gitconfig
+[user]
+name = ${NAME}
+email = ${EMAIL}
+EOF
+``` 
+### Secret commands
 
-## Inspired by ...
-
-* [Wincent's dotfiles](https://github.com/wincent/wincent)
-* [Mathias’s dotfiles](https://github.com/mathiasbynens/dotfiles)
+Store your sensitive commands in `~/.secrets` file, It's not tracked by 

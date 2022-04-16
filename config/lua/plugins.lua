@@ -4,6 +4,7 @@ search_dotfiles = function()
         cwd = "$HOME/Repos/dotfiles",
     })
 end
+
 local actions = require('telescope.actions')
 require('telescope').setup{
   defaults = {
@@ -40,6 +41,7 @@ require('telescope').setup{
     }
   }
 }
+
 require'nvim-web-devicons'.setup {
  -- your personnal icons can go here (to override)
  -- DevIcon will be appended to `name`
@@ -54,6 +56,7 @@ require'nvim-web-devicons'.setup {
  -- will get overriden by `get_icons` option
  default = true;
 }
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
@@ -64,6 +67,9 @@ require'nvim-treesitter.configs'.setup {
 require('telescope').load_extension('fzf')
 require('lualine').setup({
   theme = 'gruvbox',
+  options = {
+      globalstatus = true
+  },
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
@@ -82,7 +88,7 @@ require('lualine').setup({
   },
   extensions = {'nvim-tree', 'fugitive', 'quickfix'},
 })
-require'nvim-tree'.setup()
+require'nvim-tree'.setup {}
 local cb = require'diffview.config'.diffview_callback
 require'diffview'.setup {
   diff_binaries = false,    -- Show diffs for binaries

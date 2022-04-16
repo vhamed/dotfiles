@@ -30,7 +30,7 @@ Plug 'sindrets/diffview.nvim'
 
 " autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 
 " lsp
 " Plug 'neovim/nvim-lspconfig'
@@ -119,9 +119,9 @@ endfunction
 " GoTo code navigation.
 " nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gt <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> gt <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 " rename 
 nmap <leader>rr <Plug>(coc-rename)
 nmap <silent> <F2> <Plug>(coc-rename)
