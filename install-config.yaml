@@ -17,7 +17,6 @@
     ~/.config/kitty: config/kitty
     ~/.config/rofi/config: rofi
     ~/.config/zsh: config/zsh
-    ~/.fonts: fonts
     ~/.config/nvim/init.vim: init.vim
     ~/.config/nvim/plugins.vim: config/nvim/plugins.vim
     ~/.config/nvim/coc-settings.json: config/nvim/coc-settings.json

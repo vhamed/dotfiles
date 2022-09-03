@@ -19,7 +19,7 @@ let &showbreak='↳ '
 set number
 set numberwidth=3
 set relativenumber
-set signcolumn=number
+set signcolumn=yes:1
 
 " Splits
 set splitright
@@ -99,8 +99,8 @@ nnoremap <leader>gb :BlamerToggle<cr>
 nnoremap <silent> <leader>n :NvimTreeToggle<CR>
 
 " Telescope
-nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false, layout_config={width=80}, hidden = true})<cr>
-" nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files()<cr>
+" nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false, layout_config={width=80}, hidden = true})<cr>
+nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>gp <cmd>lua require('telescope.builtin').git_files()<cr>
 nnoremap <leader>gl <cmd>lua require('telescope.builtin').git_branches()<cr>
 nnoremap <leader>f <cmd>lua require('telescope.builtin').live_grep()<cr>
@@ -139,4 +139,5 @@ lua require("user.plugins")
 
 
 " Choose colorscheme
-color gruvbox8_hard
+" color gruvbox8_hard
+color dracula

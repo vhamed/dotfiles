@@ -15,14 +15,16 @@
   "prettier.arrowParens": "avoid",
   "prettier.requireConfig": true,
   "prettier.disableLanguages": [],
+  "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualTextPrefix": " \ufc62 ",
   "diagnostic.virtualText": true,
+  "diagnostic.virtualTextLines": 4,
   "diagnostic.enableMessage": "jump",
   "diagnostic.errorSign": "✖",
   "diagnostic.warningSign": "⚠",
   "diagnostic.infoSign": "•",
   "diagnostic.hintSign": "•",
-  "suggest.floatEnable": false,
   "typescript.suggest.autoImports": true,
   "suggest.removeDuplicateItems": true,
   "suggest.completionItemKindLabels": {
@@ -44,14 +46,22 @@
     "keyword": "  ",
     "file": "  ",
     "folder": " ﱮ ",
-    "color": "  ",
+    "color": "",
     "unit": " 塞 ",
-    "snippet": "  ",
-    "text": "  ",
-    "constructor": "  ",
-    "value": "  ",
-    "enumMember": "  "
+    "snippet": "    ",
+    "text": "",
+    "constructor": "",
+    "value": "",
+    "enumMember": ""
   },
+  "suggest.floatConfig": {
+    "shadow": false,
+    "border": true,
+    "borderhighlight": "CocFloating",
+    "rounded": false
+  },
+  "suggest.formatItems": ["abbr", "kind", "menu"],
+  "suggest.noselect": true,
   "snippets.extends": {
     "javascriptreact": ["javascript"],
     "typescript": ["javascript"]

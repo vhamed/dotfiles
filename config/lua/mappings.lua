@@ -2,6 +2,7 @@ vim.g.mapleader = ","
 local opts = { silent = true, noremap = true }
 local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
+local new_vertical_split = ":vnew<cr>"
 
 --------------------------------------------------
 -- Key mappings
@@ -9,7 +10,7 @@ local keymap = vim.api.nvim_set_keymap
 keymap("n", "<C-t>"     , ":tabnew<CR>", opts)  -- open new tab
 keymap("n", "<leader>ev", ":tabnew $MYVIMRC<cr>", opts) -- edit vimrc
 keymap("n", "<leader>sv", ":source $MYVIMRC<cr>", opts) --  reload vimrc
-keymap("n", "<leader>vs", ":vnew<cr>", opts) -- new vertical split
+keymap("n", "<leader>vs", new_vertical_split, opts) -- new vertical split
 keymap("n", "<leader>hs", ":new<cr>", opts) -- new horizontal split
 keymap("n", "<leader>0" , ":tabmove 0<cr>", opts) -- move tab to the 
 keymap("n", "<leader>h" , ":noh<cr>", opts)

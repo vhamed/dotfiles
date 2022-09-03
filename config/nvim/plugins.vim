@@ -12,13 +12,14 @@ call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'eddyekofo94/gruvbox-flat.nvim'
 Plug 'lifepillar/vim-gruvbox8'
-Plug 'dracula/vim'
+Plug 'Mofiqul/dracula.nvim'
 Plug 'joshdick/onedark.vim'
 Plug 'rakr/vim-one'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ayu-theme/ayu-vim'
 Plug 'tomasr/molokai'
 Plug 'chriskempson/base16-vim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " statusline
 Plug 'hoob3rt/lualine.nvim'
@@ -30,6 +31,7 @@ Plug 'sindrets/diffview.nvim'
 
 " autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 " Plug 'honza/vim-snippets'
 
 " lsp
@@ -99,7 +101,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc.nvim 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:coc_node_path="~/.nvm/versions/node/v16.13.0/bin/node"
+let g:coc_node_path="~/.nvm/versions/node/v16.13.0/bin/node"
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-phpls', 'coc-snippets', 'coc-prettier']
 let g:coc_disable_startup_warning = 1
 let g:coc_snippet_next = '<c-j>'
@@ -137,13 +139,30 @@ nmap <silent> <leader>ec :CocConfig<cr>
 " inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 imap <C-space> <Plug>(coc-snippets-expand)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " visual-mode
 vmap <C-j> <Plug>(coc-snippets-select)
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+" remap for complete to use tab and <cr>
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <c-space> coc#pum#visible() ? coc#pum#confirm() : coc#refresh()
+
+" hi CocSearch ctermfg=12 guifg=#18A3FF
+" hi CocMenuSel ctermbg=109 guibg=#13354A
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Gruvbox colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

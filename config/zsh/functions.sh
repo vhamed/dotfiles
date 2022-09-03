@@ -18,7 +18,7 @@ tmuxlistcolors () {
 }
 
 # Determine size of a file or total size of a directory
-fs() {
+fs () {
 	if du -b /dev/null > /dev/null 2>&1; then
 		local arg=-sbh;
 	else
@@ -33,12 +33,22 @@ fs() {
 
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
-o() {
+o () {
 	if [ $# -eq 0 ]; then
 		gio open .;
 	else
 		gio open "$@";
 	fi;
+}
+
+# `o` with no arguments opens the current directory, otherwise opens the given
+# location
+openIkalasPhotos () {
+  gio open ~/Work/next-ikalas/public/img;
+}
+
+openIkalasIcons () {
+  gio open ~/Work/next-ikalas/public/icons;
 }
 
 # create dir and cd into it
@@ -134,6 +144,7 @@ restore () {
 uv () {
   cd $REPOS/neovim
   git pull
+  # rm -rf build # it fixed quit slow bug
   sudo make CMAKE_BUILD_TYPE=Release && sudo make install
   cd -
 }

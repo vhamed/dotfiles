@@ -5,14 +5,10 @@ search_dotfiles = function()
     })
 end
 
+-- vim.opt.mouse = "a"
 local actions = require('telescope.actions')
 require('telescope').setup{
   defaults = {
-    layout_config = {
-      vertical = {
-        width = 0.9
-      }
-    },
     prompt_prefix = "  ",
     file_ignore_patterns = {".git", "dotbot"},
     set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
@@ -58,23 +54,25 @@ require'nvim-web-devicons'.setup {
 }
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "html", "css", "javascript", "lua", "rust", "java", "vim", "php" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust", "vim" },  -- list of language that will be disabled
+    disable = {},  -- list of language that will be disabled
   }
 }
 require('telescope').load_extension('fzf')
 require('lualine').setup({
-  theme = 'gruvbox',
+  theme = 'dracula-nvim',
   options = {
-      globalstatus = true
+      globalstatus = true,
+      section_separators = { left = '', right = '' },
+      component_separators = { left = '', right = '' }
   },
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
     lualine_c = {'filename'},
-    lualine_x = {'fileformat', 'filetype', 'diff'},
+    lualine_x = {'filetype', 'diff'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
@@ -93,9 +91,6 @@ local cb = require'diffview.config'.diffview_callback
 require'diffview'.setup {
   diff_binaries = false,    -- Show diffs for binaries
   use_icons = true,        -- Requires nvim-web-devicons
-  file_panel = {
-    width = 35,
-  },
   key_bindings = {
     disable_defaults = false,                   -- Disable the default key bindings
     -- The `view` bindings are active in the diff buffers, only when the current
@@ -167,6 +162,20 @@ vim.g.indent_blankline_context_patterns = {
   "while",
   "for",
 }
+
+-- dracula theme plugin
+vim.g.dracula_colors = {
+  comment = "#7f8cb2",
+}
+-- show the '~' characters after the end of buffers
+vim.g.dracula_show_end_of_buffer = true
+-- use transparent background
+vim.g.dracula_transparent_bg = true
+-- set custom lualine background color
+vim.g.dracula_lualine_bg_color = "#44475a"
+-- set italic comment
+vim.g.dracula_italic_comment = true
+
 -- require("nvim-treesitter.configs").setup {
 --   ensure_installed = "maintained",
 --   highlight = {
