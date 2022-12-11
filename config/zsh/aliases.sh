@@ -83,11 +83,6 @@ alias dotfiles='cd $DOTFILES'
 # cd Downloads
 alias dwl='cd $HOME/Downloads'
 
-# Lock the screen (when going AFK)
-if [ $XDG_CURRENT_DESKTOP = "X-Cinnamon" ]; then
-  alias afk='bash -c "cinnamon-screensaver-command -l; xset dpms force off;"'
-fi;
-
 # list all files 
 # alias details = find . -path ./node_modules -prune -o -name '*.js' | xargs wc -l
 

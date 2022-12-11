@@ -1,5 +1,6 @@
 # Set up the prompt
 setopt histignorealldups sharehistory autocd
+HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
 # Use vi keybindings
 bindkey -v

@@ -11,10 +11,11 @@
 	amend = commit --amend -v
 	count = !git --no-pager log --oneline | wc -l
 	oneline = !git --paginate log --pretty=format:'%C(auto)%h%Creset %s%C(auto)%d%Creset %C(magenta bold)(%cr)%Creset %C(cyan)%Creset'
+	o = oneline
 	cp = cherry-pick
 
 	# requires Git 1.5.4 or later
-	p = add -p
+	p = pull
 	patch = add -p
 
 	# requires Git 1.6.2 or later
@@ -23,9 +24,16 @@
 	stats = !git --paginate log --stat --pretty=format:'%C(auto)%h%Creset %s%C(auto)%d%Creset %C(magenta bold)(%cr)%Creset %C(cyan)%Creset'
 	staged = diff --cached --ignore-submodules=dirty
 
-	wc = whatchanged
+	wc = diff ORIG_HEAD..
 	# similar to whatchanged, but gives a dir-level overview:
 	# usage: git wd [diff-against=HEAD] [max-depth=4]
 	wd = "!f() { git --paginate diff --dirstat=cumulative,files,0 ${1:-HEAD} | awk '{print $2}' | cut -d / -f1-${2:-4} | sort | uniq; }; f"
+
+    set-upstream = \
+       !git branch \
+           --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+
+    f = fetch
+    fa = fetch --all
 [core]
     editor = nvim

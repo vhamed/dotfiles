@@ -17,3 +17,4 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 export NODE_OPTIONS="--max-old-space-size=8192"
+export LS_COLORS='ow=36:di=34:fi=32:ex=31:ln=35:' # for alacritty

@@ -9,6 +9,7 @@
   "javascript.suggest.enabled": true,
   "codeLens.enable": true,
   "javascript.referencesCodeLens.enable": false,
+  "javascript.validate.enable": false,
   "typescript.referencesCodeLens.enable": false,
   "prettier.tabWidth": 2,
   "prettier.trailingComma": "none",

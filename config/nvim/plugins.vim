@@ -30,7 +30,7 @@ Plug 'sindrets/diffview.nvim'
 
 " autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 
 " lsp
 " Plug 'neovim/nvim-lspconfig'

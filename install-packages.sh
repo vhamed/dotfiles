@@ -36,6 +36,10 @@ if [[ ! -z $APT_GET_CMD ]]; then
   npm install coc-json coc-tsserver coc-html coc-css coc-phpls coc-snippets coc-prettier --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
   cd -
 
+  # ADDITIONAL NEOVIM DEPENDENCIES
+  # sudo apt-get -y install xsel ripgrep python3-dev python3-pip python3-neovim 
+  # sudo npm install -g neovim
+
   # CLONE AND BUILD NEOVIM FROM SOURCE
   # git clone https://github.com/neovim/neovim $NEOVIM_PATH
   # cd $NEOVIM_PATH
@@ -43,16 +47,12 @@ if [[ ! -z $APT_GET_CMD ]]; then
   # sudo make install 
   # cd -
 
-  # ADDITIONAL NEOVIM DEPENDENCIES
-  # sudo apt-get -y install xsel ripgrep python3-dev python3-pip python3-neovim 
-  # sudo npm install -g neovim
-
   # INSTALL VIM PLUGIN MANAGER
   # curl -fLo $VIM_PLUG_PATH --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   # vim +PlugUpdate +PlugClean! +qa, Installing vim plugins
 
   # INSTALL NVIM PLUGIN MANAGER
-  sh -c 'curl -fLo $NVIM_PLUG_PATH --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   nvim +"PlugInstall --sync" +qa
 
 else

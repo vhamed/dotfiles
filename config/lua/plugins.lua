@@ -14,7 +14,7 @@ require('telescope').setup{
       }
     },
     prompt_prefix = "  ",
-    file_ignore_patterns = {".git", "dotbot"},
+    file_ignore_patterns = {".git", "dotbot", "package-lock.json" },
     set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     file_previewer = require'telescope.previewers'.vim_buffer_cat.new, -- default
     -- file_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
@@ -58,22 +58,30 @@ require'nvim-web-devicons'.setup {
 }
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  -- ensure_installed = "parsers", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "lua", "rust", "javascript", "java", "php" },
+  sync_install = false,
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust", "vim" },  -- list of language that will be disabled
+    additional_vim_regex_highlighting = false,
   }
 }
 require('telescope').load_extension('fzf')
 require('lualine').setup({
   theme = 'gruvbox',
   options = {
-      globalstatus = true
+      globalstatus = true,
+      section_separators = { left = '', right = '' },
+      component_separators = { left = '', right = '' }
   },
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
-    lualine_c = {'filename'},
+    -- lualine_d = { "diagnostics", sources = {'coc'}},
+    -- lualine_d = {'coc#status'},
+    -- lualine_d = { 'mode', { 'diagnostics', sources = {'coc'}},
+    lualine_c = {'filename', { 'diagnostics', sources = {'coc'}}},
     lualine_x = {'fileformat', 'filetype', 'diff'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
@@ -93,9 +101,9 @@ local cb = require'diffview.config'.diffview_callback
 require'diffview'.setup {
   diff_binaries = false,    -- Show diffs for binaries
   use_icons = true,        -- Requires nvim-web-devicons
-  file_panel = {
-    width = 35,
-  },
+  -- file_panel = {
+  --   width = 35,
+  -- },
   key_bindings = {
     disable_defaults = false,                   -- Disable the default key bindings
     -- The `view` bindings are active in the diff buffers, only when the current

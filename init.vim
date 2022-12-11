@@ -19,7 +19,7 @@ let &showbreak='↳ '
 set number
 set numberwidth=3
 set relativenumber
-set signcolumn=number
+set signcolumn=no
 
 " Splits
 set splitright
@@ -99,11 +99,13 @@ nnoremap <leader>gb :BlamerToggle<cr>
 nnoremap <silent> <leader>n :NvimTreeToggle<CR>
 
 " Telescope
-nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false, layout_config={width=80}, hidden = true})<cr>
-" nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files()<cr>
+" nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({previewer = false, layout_config={width=80}, hidden = true})<cr>
+nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>gp <cmd>lua require('telescope.builtin').git_files()<cr>
 nnoremap <leader>gl <cmd>lua require('telescope.builtin').git_branches()<cr>
 nnoremap <leader>f <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>u <cmd>lua require('telescope.builtin').grep_string()<cr>
+vnoremap <leader>u y/<C-r>"<cr> <bar> :noh<cr> <bar> <cmd>lua require('telescope.builtin').grep_string({search=vim.fn.getreg('"')})<cr>
 nnoremap <leader>d <cmd>lua search_dotfiles()<cr>
 nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>t <cmd>lua require('telescope.builtin').colorscheme()<cr>

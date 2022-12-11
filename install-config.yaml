@@ -8,6 +8,7 @@
 - create:
     - ~/Repos
     - ~/Work
+    - ~/.config/coc/extensions
 
 - link:
     ~/.vimrc: vimrc
@@ -20,7 +21,7 @@
     ~/.fonts: fonts
     ~/.config/nvim/init.vim: init.vim
     ~/.config/nvim/plugins.vim: config/nvim/plugins.vim
-    ~/.config/nvim/coc-settings.json: config/nvim/coc-settings.json
+    ~/.config/coc/coc-settings.json: config/nvim/coc-settings.json
     ~/.config/nvim/ginit.vim: config/nvim/ginit.vim
     ~/.config/nvim/lua/user/plugins.lua: config/lua/plugins.lua
     # TODO: NVIM LUA CONFIG
