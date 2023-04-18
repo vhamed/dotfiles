@@ -101,7 +101,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc.nvim 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:coc_node_path="~/.nvm/versions/node/v16.13.0/bin/node"
+let g:coc_node_path="~/.nvm/versions/node/v18.16.0/bin/node"
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-phpls', 'coc-snippets', 'coc-prettier']
 let g:coc_disable_startup_warning = 1
 let g:coc_snippet_next = '<c-j>'

@@ -5,7 +5,7 @@
 # See the script for details.
 
 [volume]
-#label=♪
+# label=♪
 label=VOL
 interval=once
 signal=10

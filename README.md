@@ -1,54 +1,22 @@
-# Dotfiles (zsh, tmux, nvim)
+# My dotfiles
 
-![nvim-screenshot](https://imgur.com/2dcC9DR.png)
+![nvim-screenshot](https://i.imgur.com/3LxJbjX.png)
 
-## Steps
-### Clone repo
-
+## Installation (Easy peasy) 
 ```bash
-DESTINATION=~/Repos/dotfiles 
-git clone https://github.com/vhamed/dotfiles.git $DESTINATION
-```
-### cd into dotfiles
-
-```
-cd $DESTINATION
-```
-### Add execute permission
-
-```
+mkdir -p ~/Repos/dotfiles 
+git clone https://github.com/vhamed/dotfiles.git ~/Repos/dotfiles
+cd ~/Repos/dotfiles 
 chmod +x install.sh
-```
-### Install 
-
-```bash 
 bash install.sh
 ```
-### More installation options
+
+## More install options
 ```bash
 bash install.sh --only link
-```
-```bash
-bash install.sh --only create
-```
-```bash
 bash install.sh --except shell
 ```
 
-### Generate global gitconfig file
+## Where to store sensitive commands ?
 
-```bash
-DOTFILES_PATH=~/Repos/dotfiles
-NAME=Your name
-EMAIL=name@email.com
-cat > ~/.gitconfig <<EOF
-[include] 
-    path = ${DOTFILES_PATH}/gitconfig
-[user]
-name = ${NAME}
-email = ${EMAIL}
-EOF
-``` 
-### Secret commands
-
-Store your sensitive commands in `~/.secrets` file, It's not tracked by 
+If you have sensitive commands put them them in `~/.secrets`, and they'll be loaded by zsh
