@@ -7,10 +7,11 @@ APT_GET_CMD=$(which apt-get)
 NEOVIM_PATH=~/Repos/neovim 
 
 if [[ ! -z $APT_GET_CMD ]]; then
-  # INSTALL GIT, TMUX, ZSH, VIM
   sudo apt install -y git tmux zsh vim curl
-  # i3 4.22 is required in order to use gap, to install it change /etc/sour... to jammy
+  # I3 DEPENDENCIES, i3 4.22 is required in order to use gap, to install it change /etc/sour... to jammy
   sudo apt install -y kitty rofi i3 polybar feh 
+  # NEOVIM DEPENDENCIES
+  sudo apt-get -y install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip doxygen xsel ripgrep python3-dev python3-pip python3-neovim 
 
   # Download wallpaper
   curl https://i.imgur.com/uWXlR5g.jpg > ~/Pictures/peakpx1.jpg
@@ -19,21 +20,17 @@ if [[ ! -z $APT_GET_CMD ]]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
   # INSTALL ZSH plugin (zsh-autosuggestions)
-  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh-plugins/zsh-autosuggestions
 
   # INSTALL ZSH plugin (zsh-syntax-highlighting)
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.config/zsh/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.config/zsh-plugins/zsh-syntax-highlighting
 
   # INSTALL ZSH plugin (zsh-history-substring-search)
-  git clone https://github.com/zsh-users/zsh-history-substring-search ~/.config/zsh/plugins/zsh-history-substring-search
+  git clone https://github.com/zsh-users/zsh-history-substring-search ~/.config/zsh-plugins/zsh-history-substring-search
 
   # INSTALL TMUX PLUGINS
   tmux new -s install-plugins-session '~/.tmux/plugins/tpm/bin/install_plugins'
 
-  # INSTALL NEOVIM DEPENDENCIES
-  sudo apt-get -y install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip doxygen xsel ripgrep 
-  sudo apt-get -y install xsel ripgrep python3-dev python3-pip python3-neovim 
-  # sudo npm install -g neovim
 
   ## INSTALL NVM (NODE IS COC-NVIM PLUGIN DEPENDENCY)
   if ! [ -x "$(command -v node)" ]; then
@@ -47,6 +44,7 @@ if [[ ! -z $APT_GET_CMD ]]; then
   # INSTALL COC-NVIM EXTENSIONS
   cd ~/.config/coc/extensions 
   npm install coc-json coc-tsserver coc-html coc-css coc-phpls coc-snippets coc-prettier --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+  sudo npm install -g neovim
   cd -
 
   # CLONE AND BUILD NEOVIM FROM SOURCE

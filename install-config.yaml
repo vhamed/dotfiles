@@ -15,10 +15,10 @@
     - ~/Repos
     - ~/Work
     - ~/.config/coc/extensions 
-    - ~/.config/polybar
-    - ~/.config/i3
-    - ~/.config/zsh
     - ~/.local/share/fonts
+- create:
+    ~/.ssh:
+      mode: 0700
 
 - link:
     ~/.vimrc: vimrc
@@ -29,10 +29,7 @@
     ~/.config/:
       glob: true
       path: config/*
-      exclude: [config/i3blocks, config/vscode]
-    ~/.config/zsh: 
-      path: config/zsh/*
-      exclude: [plugins, wincent_prompt]
+      exclude: [config/vscode]
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
