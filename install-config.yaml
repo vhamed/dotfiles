@@ -24,7 +24,6 @@
     ~/.vimrc: vimrc
     ~/.zshrc: zshrc
     ~/.bashrc: bashrc
-    ~/.xinitrc: xinitrc
     ~/.tmux.conf: tmux.conf
     ~/.config/:
       glob: true

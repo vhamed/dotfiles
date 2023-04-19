@@ -36,6 +36,7 @@ if [[ ! -z $APT_GET_CMD ]]; then
   if ! [ -x "$(command -v node)" ]; then
     sudo apt-get -y update
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    nvm install --lts
     nvm use --lts
   else
     echo 'node installed.' >&2
@@ -57,7 +58,7 @@ if [[ ! -z $APT_GET_CMD ]]; then
   # install FiraCode Font
   curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip --output ~/Downloads/FiraCode.zip
   unzip ~/Downloads/FiraCode.zip -d ~/Downloads/FiraCode
-  cp ~/Downloads/FiraCode/Fira\ Code\ *.otf ~/.local/share/fonts/
+  cp ~/Downloads/FiraCode/* ~/.local/share/fonts/
   sudo fc-cache -fv
 
   # INSTALL VIM PLUGIN MANAGER

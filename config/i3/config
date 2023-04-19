@@ -34,21 +34,14 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-exec_always --no-startup-id xmodmap -e "clear lock"
-exec_always --no-startup-id xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock"
-exec_always --no-startup-id xmodmap -e "keycode 66 = Escape NoSymbol Escape"
-
-# Use pactl to adjust volume in PulseAudio.
-# set $refresh_i3status killall -SIGUSR1 i3status
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# exec_always --no-startup-id xmodmap -e "clear lock"
+# exec_always --no-startup-id xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock"
+# exec_always --no-startup-id xmodmap -e "keycode 66 = Escape NoSymbol Escape"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -219,6 +212,9 @@ exec_always feh --bg-fill ~/Pictures/peakpx1.jpg
 # Switch between keyboard layouts
 exec_always "setxkbmap -model pc104 -layout us,ar,fr -variant ,, -option grp:win_space_toggle"
 
+# Swap caps-lock and escape
+exec_always "setxkbmap -option caps:escape"
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # bar {
@@ -240,6 +236,6 @@ exec_always "setxkbmap -model pc104 -layout us,ar,fr -variant ,, -option grp:win
 #######################################################################
 # exec i3-config-wizard
 
-for_window [class=".*"] border pixel 2
-gaps inner 2
-gaps outer 2
+# for_window [class=".*"] border pixel 2
+# gaps inner 2
+# gaps outer 2
