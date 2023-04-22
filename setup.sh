@@ -36,6 +36,7 @@ if [[ ! -z $APT_GET_CMD ]]; then
   if ! [ -x "$(command -v node)" ]; then
     sudo apt-get -y update
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    source ~/.nvm/nvm.sh
     nvm install --lts
     nvm use --lts
   else
