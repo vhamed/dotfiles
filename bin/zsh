@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-sudo apt-get -y install zsh 
-
-# zsh-autosuggestions plugin
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/zsh-autosuggestions 

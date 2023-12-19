@@ -83,6 +83,8 @@ alias dotfiles='cd $DOTFILES'
 # cd Downloads
 alias dwl='cd $HOME/Downloads'
 
+alias ,cc='~/.local/scripts/tmux-sessionizer'
+
 # list all files 
 # alias details = find . -path ./node_modules -prune -o -name '*.js' | xargs wc -l
 
