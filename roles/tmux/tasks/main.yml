@@ -1,0 +1,23 @@
+---
+- name: "Tmux | {{ ansible_distribution }} | Install tmux"
+  ansible.builtin.apt:
+    update_cache: no
+    name: tmux
+    state: present
+  become: yes
+
+- name: "Tmux | Install TPM"
+  ansible.builtin.git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+    depth: 1
+    update: no
+
+- name: "Tmux | Install plugins"
+  ansible.builtin.shell: |
+    tmux start-server  
+    tmux new-session -d 
+    sleep 1 
+    ~/.tmux/plugins/tpm/scripts/install_plugins.sh 
+    tmux kill-server
+    exit 0

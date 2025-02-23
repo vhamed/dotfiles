@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  ansible-controller:
+    build:
+      args: 
+        USERNAME: ubuntu
+      context: .  
+    image: myubuntu
+    container_name: my-dev
+    networks:
+      - ansible-network
+    volumes:
+      - /home/hamed/Repos/docker-dotfiles:/home/ubuntu/Repos/dotfiles 
+    tty: true
+    stdin_open: true
+    command: /bin/bash
+
+  # test-machine:
+  #   build:
+  #     args: 
+  #       USERNAME: ubuntu
+  #     context: .  
+  #   image: myubuntu
+  #   container_name: test-machine
+  #   networks:
+  #     - ansible-network
+  #   tty: true
+  #   stdin_open: true
+  #   command: /bin/bash
+
+networks:
+  ansible-network:
+    driver: bridge

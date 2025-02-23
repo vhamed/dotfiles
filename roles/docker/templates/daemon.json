@@ -1,0 +1,13 @@
+{
+  "default-address-pools": [
+    {
+      "base": "172.18.0.0/16",
+      "size": 24
+    }
+  ],
+  "data-root": "/var/lib/docker",
+  "experimental": true,
+  "features": {
+    "buildkit": true
+  }
+}

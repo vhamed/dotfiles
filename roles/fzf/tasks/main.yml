@@ -1,0 +1,7 @@
+---
+- name: "Fzf | {{ ansible_distribution }} | Install fzf"
+  ansible.builtin.apt:
+    update_cache: no
+    name: fzf
+    state: present
+  become: yes

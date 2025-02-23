@@ -1,0 +1,33 @@
+---
+- name: Check if fnm is already installed
+  command: which fnm
+  register: fnm_installed
+  ignore_errors: yes
+
+- name: Run curl command to install fnm
+  ansible.builtin.shell: |
+    curl -fsSL https://fnm.vercel.app/install | bash
+  args:
+    executable: /bin/bash
+  register: result
+  when: fnm_installed.rc != 0
+
+- name: Install the latest LTS version of Node.js using fnm
+  shell: |
+    eval "$(fnm env --shell=bash)" && fnm install --lts
+  args:
+    executable: /bin/bash
+
+- name: Set the latest LTS version as default
+  shell: |
+    eval "$(fnm env --shell=bash)" && fnm default $(fnm list | grep lts | awk '{print $2}' | head -n 1)
+  args:
+    executable: /bin/bash
+
+- name: Verify Node.js installation
+  command: node --version
+  register: node_version
+
+- name: Debug Node.js version
+  debug:
+    msg: "Node.js version installed: {{ node_version.stdout }}"

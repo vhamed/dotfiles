@@ -1,0 +1,7 @@
+---
+- name: "Kitty | {{ ansible_distribution }} | Install kitty"
+  ansible.builtin.apt:
+    update_cache: no
+    name: kitty
+    state: present
+  become: yes

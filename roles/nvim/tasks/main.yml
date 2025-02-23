@@ -1,0 +1,57 @@
+---
+- name: "Nvim | {{ ansible_distribution }} | Install prerequisites"
+  ansible.builtin.apt:
+    update_cache: no
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items: "{{ nvim_apts }}" 
+
+- name: "Nvim | {{ ansible_distribution }} | create directories"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    recurse: false
+    mode: "0755"
+  with_items: "{{ nvim_dirs }}"
+
+- name: "Nvim | {{ ansible_distribution }} | Clone source repo for build"
+  ansible.builtin.git:
+    repo: "{{ nvim_repo }}"
+    dest: "{{ nvim_build_path }}"
+    version: stable
+    accept_hostkey: true
+    depth: 1
+    update: true
+    force: true
+
+
+- name: "Nvim | {{ ansible_distribution }} | clean up artifacts from prior builds"
+  community.general.make:
+    chdir: "{{ nvim_build_path }}"
+    target: distclean
+
+- name: "Nvim | {{ ansible_distribution }} | build release target"
+  community.general.make:
+    chdir: "{{ nvim_build_path }}"
+    params:
+      CMAKE_BUILD_TYPE: Release
+      CMAKE_INSTALL_PREFIX: "{{ nvim_install_path }}"
+
+- name: "Nvim | {{ ansible_distribution }} | install release target"
+  become: yes
+  community.general.make:
+    chdir: "{{ nvim_build_path }}"
+    params:
+      CMAKE_BUILD_TYPE: Release
+      CMAKE_INSTALL_PREFIX: "{{ nvim_install_path }}"
+    target: install
+  register: install_results
+
+- name: "Nvim | {{ ansible_distribution }} | cleanup build folder"
+  ansible.builtin.file:
+    state: absent
+    path: "{{ nvim_build_path }}"
+  when:
+    - nvim_remove_build
+    - not install_results.failed

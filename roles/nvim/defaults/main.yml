@@ -1,0 +1,33 @@
+---
+nvim_repo: "https://github.com/neovim/neovim.git"
+nvim_build_path: "{{ ansible_env.HOME }}/.build/nvim"
+nvim_install_path: "/usr/local"
+nvim_remove_build: true
+
+nvim_dirs:
+  - "{{ ansible_env.HOME }}/.build"
+  - "{{ ansible_env.HOME }}/.config"
+  - "{{ ansible_env.HOME }}/.local"
+  - "{{ ansible_env.HOME }}/.cache"
+  - "{{ ansible_env.HOME }}/.cache/nvim"
+  - "{{ ansible_env.HOME }}/.cache/nvim/swag"
+  - "{{ ansible_env.HOME }}/.cache/nvim/undodir"
+  - "{{ ansible_env.HOME }}/.cache/nvim/backup"
+  - "{{ ansible_env.HOME }}/.cache/nvim/view"
+  - "{{ ansible_env.HOME }}/.cache/nvim/spell"
+  - "{{ ansible_env.HOME }}/.local/share"
+
+nvim_apts:
+  - ninja-build 
+  - gettext 
+  - cmake 
+  - curl 
+  - build-essential
+  - libtool 
+  - libtool-bin 
+  - autoconf 
+  - automake 
+  - cmake 
+  - g++ 
+  - pkg-config 
+  - unzip

@@ -1,0 +1,23 @@
+---
+- name: Setup my dotfiles
+  hosts: all 
+  pre_tasks:
+    - name: Detect WSL
+      ansible.builtin.import_tasks: pre_tasks/detect_wsl.yml
+      tags: [always]
+  roles:
+    - { role: update, tags: ['update'] }
+    - { role: stow, tags: ['stow'] }
+    - { role: ssh, tags: ['ssh'] }
+    - { role: curl, tags: ['curl'] }
+    - { role: git, tags: ['git'] }
+    - { role: fzf, tags: ['fzf'] }
+    - { role: bash, tags: ['bash'] }
+    - { role: zsh, tags: ['zsh'] }
+    - { role: tmux, tags: ['tmux'] }
+    - { role: vim, tags: ['vim'] }
+    - { role: nvim, tags: ['nvim'] }
+    - { role: fnm, tags: ['fnm'] }
+    - { role: docker, tags: ['docker'] }
+    - { role: i3, tags: ['i3'] }
+    - { role: kitty, tags: ['kitty'] }

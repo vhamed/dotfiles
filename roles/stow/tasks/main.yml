@@ -1,0 +1,28 @@
+---
+- name: "Stow | {{ ansible_distribution }} | Install stow"
+  ansible.builtin.apt:
+    update_cache: no
+    name: stow
+    state: present
+  become: yes
+
+- name: "Stow | Check if _dotfiles directory exists"
+  ansible.builtin.stat:
+    path: "{{ playbook_dir }}/_dotfiles"
+  register: dotfiles_dir
+
+- name: "Fail if _dotfiles directory does not exist"
+  ansible.builtin.fail:
+    msg: "The _dotfiles directory does not exist in {{ playbook_dir }}"
+  when: not dotfiles_dir.stat.exists
+
+- name: "Stow files"
+  ansible.builtin.command: >
+    stow -d {{ playbook_dir }}/_dotfiles -t $HOME bash bin i3 i3blocks kitty nvim rofi tmux vim zsh
+  args:
+    chdir: "{{ playbook_dir }}"
+  environment:
+    HOME: "{{ ansible_user_dir }}"
+  register: stow_result
+  changed_when: stow_result.rc == 0
+  failed_when: stow_result.rc != 0
