@@ -1,11 +1,9 @@
+### Create vault_password & user_password
+```
+echo "your_vault_password" > ~/.vault_password
+echo "your_password" > ~/.user_password
+```
 ### Installation
-
 ```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/vhamed/dotfiles/main/bin/start_tweaking)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/vhamed/dotfiles/wsl/bin/start_tweaking)"
 ```
-sudo apt install ansible git -y
-mkdir -p ~/Repos
-cd Repos
-git clone https://github.com/vhamed/dotfiles.git dotfiles
-cd dotfiles
-ansible-playbook -i inventory.yml playbook.yml --vault-password vault_password --become-password-file user_password

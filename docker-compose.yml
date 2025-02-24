@@ -10,8 +10,8 @@ services:
     container_name: my-dev
     networks:
       - ansible-network
-    volumes:
-      - /home/hamed/Repos/docker-dotfiles:/home/ubuntu/Repos/dotfiles 
+    # volumes:
+    #   - /home/hamed/Repos/dotfiles:/home/ubuntu/Repos/dotfiles 
     tty: true
     stdin_open: true
     command: /bin/bash
