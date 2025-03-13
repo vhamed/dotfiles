@@ -1,7 +1,7 @@
 ---
 - name: "Tmux | {{ ansible_distribution }} | Install tmux"
   ansible.builtin.apt:
-    update_cache: no
+    update_cache: yes
     name: tmux
     state: present
   become: yes

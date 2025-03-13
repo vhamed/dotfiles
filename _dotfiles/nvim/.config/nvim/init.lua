@@ -463,6 +463,7 @@ vim.keymap.set('n', '<leader>sd', function()
   require('telescope.builtin').find_files({
     prompt_title = "Dotfiles",
     cwd = "$HOME/Repos/dotfiles",
+    hidden = true
   })
 end, { desc = 'Fuzzily [S]earch in [D]otfiles' })
 -- vim.keymap.set('n', '<leader>/', function()

@@ -1,7 +1,7 @@
 ---
 - name: "Curl | {{ ansible_distribution }} | Install curl"
   ansible.builtin.apt:
-    update_cache: no
+    update_cache: yes
     name: curl
     state: present
   become: yes

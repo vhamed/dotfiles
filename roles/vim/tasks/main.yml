@@ -1,7 +1,7 @@
 ---
 - name: "Vim | {{ ansible_distribution }} | Install vim"
   ansible.builtin.apt:
-    update_cache: no
+    update_cache: yes
     name: vim
     state: present
   become: yes

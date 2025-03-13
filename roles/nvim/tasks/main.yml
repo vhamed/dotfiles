@@ -1,7 +1,7 @@
 ---
 - name: "Nvim | {{ ansible_distribution }} | Install prerequisites"
   ansible.builtin.apt:
-    update_cache: no
+    update_cache: yes
     name: "{{ item }}"
     state: present
   become: yes

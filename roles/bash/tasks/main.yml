@@ -1,7 +1,7 @@
 ---
 - name: "Bash | {{ ansible_distribution }} | Install bash"
   ansible.builtin.apt:
-    update_cache: no
+    update_cache: yes
     name: bash
     state: present
   become: yes

@@ -90,10 +90,6 @@ alias ,cc='~/.local/bin/tmux-sessionizer'
 
 # restore cursor blinking
 alias restoreCursor='echo -en "\e[?25h"'
-alias start_portainer='docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer'
 
 alias d='docker'
-alias dp='docker ps'
-alias dpa='docker ps -a'
-alias di='docker images'
-alias dcu='docker-compose up -d'
+alias dc='docker-compose'

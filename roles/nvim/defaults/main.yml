@@ -31,3 +31,4 @@ nvim_apts:
   - g++ 
   - pkg-config 
   - unzip
+  - ripgrep

@@ -1,7 +1,7 @@
 ---
 - name: "Stow | {{ ansible_distribution }} | Install stow"
   ansible.builtin.apt:
-    update_cache: no
+    update_cache: yes
     name: stow
     state: present
   become: yes

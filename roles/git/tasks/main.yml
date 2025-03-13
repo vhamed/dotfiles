@@ -1,7 +1,7 @@
 ---
 - name: "Git | {{ ansible_distribution }} | Install git"
   ansible.builtin.apt:
-    update_cache: no
+    update_cache: yes
     name: git
     state: present
   become: yes
