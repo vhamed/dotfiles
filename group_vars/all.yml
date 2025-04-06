@@ -1,2 +1,19 @@
-git_user_name: "Hamed"
-git_user_email: "me@hamedbensaad.com"
+package_list:
+  - name: git
+  - name: curl
+  - name: tmux 
+  - name: zsh 
+  - name: htop
+  - name: vim
+  - name: nginx
+  - name: rsync
+  - name: just
+  - name: fzf
+  - name: kitty
+  - name: ripgrep
+  - name: stow
+  - name: i3
+  - name: rofi
+
+docker_users:  
+  - "{{ ansible_user }}"

@@ -1,11 +1,4 @@
 ---
-- name: "Zsh | {{ ansible_distribution }} | Install zsh"
-  ansible.builtin.apt:
-    update_cache: yes
-    name: zsh
-    state: present
-  become: yes
-
 - name: "Zsh | Install zsh-autosuggestions"
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
@@ -15,10 +8,11 @@
 
 - name: "ZSH | Copy content of secret file (encrypted with Ansible Vault) to ~/.secrets"
   ansible.builtin.copy:
-    content: "{{ lookup('file', '{{ role_path }}/files/secrets') }}"
+    src: "{{ role_path }}/files/secrets"
     dest: ~/.secrets
     mode: "0600"
-  no_log: true  
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
 
 - name: "ZSH | Set Zsh as the default shell for the user"
   ansible.builtin.shell: |

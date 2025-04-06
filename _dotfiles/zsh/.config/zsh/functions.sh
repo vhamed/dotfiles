@@ -1,3 +1,7 @@
+i () {
+  sudo apt-get install $1
+}
+
 u () {
   sudo apt-get -y update
   apt list --upgradable

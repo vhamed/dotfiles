@@ -2,7 +2,7 @@
   ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.ssh"
     state: directory
-    mode: "0700"
+    mode: '0700'
 
 - name: Debug ansible_user_dir
   ansible.builtin.debug:
@@ -10,14 +10,16 @@
 
 - name: "SSH | Deploy private key"
   ansible.builtin.copy:
-    content: "{{ lookup('file', '{{ role_path }}/files/pr') }}\n"
+    src: "{{ role_path }}/files/pr"
     dest: "{{ ansible_user_dir }}/.ssh/id_ed25519"
-    mode: "0600"
-  no_log: true
+    mode: '0644'
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
 
 - name: "SSH | Deploy public key"
   ansible.builtin.copy:
-    content: "{{ lookup('file', '{{ role_path }}/files/pb') }}"
+    src: "{{ role_path }}/files/pb"
     dest: "{{ ansible_user_dir }}/.ssh/id_ed25519.pub"
-    mode: "0644"
-  no_log: true
+    mode: '0644'
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"

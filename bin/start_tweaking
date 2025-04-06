@@ -100,6 +100,9 @@ function ubuntu_setup() {
     _cmd "sudo apt-get install -y ansible"
     _cmd "sudo apt-get install python3-argcomplete"
     _cmd "sudo activate-global-python-argcomplete3"
+    _cmd "ansible-galaxy install --roles-path ~ GROG.package"
+    _cmd "ansible-galaxy install --roles-path ~ geerlingguy.security"
+    _cmd "ansible-galaxy install --roles-path ~ geerlingguy.docker"
   fi
   if ! dpkg -s git >/dev/null 2>&1; then
     __task "Installing Git"
@@ -152,7 +155,7 @@ else
 fi
 
 pushd "$DOTFILES_DIR" 2>&1 > /dev/null
-ansible-playbook -i inventory.yml playbook.yml --vault-password $VAULT_PASSWORD --become-password-file $USER_PASSWORD
+ansible-playbook -i inventory.yml playbooks/main.yml --vault-password $VAULT_PASSWORD --become-password-file $USER_PASSWORD
 
 popd 2>&1 > /dev/null
 

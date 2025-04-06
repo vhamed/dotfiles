@@ -5,5 +5,5 @@ echo "your_password" > ~/.user_password
 ```
 ### Installation
 ```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/vhamed/dotfiles/wsl/bin/start_tweaking)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/vhamed/dotfiles/ansible/bin/start_tweaking)"
 ```
