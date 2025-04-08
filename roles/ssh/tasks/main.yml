@@ -39,3 +39,19 @@
     mode: '0644'
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
+
+- name: "SSH | Copy dusseldorf private key"
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/dusseldorf_private"
+    dest: "{{ ansible_user_dir }}/.ssh/dusseldorf"
+    mode: '0600'
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+
+- name: "SSH | Copy dusseldorf public key"
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/dusseldorf_public"
+    dest: "{{ ansible_user_dir }}/.ssh/dusseldorf.pub"
+    mode: '0644'
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
