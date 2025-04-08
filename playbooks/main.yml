@@ -16,6 +16,5 @@
     - role: git 
     - role: zsh 
     - role: tmux 
-    - role: stow 
-    # - role: nvim 
-    # - role: fnm 
+    - role: nvim 
+    - role: fnm 

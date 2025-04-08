@@ -114,30 +114,3 @@ whoeatmyram () {
 git_change_author_info () {
   git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Hamed Bensaad'; GIT_AUTHOR_EMAIL='freelancerlwjgl@gmail.com'; GIT_COMMITTER_NAME='Hamed Bensaad'; GIT_COMMITTER_EMAIL='freelancerlwjgl@gmail.com';" HEAD
 }
-
-backup () { 
-  sudo rsync -aPv \
-    --exclude '.tox' \
-    --exclude 'node_modules' \
-    --exclude 'Dropbox/' \
-    --exclude 'Desktop/' \
-    --exclude 'snap/' \
-    --exclude '.cache' \
-    --exclude '.config' \
-    --exclude '.local' \
-    --info=progress2 \
-  /home/hamed/ /media/hamed/disk/files-backup
-}
-
-restore () {
-  rsync --progress \
-    /media/hamed/disk/files-backup /home/hamed
-}
-
-# update neovim from source
-uv () {
-  cd $REPOS/neovim
-  git pull
-  sudo make CMAKE_BUILD_TYPE=Release && sudo make install
-  cd -
-}

@@ -21,8 +21,16 @@ tweak:
   ansible-playbook -i {{INVENTORY}} \
     {{PLAYBOOK_DIR}}/main.yml \
 
+stow:
+  ls ~/Repos/dotfiles/stow | xargs stow --dotfiles -d ~/Repos/dotfiles/stow -t ~ 
+
+tmux-plugins:
+  tmux start-server  
+  tmux new-session -d 
+  sleep 1 
+  ~/.tmux/plugins/tpm/scripts/install_plugins.sh 
+  tmux kill-server
+
 list:
   just --list
 
-lint:
-  ansible-inventory -i {{INVENTORY}} --list
