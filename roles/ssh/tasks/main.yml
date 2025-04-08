@@ -12,7 +12,7 @@
   ansible.builtin.copy:
     src: "{{ role_path }}/files/pr"
     dest: "{{ ansible_user_dir }}/.ssh/id_ed25519"
-    mode: '0644'
+    mode: '0600'
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
 

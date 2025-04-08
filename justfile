@@ -17,9 +17,10 @@ ping:
     -m ping localhost
     
 
-tweak:
+tweak *ARGS:
   ansible-playbook -i {{INVENTORY}} \
     {{PLAYBOOK_DIR}}/main.yml \
+    {{ARGS}}
 
 stow:
   ls ~/Repos/dotfiles/stow | xargs stow --dotfiles -d ~/Repos/dotfiles/stow -t ~ 

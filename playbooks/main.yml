@@ -12,9 +12,9 @@
       become: yes
     - role: geerlingguy.docker
       become: yes
-    - role: ssh 
-    - role: git 
-    - role: zsh 
-    - role: tmux 
-    - role: nvim 
-    - role: fnm 
+    - { role: ssh, tags: ['ssh'] }
+    - { role: git, tags: ['git'] }
+    - { role: zsh, tags: ['zsh'] }
+    - { role: tmux, tags: ['tmux'] }
+    - { role: nvim, tags: ['nvim'] }
+    - { role: fnm, tags: ['fnm'] }
