@@ -15,7 +15,6 @@ ping:
   ansible -i {{INVENTORY}} \
     -e @"{{VAULT_FILE}}" \
     -m ping localhost
-    
 
 tweak *ARGS:
   ansible-playbook -i {{INVENTORY}} \

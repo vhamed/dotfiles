@@ -146,7 +146,7 @@ esac
 
 if ! [[ -d "$DOTFILES_DIR" ]]; then
   __task "Cloning repository"
-  _cmd "git clone --quiet https://github.com/vhamed/dotfiles.git $DOTFILES_DIR"
+  _cmd "git clone --quiet -b ansible --single-branch https://github.com/vhamed/dotfiles.git $DOTFILES_DIR"
   _cmd "cd $DOTFILES_DIR"
 else
   __task "Updating repository"

@@ -33,5 +33,5 @@ foreach file (`echo $sources`)
 end
 
 # fnm
-export PATH="/home/hamed/.local/bin:/home/hamed/.local/share/fnm:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.local/share/fnm:$PATH"
 eval "`fnm env`"
