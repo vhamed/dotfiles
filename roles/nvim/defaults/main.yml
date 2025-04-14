@@ -32,3 +32,10 @@ nvim_apts:
   - pkg-config 
   - unzip
   - ripgrep
+
+nvim_pacman:
+  - base-devel 
+  - cmake 
+  - ninja 
+  - curl
+  - ripgrep
