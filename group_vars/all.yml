@@ -19,6 +19,7 @@ package_list:
   - name: stow
   - name: i3
   - name: rofi
+  - name: polybar
 
 docker_users:  
   - "{{ ansible_user }}"

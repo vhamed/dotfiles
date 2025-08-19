@@ -1,29 +1,75 @@
-# Volume indicator
+# i3blocks config file changed for EndeavourOS-i3 setup
+
+# source is available here:
+# https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/main/etc/skel/.config/i3/i3blocks.conf
+# Maintainer: joekamprad [joekamprad //a_t// endeavouros.com]
+# Former Visual Designer: Florent Valetti [@FLVAL EndeavourOS]
+# created for i3wm setup on EndeavourOS
+# https://endeavouros.com
+
+# cheatsheet for icon fonts used on the block-bar:
+# https://fontawesome.com/v4.7/cheatsheet/
+
+# --> to update this run the following command:
+# wget --backups=1 https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/main/etc/skel/.config/i3/i3blocks.conf -P ~/.config/i3/
+
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+
+
+# List of valid properties:
 #
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
 
-[volume]
-#label=♪
-label=VOL
-interval=once
-signal=10
-#STEP=5%
-
-# Memory usage
+# Global properties
 #
-# The type defaults to "mem" if the instance is not specified.
-[memory]
-label=MEM
+# The top properties below are applied to every block, but can be overridden.
 separator=false
-interval=30
+markup=pango
 
-[memory]
-label=SWAP
-instance=swap
-separator=false
-interval=30
+#[Weather]
+#command=~/.config/i3/scripts/openweather
+# or:
+#command=~/.config/i3/scripts/openweather-city
+#interval=1800
+#color=#7275b3
+
+# [terminal]
+# full_text=  
+# color=#807dfe
+# command=i3-msg -q exec xfce4-terminal
+
+# [browser]
+# full_text=  
+# color=#ff7f81
+# command=i3-msg -q exec firefox
+
+# [files]
+# full_text=  
+# color=#7f3fbf
+# command=i3-msg -q exec thunar ~/
+
+#[mail]
+#full_text=  
+#color=#dbcb75
+#command=i3-msg -q exec thunderbird
+
+[simple-2]
+full_text=: :
+color=#717171
 
 # Disk usage
 #
@@ -31,96 +77,106 @@ interval=30
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-label=HOME
-#DIR=/mnt/data
+label= 
+instance=/
+command=~/.config/i3/scripts/disk
 interval=30
 
-# Network interface monitoring
+# Memory usage
 #
-# If the instance is not specified, use the interface used for default route.
-# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-[iface]
-#IFACE=wlan0
-color=#00FF00
-interval=10
-separator=false
+# The type defaults to "mem" if the instance is not specified.
+[memory]
+label= 
+command=~/.config/i3/scripts/memory
+interval=2
 
-[wifi]
-#INTERFACE=wlp3s0
-label=wifi:
-interval=10
-separator=false
+[cpu_usage]
+label= 
+command=~/.config/i3/scripts/cpu_usage
+#min_width=CPU: 100.00%
+interval=2
+
+[CPU-temperature]
+label=
+command=~/.config/i3/scripts/temperature
+interval=30
+#T_WARN=70
+#T_CRIT=90
+#SENSOR_CHIP=""
+# where SENSOR_CHIP can be find with sensors output
+# can be used also for GPU temperature or other temperature sensors lm-sensors detects.
+
+# showing name of connected network (enable for wifi use)
+#[net]
+#label= 
+#command=echo "$(LANG=C nmcli d | grep connected  | awk '{print $4}')"
+#interval=30
 
 [bandwidth]
-#INTERFACE=eth0
-interval=5
-
-# CPU usage
-#
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-[cpu_usage]
-label=CPU
-interval=10
-min_width=CPU 100.00%
-#separator=false
-
-[load_average]
-label=LOAD
-interval=10
+command=~/.config/i3/scripts/bandwidth2
+interval=persist
 
 # Battery indicator
-#
-# The battery instance defaults to 0.
 [battery]
-label=BAT
-#label=⚡
+command=~/.config/i3/scripts/battery1
+# for alternative battery script  change to battery1
+# change this to battery-pinebook-pro if you are running on pinebook-pro
+label=
 interval=30
 
-# Date Time
-#
+[simple-2]
+full_text=: :
+color=#717171
+
+[pavucontrol]
+full_text= 
+command=pavucontrol
+
+[volume-pulseaudio]
+command=~/.config/i3/scripts/volume
+instance=Master
+interval=1
+
+# display keyboard layout name
+# for keyboard layouts switcher
+# see i3 config file
+# this needs xkblayout-state installed from the AUR:
+# https://aur.archlinux.org/packages/xkblayout-state-git
+[keyboard-layout]
+command=~/.config/i3/scripts/keyboard-layout
+interval=1
+
+[keyboard-switcher]
+full_text=change
+command=~/.config/i3/scripts/keyboard-switcher
+
+# [keybindings]
+# full_text= 
+# command=~/.config/i3/scripts/keyhint
+
+# power-profiles-daemon implementation:
+# needs package power-profiles-daemon installed and the service running see here:
+# https://wiki.archlinux.org/title/CPU_frequency_scaling#power-profiles-daemon
+
+#set power-profile
+# [ppd_menu]
+# full_text= 
+# command=~/.config/i3/scripts/power-profiles
+# color=#407437
+
+#Show the current power-profile
+# [ppd-status]
+# command=~/.config/i3/scripts/ppd-status
+# interval=5
+
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
-interval=5
+command=date '+%A %d %b %I:%M %p'
+interval=1
 
-# Generic media player support
-#
-# This displays "ARTIST - SONG" if a music is playing.
-# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
-#[mediaplayer]
-#instance=spotify
-#interval=5
-#signal=10
+[shutdown_menu]
+full_text= 
+command=~/.config/i3/scripts/powermenu
 
-# OpenVPN support
-#
-# Support multiple VPN, with colors.
-#[openvpn]
-#interval=20
-
-# Temperature
-#
-# Support multiple chips, though lm-sensors.
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-#[temperature]
-#label=TEMP
-#interval=10
-
-# Key indicators
-#
-# Add the following bindings to i3 config file:
-#
-# bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
-# bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
-#[keyindicator]
-#KEY=CAPS
-#markup=pango
-#interval=once
-#signal=11
-
-#[keyindicator]
-#KEY=NUM
-#markup=pango
-#interval=once
-#signal=11
+[simple-2]
+full_text=: :
+color=#717171
