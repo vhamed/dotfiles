@@ -100,6 +100,7 @@ function ubuntu_setup() {
     _cmd "sudo activate-global-python-argcomplete3"
     _cmd "ansible-galaxy install --roles-path ~ GROG.package"
     _cmd "ansible-galaxy install --roles-path ~ geerlingguy.security"
+    _cmd "ansible-galaxy install --roles-path ~ geerlingguy.firewall"
     _cmd "ansible-galaxy install --roles-path ~ geerlingguy.docker"
   fi
   if ! dpkg -s git >/dev/null 2>&1; then
