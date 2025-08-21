@@ -40,18 +40,18 @@
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
 
-- name: "SSH | Copy dusseldorf private key"
+- name: "SSH | Copy digex private key"
   ansible.builtin.copy:
-    src: "{{ role_path }}/files/dusseldorf_private"
-    dest: "{{ ansible_user_dir }}/.ssh/dusseldorf"
+    src: "{{ role_path }}/files/digex_private"
+    dest: "{{ ansible_user_dir }}/.ssh/digex"
     mode: '0600'
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
 
-- name: "SSH | Copy dusseldorf public key"
+- name: "SSH | Copy digex public key"
   ansible.builtin.copy:
-    src: "{{ role_path }}/files/dusseldorf_public"
-    dest: "{{ ansible_user_dir }}/.ssh/dusseldorf.pub"
+    src: "{{ role_path }}/files/digex_public"
+    dest: "{{ ansible_user_dir }}/.ssh/digex.pub"
     mode: '0644'
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
