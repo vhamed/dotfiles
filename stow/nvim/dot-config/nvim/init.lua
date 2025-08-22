@@ -24,17 +24,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   {
-    "ThePrimeagen/refactoring.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("refactoring").setup()
-    end,
-  },
-
-  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     init = function()
@@ -289,6 +278,7 @@ vim.o.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.bo.softtabstop = 2
+vim.opt.laststatus = 3
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -731,8 +721,6 @@ require("gruvbox").setup({
   -- }
 })
 vim.cmd("colorscheme gruvbox")
-
-require('refactoring').setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
