@@ -14,20 +14,14 @@ Before proceeding, ensure you have:
 #### On Arch Linux:
 
 ```bash
-sudo pacman -S curl
+sudo pacman -S curl stow
 ```
 
 #### On Debian/Ubuntu:
 
 ```bash
 sudo apt update
-sudo apt install curl
-# Build stow from source (default version doesn't support --dotfiles flag)
-wget https://mirror.marwan.ma/gnu/stow/stow-latest.tar.gz ~/
-tar -xvf stow-latest.tar.gz 
-./configure
-make
-sudo make install
+sudo apt install curl stow
 ```
 
 ### 🔐 Setup Vault & User Passwords
@@ -56,14 +50,14 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/vhamed/dotfiles/ansible/
 
 cd into repo
 ```bash
-just stow
+stow -d ~/Repos/dotfiles/stow -t ~ .
 ```
 
 ## Install tmux plugins
 
 cd into repo
 ```bash
-just install-tmux-plugins
+tmux start-server && tmux new-session -d && sleep 1 && ~/.tmux/plugins/tpm/scripts/install_plugins.sh && tmux kill-server
 ```
 
 # 📜 License
