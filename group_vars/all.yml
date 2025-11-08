@@ -1,7 +1,4 @@
 username: john
-git:
-  user: "John"
-  email: "john.wick@gmail.com"
 
 package_list:
   - name: git

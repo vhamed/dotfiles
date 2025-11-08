@@ -3,12 +3,12 @@
   ansible.builtin.git_config:
     name: user.name
     scope: global
-    value: "{{ git.user }}"
+    value: "{{ git_user }}"
 
 - name: "Set user.email"
   ansible.builtin.git_config:
     name: "user.email"
-    value: "{{ git.email }}"
+    value: "{{ git_email }}"
     scope: global
 
 - name: "{{ ansible_distribution }} | Aliases and settings"

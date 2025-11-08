@@ -44,6 +44,7 @@ DOTFILES_DIR="$HOME/Repos/dotfiles"
 VAULT_PASSWORD="$HOME/.vault_password"
 USER_PASSWORD="$HOME/.user_password"
 IS_FIRST_RUN="$HOME/.dotfiles_run"
+
 # _header colorize the given argument with spacing
 function __task {
   # if _task is called while a task was set, complete the previous

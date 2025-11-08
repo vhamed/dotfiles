@@ -1,26 +1,3 @@
-i () {
-  sudo apt-get install $1
-}
-
-u () {
-  sudo apt-get -y update
-  apt list --upgradable
-  read -q "REPLY?Do you want to update ?"
-  echo    # move to a new line
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    sudo apt-get -y upgrade
-  else
-    echo "Don't worry, you can update later"
-  fi
-}
-
-tmuxlistcolors () {
-    for i in {0..255}; do
-        printf "\x1b[38;5;${i}mcolour${i}\x1b[0m\n"
-    done
-}
-
 # Determine size of a file or total size of a directory
 fs() {
 	if du -b /dev/null > /dev/null 2>&1; then
@@ -50,30 +27,6 @@ mk () {
   mkdir -p $@ && cd $@
 }
 
-# download mp3 from youtube
-mp3 () {
-  youtube-dl --no-playlist -o "~/Music/%(title)s.%(ext)s" --extract-audio -x --audio-format mp3 "$1"
-}
-
-# mp3 playlist
-mp3p (){
-  youtube-dl --yes-playlist -o "~/Music/%(title)s.%(ext)s" --extract-audio --audio-format mp3 "$1"
-}
-
-# video
-video (){
-  youtube-dl --no-playlist -o "~/Videos/%(title)s.%(ext)s" "$1"
-}
-
-# video playlist
-videop () {
-  youtube-dl --yes-playlist -o "~/Videos/%(title)s.%(ext)s" "$1"
-}
-
-youtubeupdate () {
-  pip install --upgrade youtube-dl
-}
-
 aptUnlock () {
   sudo rm /var/lib/apt/lists/lock
   sudo rm /var/cache/apt/archives/lock
@@ -84,10 +37,6 @@ aptUnlock2 () {
   sudo apt clean
   sudo rm -rf /var/lib/apt/lists/*
   sudo apt clean
-}
-
-blue() { 
-  tput setaf 4; echo $@; tput sgr0; 
 }
 
 # Git 

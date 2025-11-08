@@ -14,8 +14,9 @@
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
 
-- name: "ZSH | Set Zsh as the default shell for the user"
-  ansible.builtin.shell: |
-    chsh -s $(which zsh) {{ lookup('env', 'USER') }}
-  when: lookup('env', 'USER') != "root"
+- name: "ZSH | Ensure default shell is zsh"
   become: yes
+  when: lookup('env', 'USER') != "root"
+  ansible.builtin.user:
+    name: "{{ lookup('env', 'USER') }}"
+    shell: /usr/bin/zsh

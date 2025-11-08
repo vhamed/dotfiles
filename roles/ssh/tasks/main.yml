@@ -8,50 +8,31 @@
   ansible.builtin.debug:
     var: ansible_user_dir
 
-- name: "SSH | Copy private key"
-  ansible.builtin.copy:
-    src: "{{ role_path }}/files/private"
-    dest: "{{ ansible_user_dir }}/.ssh/id_ed25519"
+- name: "Copy private keys"
+  ansible.builtin.template:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ ansible_user_dir }}/.ssh/{{ item.dest }}"
     mode: '0600'
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
+  loop:
+    - { src: "private",   dest: "id_ed25519" }
+    - { src: "hubeurope_private",   dest: "hubeurope" }
+    - { src: "digex_private",   dest: "digex" }
+    - { src: "agency_private",   dest: "agency" }
+  loop_control:
+    label: "{{ item.dest }}"
 
-- name: "SSH | Copy public key"
-  ansible.builtin.copy:
-    src: "{{ role_path }}/files/public"
-    dest: "{{ ansible_user_dir }}/.ssh/id_ed25519.pub"
+- name: "Copy public keys"
+  ansible.builtin.template:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ ansible_user_dir }}/.ssh/{{ item.dest }}"
     mode: '0644'
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
-
-- name: "SSH | Copy hubeurope private key"
-  ansible.builtin.copy:
-    src: "{{ role_path }}/files/hubeurope_private"
-    dest: "{{ ansible_user_dir }}/.ssh/hubeurope"
-    mode: '0600'
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
-
-- name: "SSH | Copy hubeurope public key"
-  ansible.builtin.copy:
-    src: "{{ role_path }}/files/hubeurope_public"
-    dest: "{{ ansible_user_dir }}/.ssh/hubeurope.pub"
-    mode: '0644'
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
-
-- name: "SSH | Copy digex private key"
-  ansible.builtin.copy:
-    src: "{{ role_path }}/files/digex_private"
-    dest: "{{ ansible_user_dir }}/.ssh/digex"
-    mode: '0600'
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
-
-- name: "SSH | Copy digex public key"
-  ansible.builtin.copy:
-    src: "{{ role_path }}/files/digex_public"
-    dest: "{{ ansible_user_dir }}/.ssh/digex.pub"
-    mode: '0644'
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
+  loop:
+    - { src: "public",   dest: "id_ed25519.pub" }
+    - { src: "hubeurope_public",   dest: "hubeurope.pub" }
+    - { src: "digex_public",   dest: "digex.pub" }
+  loop_control:
+    label: "{{ item.dest }}"

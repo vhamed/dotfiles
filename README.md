@@ -22,7 +22,7 @@ sudo pacman -S curl
 ```bash
 sudo apt update
 sudo apt install curl
-# Build stow from source
+# Build stow from source (default version doesn't support --dotfiles flag)
 wget https://mirror.marwan.ma/gnu/stow/stow-latest.tar.gz ~/
 tar -xvf stow-latest.tar.gz 
 ./configure
@@ -63,7 +63,7 @@ just stow
 
 cd into repo
 ```bash
-just tmux-plugins
+just install-tmux-plugins
 ```
 
 # 📜 License

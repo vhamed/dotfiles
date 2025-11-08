@@ -22,7 +22,7 @@
     state: directory
     recurse: false
     mode: "0755"
-  with_items: "{{ nvim_dirs }}"
+  loop: "{{ nvim_dirs }}"
 
 - name: "Nvim | {{ ansible_distribution }} | Clone source repo for build"
   ansible.builtin.git:
