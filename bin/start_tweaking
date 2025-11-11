@@ -135,6 +135,9 @@ case $dotfiles_os in
   ubuntu)
     ubuntu_setup
     ;;
+  linuxmint)
+    ubuntu_setup
+    ;;
   *)
     __task "Unsupported OS"
     _cmd "echo 'Unsupported OS'"
