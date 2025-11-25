@@ -1,0 +1,32 @@
+@theme "/home/hamed/.config/rofi/themes/gruvbox-dark.rasi"
+
+configuration {
+    /* Display Settings */
+    show-icons:             true;
+    display-drun:           "󰀻 Apps";
+    display-run:            " Run";
+    display-window:         " Windows";
+    display-combi:          " Search";
+    
+    /* Font & Appearance */
+    font:                   "Fira Code Nerd Font 14";
+    terminal:               "kitty";
+    
+    /* Layout */
+    width:                  60%;
+    lines:                  12;
+    padding:                20px;
+    margin:                 5%;
+    border-radius:          20px;
+    
+    /* Behavior */
+    modi:                   "combi,drun,run,window";
+    combi-modi:             "drun,run,window";
+    combi-hide-mode-prefix: true;
+    case-sensitive:         false;
+    cycle:                  true;
+    sidebar-mode:           true;
+    
+    /* Monitor */
+    monitor:                -4;
+}

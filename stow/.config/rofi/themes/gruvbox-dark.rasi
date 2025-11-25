@@ -1,0 +1,92 @@
+/**
+ * Gruvbox Dark Rofi Theme - Compact
+ */
+
+* {
+    /* Colors - Gruvbox Palette */
+    background:     #1d2021;
+    foreground:     #ebdbb2;
+    border:         #d65d0e;
+    selected:       #458588;
+    active:         #cc241d;
+    urgent:         #fb4934;
+    alt-background: #282828;
+}
+
+window {
+    background-color:   #1d2021;
+    border:             2px;
+    border-color:       #d65d0e;
+    border-radius:      20px;
+    padding:            15px;  /* Reduced from 20px */
+    width:              60%;
+}
+
+mainbox {
+    background-color:   transparent;
+    children:           [inputbar, listview];
+}
+
+inputbar {
+    background-color:   #282828;
+    border-radius:      12px;
+    padding:            8px 12px;  /* Reduced vertical padding */
+    margin:             0px 0px 8px 0px;  /* Reduced margin */
+    children:           [textbox-prompt-colon, entry];
+}
+
+entry {
+    background-color:   transparent;
+    text-color:         #ebdbb2;
+    placeholder:        "Type to search...";
+    placeholder-color:  #a89984;
+    vertical-align:     0.5;
+}
+
+textbox-prompt-colon {
+    background-color:   transparent;
+    text-color:         #d65d0e;
+    expand:             false;
+    str:                "";
+    margin:             0px 8px 0px 0px;
+}
+
+listview {
+    background-color:   transparent;
+    border-radius:      12px;
+    padding:            4px;  /* Reduced from 8px */
+    lines:              8;    /* Reduced from 12 */
+    scrollbar:          true;
+    spacing:            2px;  /* Reduced spacing between elements */
+}
+
+element {
+    background-color:   transparent;
+    text-color:         #ebdbb2;
+    border-radius:      8px;
+    padding:            6px 10px;  /* Reduced from 10px 12px */
+    margin:             1px 0px;   /* Minimal vertical margin */
+}
+
+element selected {
+    background-color:   #458588;
+    text-color:         #ebdbb2;
+}
+
+element-text {
+    background-color:   transparent;
+    text-color:         inherit;
+}
+
+element-icon {
+    background-color:   transparent;
+    size:               20px;  /* Slightly smaller icons */
+    margin:             0px 8px 0px 0px;  /* Reduced margin */
+}
+
+/* Remove message area if not needed */
+message {
+    background-color:   transparent;
+    padding:            0px;
+    margin:             0px;
+}
