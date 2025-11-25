@@ -32,6 +32,15 @@ foreach file (`echo $sources`)
     fi
 end
 
-# fnm
-export PATH="$HOME/.local/bin:$HOME/.local/share/fnm:$PATH"
-eval "`fnm env`"
+SCRIPTS_PATH="$HOME/.local/bin"
+FNM_PATH="$HOME/.local/share/fnm"
+
+for dir in "$FNM_PATH" "$SCRIPTS_PATH"; do
+    if [ -d "$dir" ]; then
+        export PATH="$dir:$PATH"
+    fi
+done
+
+if command -v fnm >/dev/null 2>&1; then
+    eval "$(fnm env)"
+fi
