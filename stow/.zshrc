@@ -13,15 +13,14 @@ autoload -U colors
 colors
 
 # zsh-autosuggestions plugin
-# source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#696969"
 bindkey '^ ' autosuggest-accept
 
 typeset -ga sources
 sources+="$HOME/.config/zsh/exports.sh"
 sources+="$HOME/.secrets"
-# sources+="$HOME/.config/zsh/prompt.sh"
 sources+="$HOME/.config/zsh/wincent_prompt.sh"
 sources+="$HOME/.config/zsh/aliases.sh"
 sources+="$HOME/.config/zsh/functions.sh"
@@ -44,3 +43,5 @@ done
 if command -v fnm >/dev/null 2>&1; then
     eval "$(fnm env)"
 fi
+
+export PATH="$HOME/.opencode/bin:$PATH"

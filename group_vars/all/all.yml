@@ -17,6 +17,7 @@ package_list:
   - name: i3
   - name: rofi
   - name: polybar
+  - name: zsh-syntax-highlighting
 
 docker_users:  
   - "{{ ansible_user }}"
