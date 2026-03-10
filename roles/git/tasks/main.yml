@@ -1,17 +1,15 @@
 ---
-- name: "Set user.name"
+- name: "Config name, email, editor"
   ansible.builtin.git_config:
-    name: user.name
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
     scope: global
-    value: "{{ git_user }}"
+  loop:
+    - { name: "user.name", value: "{{ git_user }}" }
+    - { name: "user.email", value: "{{ git_email }}" }
+    - { name: "core.editor", value: "nvim" }
 
-- name: "Set user.email"
-  ansible.builtin.git_config:
-    name: "user.email"
-    value: "{{ git_email }}"
-    scope: global
-
-- name: "{{ ansible_distribution }} | Aliases and settings"
+- name: "Aliases and settings"
   ansible.builtin.git_config:
     name: "alias.{{ item.key }}"
     value: "{{ item.value }}"
@@ -39,9 +37,3 @@
     - { key: "set-upstream", value: '!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`' }
     - { key: "f", value: "fetch" }
     - { key: "fa", value: "fetch --all" }
-
-- name: "{{ ansible_distribution }} | Core editor"
-  ansible.builtin.git_config:
-    name: "core.editor"
-    value: "nvim"
-    scope: global

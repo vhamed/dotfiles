@@ -6,7 +6,7 @@
     depth: 1
     update: no
 
-- name: "Copy content of secret file (encrypted with Ansible Vault) to ~/.secrets"
+- name: "Copy content of secret file to ~/.secrets"
   ansible.builtin.copy:
     src: "{{ role_path }}/files/secrets"
     dest: ~/.secrets
