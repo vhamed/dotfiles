@@ -19,6 +19,16 @@ package_list:
   - name: polybar
   - name: zsh-syntax-highlighting
     apt: zsh-syntax-highlighting
+  - name: lxappearance
+    apt: lxappearance
+    apk_ignore: yes
+    yum_ignore: yes
+    dnf_ignore: yes
+    brew_ignore: yes
+    zypper_ignore: yes
+    pacman_ignore: yes
+    portage_ignore: yes
+    opkg_ignore: yes
 
 docker_users:  
   - "{{ ansible_user }}"
