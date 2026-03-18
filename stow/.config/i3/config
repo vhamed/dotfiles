@@ -163,10 +163,11 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+shift+s exec --no-startup-id scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+
 ######################################
 # color settings for bar and windows #
 ######################################
-
 # Define colors variables:
 set $darkbluetrans	#08052be6
 set $darkblue		#08052b
@@ -180,9 +181,6 @@ set $grey		#b0b5bd
 
 default_border none
 default_floating_border pixel 2
-
-
-bindsym $mod+shift+s exec --no-startup-id scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
 
 # for_window [class=".*"] border pixel 2
 # smart_gaps on
