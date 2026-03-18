@@ -33,8 +33,9 @@ end
 
 SCRIPTS_PATH="$HOME/.local/bin"
 FNM_PATH="$HOME/.local/share/fnm"
+OPENCODE_PATH="$HOME/.opencode/bin"
 
-for dir in "$FNM_PATH" "$SCRIPTS_PATH"; do
+for dir in "$FNM_PATH" "$SCRIPTS_PATH" "$OPENCODE_PATH"; do
     if [ -d "$dir" ]; then
         export PATH="$dir:$PATH"
     fi
@@ -43,5 +44,3 @@ done
 if command -v fnm >/dev/null 2>&1; then
     eval "$(fnm env)"
 fi
-
-export PATH="$HOME/.opencode/bin:$PATH"
