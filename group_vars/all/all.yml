@@ -18,6 +18,7 @@ package_list:
   - name: rofi
   - name: polybar
   - name: xsel
+  - name: playerctl
   - name: zsh-syntax-highlighting
     apt: zsh-syntax-highlighting
   - name: lxappearance
