@@ -15,25 +15,7 @@
     value: "{{ item.value }}"
     scope: global
   loop:
-    - { key: "abbrev", value: "!sh -c 'git rev-parse --short ${1-`echo HEAD`}' -" }
-    - { key: "sw", value: "switch" }
-    - { key: "co", value: "checkout" }
-    - { key: "br", value: "branch" }
-    - { key: "message", value: "!git --paginate log -1 --pretty=format:%B" }
-    - { key: "msg", value: "message" }
-    - { key: "amend", value: "commit --amend -v" }
-    - { key: "count", value: "!git --no-pager log --oneline | wc -l" }
     - { key: "oneline", value: "!git --paginate log --pretty=format:'%C(auto)%h%Creset %s%C(auto)%d%Creset %C(magenta bold)(%cr)%Creset %C(cyan)%Creset'" }
     - { key: "o", value: "oneline" }
-    # - { key: "graph", "git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%an%C(reset)%C(bold yellow)%d%C(reset) %C(dim white)- %s%C(reset)' --all" }
-    - { key: "cp", value: "cherry-pick" }
-    - { key: "p", value: "pull" }
-    - { key: "patch", value: "add -p" }
-    - { key: "rollback", value: "!sh -c 'git reset --merge HEAD~${1-1}' -" }
-    - { key: "stats", value: "!git --paginate log --stat --pretty=format:'%C(auto)%h%Creset %s%C(auto)%d%Creset %C(magenta bold)(%cr)%Creset %C(cyan)%Creset'" }
-    - { key: "staged", value: "diff --cached --ignore-submodules=dirty" }
     - { key: "wc", value: "diff ORIG_HEAD.." }
-    - { key: "wd", value: "!f() { git --paginate diff --dirstat=cumulative,files,0 ${1:-HEAD} | awk '{print $2}' | cut -d / -f1-${2:-4} | sort | uniq; }; f" }
-    - { key: "set-upstream", value: '!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`' }
-    - { key: "f", value: "fetch" }
-    - { key: "fa", value: "fetch --all" }
+    - { key: "count", value: "!git --no-pager log --oneline | wc -l" }
