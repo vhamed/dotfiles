@@ -89,21 +89,20 @@ bindsym $mod+Shift+v split horizontal
 bindsym $mod+v split vertical
 
 # enter fullscreen mode for the focused container
-bindsym $mod+Shift+f fullscreen toggle
+# bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+t layout tabbed
+bindsym $mod+Shift+space layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+f floating toggle
+bindsym $mod+f focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+Up focus parent
+bindsym $mod+Down focus child
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -131,6 +130,9 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -143,6 +145,9 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+e workspace number $ws11
+bindsym $mod+z workspace number $ws12
+bindsym $mod+a workspace number $ws13
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -155,6 +160,9 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+# bindsym $mod+Shift+e move container to workspace number $ws11
+# bindsym $mod+Shift+z move container to workspace number $ws12
+# bindsym $mod+Shift+a move container to workspace number $ws13
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -163,7 +171,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+shift+s exec --no-startup-id scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+# bindsym $mod+shift+s exec --no-startup-id scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
 
 ######################################
 # color settings for bar and windows #
