@@ -19,3 +19,5 @@
     - { key: "o", value: "oneline" }
     - { key: "wc", value: "diff ORIG_HEAD.." }
     - { key: "count", value: "!git --no-pager log --oneline | wc -l" }
+    - { key: "committers", value: '!git log --format="%h %ce %s"' }
+
