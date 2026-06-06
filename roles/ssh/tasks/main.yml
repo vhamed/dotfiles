@@ -19,7 +19,6 @@
     - { src: "private",   dest: "id_ed25519" }
     - { src: "quds_private",   dest: "quds" }
     - { src: "andalus_private",   dest: "andalus" }
-    - { src: "agency_private",   dest: "agency" }
   loop_control:
     label: "{{ item.dest }}"
 
