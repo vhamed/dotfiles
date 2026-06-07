@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+eval $(gnome-keyring-daemon --start --components=secrets)
+export GNOME_KEYRING_CONTROL
+exec /usr/bin/mailspring --password-store="gnome-libsecret" "$@"
