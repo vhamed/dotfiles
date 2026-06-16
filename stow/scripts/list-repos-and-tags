@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+: "${DOCKER_REGISTRY_DOMAIN:?DOCKER_REGISTRY_DOMAIN must be set (e.g. my-registry.example.com:5000)}"
+: "${DOCKER_REGISTRY_USERNAME:?DOCKER_REGISTRY_USERNAME must be set}"
+: "${DOCKER_REGISTRY_PASSWORD:?DOCKER_REGISTRY_PASSWORD must be set}"
+
+API="https://${DOCKER_REGISTRY_DOMAIN%/}/v2"
+
+# List repositories (may be paginated)
+echo "Fetching repository list from ${DOCKER_REGISTRY_DOMAIN}..."
+repos=$(curl -s -u "${DOCKER_REGISTRY_USERNAME}:${DOCKER_REGISTRY_PASSWORD}" \
+  "${API}/_catalog" | jq -r '.repositories[]?' ) || repos=""
+
+if [[ -z "$repos" ]]; then
+  echo "No repositories found or failed to fetch. Raw response:"
+  curl -s -u "${DOCKER_REGISTRY_USERNAME}:${DOCKER_REGISTRY_PASSWORD}" "${API}/_catalog"
+  exit 0
+fi
+
+echo "Repositories:"
+while IFS= read -r repo; do
+  echo "- ${repo}"
+done <<<"$repos"
+
+echo
+echo "Repository -> tags:"
+for repo in $repos; do
+  tags_json=$(curl -s -u "${DOCKER_REGISTRY_USERNAME}:${DOCKER_REGISTRY_PASSWORD}" \
+    "${API}/${repo}/tags/list")
+  tags=$(echo "$tags_json" | jq -r '.tags[]?')
+  if [[ -z "$tags" ]]; then
+    echo "${repo}: (no tags)"
+  else
+    echo "${repo}:"
+    while IFS= read -r t; do
+      echo "  - ${t}"
+    done <<<"$tags"
+  fi
+done

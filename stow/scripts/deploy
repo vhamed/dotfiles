@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ -z "${DOCKER_REGISTRY_DOMAIN:-}" ]]; then
+  echo "Error: DOCKER_REGISTRY_DOMAIN must be set (e.g. registry.domain-name.com)" >&2
+  exit 1
+fi
+
+if [[ ! -f Dockerfile ]]; then
+  echo "Error: Dockerfile not found in current directory." >&2
+  exit 2
+fi
+
+# collect git tags pointing at HEAD
+mapfile -t TAGS < <(git tag --points-at HEAD)
+
+if [[ ${#TAGS[@]} -eq 0 ]]; then
+  echo "Error: no git tag points at HEAD. Create and push a tag, e.g.: git tag v1.0 && git push --tags" >&2
+  exit 3
+fi
+
+# repo/image name = current directory name
+REPO="$(basename "$(pwd)")"
+REGISTRY="${DOCKER_REGISTRY_DOMAIN%/}"   # strip trailing slash if any
+
+# Choose build tag: prefer first non-latest tag, else first tag
+BUILD_TAG=""
+for t in "${TAGS[@]}"; do
+  if [[ "$t" != "latest" ]]; then
+    BUILD_TAG="$t"
+    break
+  fi
+done
+if [[ -z "$BUILD_TAG" ]]; then
+  BUILD_TAG="${TAGS[0]}"
+fi
+
+LOCAL_BUILD_IMAGE="${REPO}:${BUILD_TAG}"
+echo "Building image ${LOCAL_BUILD_IMAGE}..."
+docker build -t "${LOCAL_BUILD_IMAGE}" .
+
+# For each tag, ensure local tag exists, create registry-qualified tag, then push
+for tag in "${TAGS[@]}"; do
+  LOCAL_TAG="${REPO}:${tag}"
+  REMOTE_TAG="${REGISTRY}/${REPO}:${tag}"
+
+  if [[ "$tag" != "$BUILD_TAG" ]]; then
+    echo "Tagging local: ${LOCAL_BUILD_IMAGE} -> ${LOCAL_TAG}"
+    docker tag "${LOCAL_BUILD_IMAGE}" "${LOCAL_TAG}"
+  fi
+
+  echo "Tagging remote: ${LOCAL_TAG} -> ${REMOTE_TAG}"
+  docker tag "${LOCAL_TAG}" "${REMOTE_TAG}"
+
+  echo "Pushing ${REMOTE_TAG}..."
+  docker push "${REMOTE_TAG}"
+done
+
+echo "Done. Pushed tags: ${TAGS[*]}"

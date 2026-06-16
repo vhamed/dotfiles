@@ -31,11 +31,12 @@ foreach file (`echo $sources`)
     fi
 end
 
-SCRIPTS_PATH="$HOME/.local/bin"
+SCRIPTS_PATH="$HOME/scripts"
+BIN_PATH="$HOME/.local/bin"
 FNM_PATH="$HOME/.local/share/fnm"
 OPENCODE_PATH="$HOME/.opencode/bin"
 
-for dir in "$FNM_PATH" "$SCRIPTS_PATH" "$OPENCODE_PATH"; do
+for dir in "$FNM_PATH" "$SCRIPTS_PATH" "$BIN_PATH" "$OPENCODE_PATH"; do
     if [ -d "$dir" ]; then
         export PATH="$dir:$PATH"
     fi

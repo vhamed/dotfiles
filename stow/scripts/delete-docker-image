@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+: "${DOCKER_REGISTRY_DOMAIN:?missing DOCKER_REGISTRY_DOMAIN}"
+: "${DOCKER_REGISTRY_USERNAME:?missing DOCKER_REGISTRY_USERNAME}"
+: "${DOCKER_REGISTRY_PASSWORD:?missing DOCKER_REGISTRY_PASSWORD}"
+
+if [[ $# -ne 2 ]]; then
+  echo "Usage: $0 <repository> <tag>"
+  echo "Example: $0 parfio-backend v1.3"
+  exit 1
+fi
+
+REPO="$1"
+TAG="$2"
+
+BASE="https://${DOCKER_REGISTRY_DOMAIN%/}/v2"
+
+echo "Fetching manifest digest for ${REPO}:${TAG}..."
+
+# Get headers only and extract Docker-Content-Digest
+digest=$(
+  curl -sI \
+    -u "${DOCKER_REGISTRY_USERNAME}:${DOCKER_REGISTRY_PASSWORD}" \
+    -H "Accept: application/vnd.oci.image.index.v1+json,application/vnd.docker.distribution.manifest.list.v2+json,application/vnd.oci.image.manifest.v1+json,application/vnd.docker.distribution.manifest.v2+json" \
+    "${BASE}/${REPO}/manifests/${TAG}" \
+  | tr -d '\r' \
+  | awk -F': ' 'tolower($1)=="docker-content-digest" {print $2; exit}'
+)
+
+if [[ -z "$digest" ]]; then
+  echo "ERROR: Could not retrieve digest for ${REPO}:${TAG}"
+  exit 2
+fi
+
+echo "Found digest: $digest"
+echo "Deleting manifest..."
+
+http_code=$(
+  curl -s -o /dev/null -w "%{http_code}" \
+    -X DELETE \
+    -u "${DOCKER_REGISTRY_USERNAME}:${DOCKER_REGISTRY_PASSWORD}" \
+    "${BASE}/${REPO}/manifests/${digest}"
+)
+
+if [[ "$http_code" == "202" ]]; then
+  echo "✅ Deleted ${REPO}:${TAG}"
+else
+  echo "❌ Delete failed (HTTP $http_code)"
+  exit 3
+fi
