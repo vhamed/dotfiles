@@ -1,0 +1,68 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+order += "ipv6"
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery all"
+order += "disk /"
+order += "load"
+order += "memory"
+order += "volume casque"
+order += "volume laptop"
+order += "tztime local"
+
+wireless _first_ {
+        format_up = "W: (%quality at %essid) %ip"
+        format_down = "W: down"
+}
+
+ethernet _first_ {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+battery all {
+        format = "%status %percentage %remaining"
+}
+
+disk "/" {
+        format = "%avail"
+}
+
+load {
+        format = "%1min"
+}
+
+volume casque {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "pulse:alsa_output.usb-0c76_USB_PnP_Audio_Device-00.analog-stereo"
+}
+
+volume laptop {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "pulse:alsa_output.pci-0000_03_00.6.analog-stereo"
+}
+
+memory {
+        format = "Memory: Used %used | Avail %available"
+        format = "Memory: %used/%total"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "%a, %e %b  %I:%M %p"
+}
