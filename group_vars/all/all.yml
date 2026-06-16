@@ -41,16 +41,6 @@ package_list:
     pacman_ignore: yes
     portage_ignore: yes
     opkg_ignore: yes
-  - name: picom
-    apt: picom
-    apk_ignore: yes
-    yum_ignore: yes
-    dnf_ignore: yes
-    brew_ignore: yes
-    zypper_ignore: yes
-    pacman_ignore: yes
-    portage_ignore: yes
-    opkg_ignore: yes
 
 docker_users:  
   - "{{ ansible_user }}"
