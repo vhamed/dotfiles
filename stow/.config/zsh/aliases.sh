@@ -10,6 +10,7 @@ fi
 #ls aliases
 alias ll='ls -halF'
 alias la='ls -A'
+alias ld='ls -ld'
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"

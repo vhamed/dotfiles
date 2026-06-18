@@ -18,8 +18,7 @@ order += "battery all"
 order += "disk /"
 order += "load"
 order += "memory"
-order += "volume casque"
-order += "volume laptop"
+order += "volume master"
 order += "tztime local"
 
 wireless _first_ {
@@ -44,16 +43,12 @@ load {
         format = "%1min"
 }
 
-volume casque {
+volume master {
         format = "♪: %volume"
         format_muted = "♪: muted (%volume)"
-        device = "pulse:alsa_output.usb-0c76_USB_PnP_Audio_Device-00.analog-stereo"
-}
-
-volume laptop {
-        format = "♪: %volume"
-        format_muted = "♪: muted (%volume)"
-        device = "pulse:alsa_output.pci-0000_03_00.6.analog-stereo"
+        device = "pulse"
+        mixer = "Master"
+        mixer_idx = 0
 }
 
 memory {

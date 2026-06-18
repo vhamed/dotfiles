@@ -1,0 +1,23 @@
+#!/bin/bash
+ 
+options="Shutdown\nReboot\nLogout\nSuspend\nLock"
+ 
+chosen=$(echo -e "$options" | dmenu -i -fn "FiraCode Nerd Font-18" -p "Power Menu:")
+ 
+case $chosen in
+    "Shutdown")
+        systemctl poweroff
+        ;;
+    "Reboot")
+        systemctl reboot
+        ;;
+    "Logout")
+        pkill -u "$(whoami)"
+        ;;
+    "Suspend")
+        systemctl suspend
+        ;;
+    "Lock")
+        i3lock-fancy
+        ;;
+esac
