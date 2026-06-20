@@ -8,10 +8,20 @@ case "$chosen" in
     "Laptop only")
         xrandr --output DisplayPort-0 --off \
                --output eDP --mode 1440x900 --primary
+
+        # Move all i3 workspaces to primary (i.e., laptop)
+        i3-msg -t get_workspaces | jq -r '.[] | select(.visible==true) | .num' | while read -r n; do
+            i3-msg "workspace number $n; move workspace to output primary"
+        done
         ;;
     "External monitor only")
         xrandr --output eDP --off \
                --output DisplayPort-0 --mode 1920x1080 --primary
+
+        # Move all i3 workspaces to primary (i.e., external)
+        i3-msg -t get_workspaces | jq -r '.[] | select(.visible==true) | .num' | while read -r n; do
+            i3-msg "workspace number $n; move workspace to output primary"
+        done
         ;;
     "Both (External left of Laptop)")
         xrandr --output eDP --mode 1440x900 \
