@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Pick monitor layout
+options="Laptop only\nExternal monitor only\nBoth (External left of Laptop)"
+chosen=$(echo -e "$options" | dmenu -l 10 -i -fn "FiraCode Nerd Font-18" -p "Monitor Layout:")
+
+case "$chosen" in
+    "Laptop only")
+        xrandr --output DisplayPort-0 --off \
+               --output eDP --mode 1440x900 --primary
+        ;;
+    "External monitor only")
+        xrandr --output eDP --off \
+               --output DisplayPort-0 --mode 1920x1080 --primary
+        ;;
+    "Both (External left of Laptop)")
+        xrandr --output eDP --mode 1440x900 \
+               --output DisplayPort-0 --mode 1920x1080 --primary --left-of eDP
+        ;;
+esac

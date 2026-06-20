@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+DMENU="dmenu -l 10 -fn 'FiraCode Nerd Font-18' -p 'Select layout:'"
+NOTIFY_TITLE="Keyboard layout"
+
+mapfile -t LAYOUTS < <(printf '%s\n' "ara|Arabic" "us|US" "fr|FR")
+
+if command -v xkb-switch >/dev/null 2>&1; then
+CUR_LAYOUT=$(xkb-switch -p 2>/dev/null || true)
+fi
+[ -z "$CUR_LAYOUT" ] && CUR_LAYOUT=$(setxkbmap -query 2>/dev/null | awk '/layout:/ {print $2}')
+
+MENU=$(for e in "${LAYOUTS[@]}"; do
+IFS='|' read -r code name <<<"$e"
+label="$code — $name"
+if [ "$code" = "$CUR_LAYOUT" ]; then
+printf '• %s\n' "$label"
+else
+printf '  %s\n' "$label"
+fi
+done)
+
+CHOICE=$(printf '%s' "$MENU" | eval $DMENU) || exit 0
+
+CHOICE=${CHOICE#'• '}
+CHOICE=${CHOICE#'  '}
+SEL_CODE=$(awk -F' — ' '{print $1}' <<<"$CHOICE")
+SEL_NAME=$(awk -F' — ' '{print $2}' <<<"$CHOICE")
+
+[ -n "$SEL_CODE" ] || exit 0
+
+setxkbmap -layout "$SEL_CODE" -option 'grp:win_space_toggle'
+
+notify-send "$NOTIFY_TITLE" "Layout: ${SEL_NAME:-$SEL_CODE}"

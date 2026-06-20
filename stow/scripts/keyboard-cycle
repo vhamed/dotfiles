@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Cycle through layouts and notify the currently active layout.
+# Configure the LAYOUTS variable as a comma-separated list or space-separated.
+
+# Example: US and Arabic
+LAYOUTS=("us" "ara")
+# Optional: specify corresponding human-readable names (same order), else use layout code
+NAMES=("US" "AR")
+
+# Get current layout (first in setxkbmap -query output)
+CUR=$(setxkbmap -query 2>/dev/null | awk '/layout:/ {print $2}')
+# If group switching or multiple layouts active, get current via xkb-switch if available
+if command -v xkb-switch >/dev/null 2>&1; then
+  CUR=$(xkb-switch -p 2>/dev/null || echo "$CUR")
+fi
+
+# Find current index
+idx=0
+for i in "${!LAYOUTS[@]}"; do
+  if [ "${LAYOUTS[$i]}" = "$CUR" ]; then
+    idx=$i
+    break
+  fi
+done
+
+# Next index
+next=$(( (idx + 1) % ${#LAYOUTS[@]} ))
+
+# Apply next layout. If you use group options, you can include options below.
+setxkbmap -layout "${LAYOUTS[$next]}" -option 'grp:win_space_toggle'
+
+# Determine display name
+if [ -n "${NAMES[$next]}" ]; then
+  disp="${NAMES[$next]}"
+else
+  disp="${LAYOUTS[$next]}"
+fi
+
+# Notify
+NOTIFY_ID=9999
+notify-send -a "keyboard-cycle" -r "$NOTIFY_ID" "Keyboard layout" "Layout: $disp" &

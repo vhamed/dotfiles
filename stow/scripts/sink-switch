@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+DMENU="dmenu -l 10 -i -fn 'FiraCode Nerd Font-18' -p 'Select audio sink:'"
+NOTIFY_TITLE="Audio Output"
+
+# Gather sinks: index|name|description
+mapfile -t SINKS < <(pactl list short sinks | awk -F'\t' '{print $1 "|" $2 "|" $3}')
+
+[ ${#SINKS[@]} -gt 0 ] || { notify-send "$NOTIFY_TITLE" "No sinks found"; exit 1; }
+
+# Get current default sink name
+DEFAULT=$(pactl info | awk -F': ' '/Default Sink/ {print $2}')
+
+# Build menu lines, prefixing default with "• "
+MENU=$(for s in "${SINKS[@]}"; do
+  IFS='|' read -r idx name desc <<<"$s"
+  label="$idx — $name — $desc"
+  if [ "$name" = "$DEFAULT" ]; then
+    printf '• %s\n' "$label"
+  else
+    printf '  %s\n' "$label"
+  fi
+done)
+
+CHOICE=$(printf '%s' "$MENU" | eval $DMENU) || exit 0
+
+# Remove leading marker/spaces to extract the actual text
+CHOICE=${CHOICE#'• '}
+CHOICE=${CHOICE#'  '}
+SEL_NAME=$(awk -F' — ' '{print $2}' <<<"$CHOICE")
+
+[ -n "$SEL_NAME" ] || exit 0
+
+pactl set-default-sink "$SEL_NAME"
+
+# Move existing sink-inputs
+while read -r sid _; do
+  pactl move-sink-input "$sid" "$SEL_NAME"
+done < <(pactl list short sink-inputs)
+
+notify-send "$NOTIFY_TITLE" "Default sink set to: $SEL_NAME"
