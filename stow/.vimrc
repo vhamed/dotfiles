@@ -30,11 +30,9 @@ set shortmess+=F
 let mapleader = ","
 nnoremap <silent> <leader>h :noh<cr>
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
-nnoremap <leader>ev :tabnew $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sf :Files<cr>
 nnoremap <leader>vs :vnew<cr>
 nnoremap <leader>hs :new<cr>
-nnoremap <leader>in :IndentLinesToggle<cr>
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 nnoremap <leader>f :Ack! 
 " set list                             " show trailing whitespace etc
@@ -92,13 +90,14 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged-vim')
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'  
 Plug 'SirVer/ultisnips' 
 Plug 'honza/vim-snippets' 
 Plug 'scrooloose/nerdtree'  
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'vwxyutarooo/nerdtree-devicons-syntax'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-surround'
 Plug 'raimondi/delimitmate'
@@ -124,13 +123,6 @@ filetype plugin indent on
 " Plugins Configuration  
 " ----------- NERDTree ------------- 
 let g:NERDTreeMinimalUI=1
-
-" ----------- ctrlp ------------- 
-let g:ctrlp_map = '<leader>sf'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_open_multiple_files = 't'
-let g:ctrlp_open_new_file = 't'
-set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.ogg,*.pdf,*.jpg,*.jpeg,*.gif,*.deb,*.webm,*.mkv
 
 " ----------- ultisnips ------------- 
 let g:UltiSnipsExpandTrigger = "<c-space>"
