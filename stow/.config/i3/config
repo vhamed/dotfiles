@@ -46,9 +46,9 @@ exec --no-startup-id nm-applet
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym $mod+plus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym $mod+plus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym $mod+Shift+Return exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
@@ -107,8 +107,8 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+f floating toggle
-bindsym $mod+f focus mode_toggle
+bindsym $mod+f floating toggle
+bindsym $mod+Shift+f focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -198,8 +198,8 @@ set $grey		#b0b5bd
 # for_window [class=".*"] border pixel 1
 # for_window [class=".*"] focus border normal
 # smart_gaps on
-gaps inner 4
-gaps outer 4
+gaps inner 5px
+gaps outer 10px
 
 bar {
   status_command i3status

@@ -132,10 +132,7 @@ detect_os() {
 dotfiles_os=$(detect_os)
 __task "Loading Setup for detected OS: $dotfiles_os"
 case $dotfiles_os in
-  ubuntu)
-    ubuntu_setup
-    ;;
-  linuxmint)
+  linuxmint|ubuntu)
     ubuntu_setup
     ;;
   *)
