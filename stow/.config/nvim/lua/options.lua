@@ -47,7 +47,7 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.wo.signcolumn = "yes"
+vim.wo.signcolumn = "no"
 
 vim.o.updatetime = 250
 vim.o.timeout = true
