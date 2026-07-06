@@ -124,7 +124,7 @@ bindsym $super+Shift+minus move scratchpad
 bindsym $super+minus scratchpad show
 
 bindsym $super+p exec ~/scripts/powermenu 
-bindsym $super+s exec ~/scripts/sink-switch 
+bindsym $super+v exec ~/scripts/sink-switch 
 bindsym $super+m exec ~/scripts/monitor-switch
 bindsym $super+Tab exec ~/scripts/keyboard-cycle 
 bindsym $super+Shift+Tab exec ~/scripts/keyboard-switch 
@@ -177,6 +177,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+l exec "i3lock-fancy"
 
 # bindsym $mod+shift+s exec --no-startup-id scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+bindsym $super+s exec --no-startup-id flameshot gui
 
 ######################################
 # color settings for bar and windows #
