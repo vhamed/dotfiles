@@ -15,6 +15,7 @@ alias ld='ls -ld'
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
 
+alias cat='batcat -p'
 alias p='pwd'
 alias l='clear'
 alias g=git

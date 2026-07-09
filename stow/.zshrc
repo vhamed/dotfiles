@@ -1,6 +1,30 @@
-# Set up the prompt
-setopt histignorealldups sharehistory autocd
-HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
+# --- History Settings ---
+HISTFILE="$HOME/.zsh_history_new"
+HISTSIZE=20000          # max lines kept in memory
+SAVEHIST=20000          # max lines saved to history file
+
+# History options (use UPPERCASE consistently)
+setopt HIST_IGNORE_ALL_DUPS   # Remove older duplicates when a new one is added
+setopt HIST_SAVE_NO_DUPS      # Don't save duplicates to the file
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicates first when reaching HISTSIZE
+setopt SHARE_HISTORY          # Share history between sessions
+setopt AUTOCD                 # Change directory by typing its name
+
+# Ignore commands with a leading space
+setopt HIST_IGNORE_SPACE
+
+# CRITICAL: This hook makes HISTORY_IGNORE actually work
+zshaddhistory() {
+  emulate -L zsh
+  [[ $1 != ${~HISTORY_IGNORE} ]]
+}
+
+# Key bindings for history search
+bindkey '^R' history-incremental-search-backward
+stty -ixon
+bindkey '^S' history-incremental-search-forward
+bindkey -M isearch '^J' accept-search
+autoload -Uz history-search-end
 
 # Use vi keybindings
 bindkey -v
