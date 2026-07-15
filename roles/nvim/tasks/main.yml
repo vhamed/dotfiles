@@ -1,6 +1,6 @@
 ---
 - name: "Nvim | {{ ansible_distribution }} | Install prerequisites (APT)"
-  ansible.builtin.apt:
+  apt:
     update_cache: yes
     name: "{{ item }}"
     state: present
@@ -17,7 +17,7 @@
   when: ansible_facts['os_family'] == 'Archlinux'
 
 - name: "Nvim | {{ ansible_distribution }} | create directories"
-  ansible.builtin.file:
+  file:
     path: "{{ item }}"
     state: directory
     recurse: false
@@ -25,7 +25,7 @@
   loop: "{{ nvim_dirs }}"
 
 - name: "Nvim | {{ ansible_distribution }} | Clone source repo for build"
-  ansible.builtin.git:
+  git:
     repo: "{{ nvim_repo }}"
     dest: "{{ nvim_build_path }}"
     version: stable
@@ -57,7 +57,7 @@
   register: install_results
 
 - name: "Nvim | {{ ansible_distribution }} | cleanup build folder"
-  ansible.builtin.file:
+  file:
     state: absent
     path: "{{ nvim_build_path }}"
   when:

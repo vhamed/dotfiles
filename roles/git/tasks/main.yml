@@ -1,6 +1,6 @@
 ---
 - name: "Config name, email, editor"
-  ansible.builtin.git_config:
+  git_config:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
     scope: global
@@ -10,7 +10,7 @@
     - { name: "core.editor", value: "nvim" }
 
 - name: "Aliases and settings"
-  ansible.builtin.git_config:
+  git_config:
     name: "alias.{{ item.key }}"
     value: "{{ item.value }}"
     scope: global

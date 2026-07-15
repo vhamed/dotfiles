@@ -1,15 +1,15 @@
 - name: "Ensure .ssh directory exists"
-  ansible.builtin.file:
+  file:
     path: "{{ ansible_user_dir }}/.ssh"
     state: directory
     mode: '0700'
 
 - name: Debug ansible_user_dir
-  ansible.builtin.debug:
+  debug:
     var: ansible_user_dir
 
 - name: "Copy private keys"
-  ansible.builtin.template:
+  template:
     src: "{{ role_path }}/files/{{ item.src }}"
     dest: "{{ ansible_user_dir }}/.ssh/{{ item.dest }}"
     mode: '0600'
@@ -23,7 +23,7 @@
     label: "{{ item.dest }}"
 
 - name: "Copy public keys"
-  ansible.builtin.template:
+  template:
     src: "{{ role_path }}/files/{{ item.src }}"
     dest: "{{ ansible_user_dir }}/.ssh/{{ item.dest }}"
     mode: '0644'

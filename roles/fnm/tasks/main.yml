@@ -5,7 +5,7 @@
   ignore_errors: yes
 
 - name: Run curl command to install fnm
-  ansible.builtin.shell: |
+  shell: |
     curl -fsSL https://fnm.vercel.app/install | bash
   args:
     executable: /bin/bash
