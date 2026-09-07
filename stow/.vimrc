@@ -33,6 +33,7 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 nnoremap <leader>sf :Files<cr>
 nnoremap <leader>vs :vnew<cr>
 nnoremap <leader>hs :new<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 nnoremap <leader>f :Ack! 
 " set list                             " show trailing whitespace etc
@@ -104,7 +105,7 @@ Plug 'raimondi/delimitmate'
 Plug 'tmhedberg/matchit'
 Plug 'alvan/vim-closetag' 
 Plug 'vim-scripts/tComment' 
-Plug 'yggdroot/indentline'
+" Plug 'yggdroot/indentline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'morhetz/gruvbox'
 Plug 'othree/html5.vim'
@@ -118,7 +119,7 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " Restore settings for file detection
-filetype plugin indent on
+" filetype plugin indent on
 
 " Plugins Configuration  
 " ----------- NERDTree ------------- 
@@ -160,10 +161,10 @@ let delimitMate_expand_cr = 1
 au FileType mail let b:delimitMate_expand_cr = 1
 
 " ---------- indentline -----------------------
-let g:indentLine_enabled = 1
-let g:indentLine_char = '│'
-let g:indentLine_bufTyepExlude = ['Nerd_tree.*']
-let g:indentLine_fileTypeExclude = ['help', 'markdown', 'reason']
+" let g:indentLine_enabled = 1
+" let g:indentLine_char = '│'
+" let g:indentLine_bufTyepExlude = ['Nerd_tree.*']
+" let g:indentLine_fileTypeExclude = ['help', 'markdown', 'reason']
 
 " Tab navigation like Firefox.
 nnoremap <C-t>     :tabnew<CR>
