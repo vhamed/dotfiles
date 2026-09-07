@@ -12,7 +12,7 @@ return {
 		},
 	},
 
-	"tpope/vim-rhubarb",
+	-- "tpope/vim-rhubarb",
 	"tpope/vim-surround",
 	"tpope/vim-eunuch",
 	"tpope/vim-repeat",
