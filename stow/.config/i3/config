@@ -52,6 +52,8 @@ bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym $mod+Shift+Return exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -128,7 +130,8 @@ bindsym $super+v exec ~/scripts/sink-switch
 bindsym $super+m exec ~/scripts/monitor-switch
 bindsym $super+Tab exec ~/scripts/keyboard-cycle 
 bindsym $super+Shift+Tab exec ~/scripts/keyboard-switch 
-bindsym $mod+p exec "playerctl -l | xargs playerctl play-pause"
+# bindsym $mod+p exec "playerctl -l | xargs playerctl play-pause"
+bindsym $mod+p exec "mpc toggle"
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -151,7 +154,7 @@ bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+b workspace number $ws6
 bindsym $mod+t workspace number $ws7
-bindsym $mod+r workspace number $ws8
+bindsym $mod+8 workspace number $ws8
 bindsym $mod+z workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
@@ -196,8 +199,8 @@ set $grey		#b0b5bd
 # default_border pixel 1
 # default_floating_border pixel 2
 
-# for_window [class=".*"] border pixel 1
-# for_window [class=".*"] focus border normal
+for_window [class=".*"] border pixel 3
+for_window [class=".*"] focus border normal
 # smart_gaps on
 gaps inner 5px
 gaps outer 10px
@@ -205,3 +208,29 @@ gaps outer 10px
 bar {
   status_command i3status
 }
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindcode 44 resize shrink width 10 px or 10 ppt
+        bindcode 45 resize grow height 10 px or 10 ppt
+        bindcode 46 resize shrink height 10 px or 10 ppt
+        bindcode 47 resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindcode 113 resize shrink width 10 px or 10 ppt
+        bindcode 116 resize grow height 10 px or 10 ppt
+        bindcode 111 resize shrink height 10 px or 10 ppt
+        bindcode 114 resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindcode 36 mode "default"
+        bindcode 9 mode "default"
+        bindcode $mod+27 mode "default"
+}
+
+bindcode $mod+r mode "resize"
