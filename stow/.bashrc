@@ -1,3 +1,9 @@
+## Exit for non-interactive shells (allow rsync to copy successfully)
+case $- in
+    *i*) ;;
+    *) return;;
+esac
+
 # Use vi keybindings
 set -o vi 
 
