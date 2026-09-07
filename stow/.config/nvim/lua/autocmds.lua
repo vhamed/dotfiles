@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*.yml.j2",
+    pattern = "*yml*.j2",
     callback = function()
         vim.bo.filetype = "yaml"
     end,
@@ -20,13 +20,13 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     callback = function()
         vim.bo.filetype = "nginx"
     end,
-    desc = "Set filetype for conf Jinja2 templates to yaml",
+    desc = "Set filetype for conf Jinja2 templates to nginx",
 })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*env.j2",
+    pattern = "*env*.j2",
     callback = function()
         vim.bo.filetype = "bash"
     end,
-    desc = "Set filetype for env Jinja2 templates to yaml",
+    desc = "Set filetype for env Jinja2 templates to bash",
 })
