@@ -17,7 +17,7 @@ alias reload="exec ${SHELL} -l"
 
 alias cat='batcat -p'
 alias p='pwd'
-alias l='clear'
+alias l='ls -hAlt'
 alias g=git
 alias go='git oneline'
 alias gr='git remote -v'
@@ -57,3 +57,7 @@ alias ,cc='~/.local/bin/tmux-sessionizer'
 
 alias d='docker'
 alias dc='docker compose'
+alias di="docker images --format '{{.Repository}} {{.Tag}}'"
+alias dMusic='yt-dlp -x --audio-format mp3 --audio-quality 0 --embed-thumbnail --add-metadata --no-playlist -o ~/Music/%\(title\)s.%\(ext\)s'
+alias dM='dMusic'
+alias wpcli='docker compose run --rm wpcli wp'

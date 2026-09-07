@@ -59,8 +59,9 @@ SCRIPTS_PATH="$HOME/scripts"
 BIN_PATH="$HOME/.local/bin"
 FNM_PATH="$HOME/.local/share/fnm"
 OPENCODE_PATH="$HOME/.opencode/bin"
+CARGO_PATH="$HOME/.cargo/bin"
 
-for dir in "$FNM_PATH" "$SCRIPTS_PATH" "$BIN_PATH" "$OPENCODE_PATH"; do
+for dir in "$FNM_PATH" "$SCRIPTS_PATH" "$BIN_PATH" "$OPENCODE_PATH" "$CARGO_PATH"; do
     if [ -d "$dir" ]; then
         export PATH="$dir:$PATH"
     fi
