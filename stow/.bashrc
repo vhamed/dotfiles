@@ -13,6 +13,7 @@ done;
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
+shopt -s nullglob
 
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;

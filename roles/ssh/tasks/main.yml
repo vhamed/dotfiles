@@ -1,37 +1,37 @@
-- name: "Ensure .ssh directory exists"
+- name: Ensure .ssh directory exists
   file:
     path: "{{ ansible_user_dir }}/.ssh"
     state: directory
-    mode: '0700'
+    mode: 0700
 
 - name: Debug ansible_user_dir
   debug:
     var: ansible_user_dir
 
-- name: "Copy private keys"
-  template:
-    src: "{{ role_path }}/files/{{ item.src }}"
-    dest: "{{ ansible_user_dir }}/.ssh/{{ item.dest }}"
-    mode: '0600'
+- name: Copy private keys (strip _private suffix)
+  copy:
+    src: "{{ item }}"
+    dest: "{{ role_path }}/{{ item | basename | regex_replace('_private$', '') }}"
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
-  loop:
-    - { src: "private",   dest: "id_ed25519" }
-    - { src: "quds_private",   dest: "quds" }
-    - { src: "andalus_private",   dest: "andalus" }
-  loop_control:
-    label: "{{ item.dest }}"
+    mode: 0600
+  with_fileglob:
+    - "files/*_private"
 
-- name: "Copy public keys"
-  template:
-    src: "{{ role_path }}/files/{{ item.src }}"
-    dest: "{{ ansible_user_dir }}/.ssh/{{ item.dest }}"
-    mode: '0644'
+- name: Copy public keys (rename _public to .pub)
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ansible_user_dir }}/.ssh/{{ item | basename | regex_replace('_public$', '.pub') }}"
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
-  loop:
-    - { src: "public",   dest: "id_ed25519.pub" }
-    - { src: "quds_public",   dest: "quds.pub" }
-    - { src: "andalus_public",   dest: "andalus.pub" }
-  loop_control:
-    label: "{{ item.dest }}"
+    mode: 0644
+  with_fileglob:
+    - "files/*_public"
+
+- name: Copy ssh config file
+  copy:
+    src: files/config
+    dest: "{{ ansible_user_dir }}/.ssh/config"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: 0644
