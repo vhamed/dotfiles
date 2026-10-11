@@ -1,16 +1,9 @@
 ---
-- name: "Install zsh-autosuggestions"
-  git:
-    repo: https://github.com/zsh-users/zsh-autosuggestions
-    dest: ~/.zsh/zsh-autosuggestions
-    depth: 1
-    update: no
-
-- name: "Copy content of secret file to ~/.secrets"
+- name: Copy content of secret file to ~/.secrets
   copy:
     src: "{{ role_path }}/files/secrets"
     dest: ~/.secrets
-    mode: "0600"
+    mode: 0600
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
     force: true

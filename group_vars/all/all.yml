@@ -21,6 +21,8 @@ package_list:
   - name: playerctl
   - name: zsh-syntax-highlighting
     apt: zsh-syntax-highlighting
+  - name: zsh-autosuggestions
+    apt: zsh-autosuggestions
   - name: lxappearance
     apt: lxappearance
     apk_ignore: yes

@@ -19,6 +19,8 @@ zshaddhistory() {
   [[ $1 != ${~HISTORY_IGNORE} ]]
 }
 
+stty stop undef		# Disable ctrl-s to freeze terminal.
+
 # Key bindings for history search
 bindkey '^R' history-incremental-search-backward
 stty -ixon
@@ -26,8 +28,14 @@ bindkey '^S' history-incremental-search-forward
 bindkey -M isearch '^J' accept-search
 autoload -Uz history-search-end
 
+# Expansion and Globbing
+set -o markdirs
+set -o nomatch
+setopt NULL_GLOB
+
 # Use vi keybindings
 bindkey -v
+export KEYTIMEOUT=1
 
 # Use modern completion system
 autoload -Uz compinit
@@ -60,8 +68,9 @@ BIN_PATH="$HOME/.local/bin"
 FNM_PATH="$HOME/.local/share/fnm"
 OPENCODE_PATH="$HOME/.opencode/bin"
 CARGO_PATH="$HOME/.cargo/bin"
+PHPSTORM_PATH="$HOME/Apps/PhpStorm-262.10315.130/bin"
 
-for dir in "$FNM_PATH" "$SCRIPTS_PATH" "$BIN_PATH" "$OPENCODE_PATH" "$CARGO_PATH"; do
+for dir in "$FNM_PATH" "$SCRIPTS_PATH" "$BIN_PATH" "$OPENCODE_PATH" "$CARGO_PATH" "$PHPSTORM_PATH"; do
     if [ -d "$dir" ]; then
         export PATH="$dir:$PATH"
     fi

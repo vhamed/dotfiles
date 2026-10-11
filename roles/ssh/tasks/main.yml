@@ -11,7 +11,7 @@
 - name: Copy private keys (strip _private suffix)
   copy:
     src: "{{ item }}"
-    dest: "{{ role_path }}/{{ item | basename | regex_replace('_private$', '') }}"
+    dest: "{{ ansible_user_dir }}/.ssh/{{ item | basename | regex_replace('_private$', '') }}"
     owner: "{{ ansible_env.USER }}"
     group: "{{ ansible_env.USER }}"
     mode: 0600

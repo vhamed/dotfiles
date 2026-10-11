@@ -57,7 +57,9 @@ alias ,cc='~/.local/bin/tmux-sessionizer'
 
 alias d='docker'
 alias dc='docker compose'
+alias dcp='docker compose -f compose.prod.yml'
 alias di="docker images --format '{{.Repository}} {{.Tag}}'"
 alias dMusic='yt-dlp -x --audio-format mp3 --audio-quality 0 --embed-thumbnail --add-metadata --no-playlist -o ~/Music/%\(title\)s.%\(ext\)s'
 alias dM='dMusic'
 alias wpcli='docker compose run --rm wpcli wp'
+alias whereami='echo "$(whoami)@$(hostname) in $(pwd)"'

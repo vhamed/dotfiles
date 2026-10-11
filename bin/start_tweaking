@@ -41,8 +41,6 @@ mkdir -p $HOME/Repos
 ID=""
 DOTFILES_LOG="$HOME/.dotfiles.log"
 DOTFILES_DIR="$HOME/Repos/dotfiles"
-VAULT_PASSWORD="$HOME/.vault_password"
-USER_PASSWORD="$HOME/.user_password"
 IS_FIRST_RUN="$HOME/.dotfiles_run"
 
 # _header colorize the given argument with spacing
@@ -153,7 +151,7 @@ else
 fi
 
 pushd "$DOTFILES_DIR" 2>&1 > /dev/null
-ansible-playbook -i inventory.yml playbooks/main.yml --vault-password $VAULT_PASSWORD --become-password-file $USER_PASSWORD
+ansible-playbook -i inventory.yml playbooks/main.yml --skip-tags=docker,nvim
 
 popd 2>&1 > /dev/null
 
