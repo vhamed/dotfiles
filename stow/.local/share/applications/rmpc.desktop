@@ -3,6 +3,6 @@ Version=1.0
 Type=Application
 Name=rmpc
 Comment=MPD terminal music client
-Exec=kitty -e rmpc
+Exec=kitty rmpc
 Terminal=false
 # Categories=Audio;Player;

@@ -3,6 +3,6 @@ Version=1.0
 Type=Application
 Name=Yazi
 Comment=Terminal file manager
-Exec=kitty -e yazi
+Exec=kitty yazi
 Terminal=false
 # Categories=System;FileManager;

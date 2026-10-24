@@ -12,15 +12,11 @@
     - role: geerlingguy.docker
       become: yes
       tags: [docker]
-    - role: ssh
-      tags: [ssh]
+    - role: secrets
+      tags: [secrets]
     - role: git
       tags: [git]
-    - role: zsh
-      tags: [zsh]
     - role: tmux
       tags: [tmux]
     - role: nvim
       tags: [nvim]
-    # - role: fnm
-    #   tags: [fnm]
