@@ -77,9 +77,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec rofi -show run 
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -l 10 -nb "#282828" -nf "#ebdbb2" -sb "#458588" -sf "#ebdbb2" -p "Launch: " -fn "FiraCode Nerd Font-18"'
-bindsym $mod+Shift+d exec --no-startup-id dmenu_run -i -l 10 -nb "#282828" -nf "#ebdbb2" -sb "#458588" -sf "#ebdbb2" -p "Launch: " -fn "FiraCode Nerd Font-18"
 
 # change focus
 bindsym $mod+h focus left
@@ -130,7 +128,7 @@ bindsym $super+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 # bindsym $super+minus scratchpad show
 
-bindsym $super+p exec dmenu-shutdown 
+bindsym $super+Escape exec dmenu-shutdown 
 bindsym $super+v exec dmenu-audio
 bindsym $super+m exec dmenu-monitor
 bindsym $super+Tab exec keyboard-cycle 

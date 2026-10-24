@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=rmpc
+Comment=MPD terminal music client
+Exec=kitty -e rmpc
+Terminal=false
+# Categories=Audio;Player;
