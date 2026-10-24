@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on = "<C-o>"
+run = 'shell --block -- rotnsxiv %h'
+desc = "Open hovered image in nsxiv"

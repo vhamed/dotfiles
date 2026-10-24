@@ -1,0 +1,21 @@
+stty stop undef		# Disable ctrl-s to freeze terminal.
+stty -ixon
+
+# vi, history search keybindings
+bindkey -v
+
+# Key bindings for history forward search in different mods
+bindkey -M viins '^R' history-incremental-search-backward
+bindkey -M vicmd '^R' history-incremental-search-backward
+bindkey -M isearch '^R' history-incremental-search-backward
+bindkey '^R' history-incremental-search-backward
+# bindkey '^S' history-incremental-search-forward
+
+# Key bindings for history backward search in differnet mods
+# bindkey -M viins '^P' history-incremental-search-forward
+# bindkey -M vicmd '^P' history-incremental-search-forward
+# bindkey -M isearch '^P' history-incremental-search-forward
+# bindkey '^P' history-incremental-search-forward
+
+bindkey -M isearch '^J' accept-search
+# autoload -Uz history-search-end

@@ -50,7 +50,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/vhamed/dotfiles/ansible/
 
 cd into repo
 ```bash
-stow -d ~/Repos/dotfiles/stow -t ~ .
+stow -d ~/Repos/dotfiles/stow -t ~ --no-folding .
 ```
 
 ## Install tmux plugins

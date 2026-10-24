@@ -1,2 +1,5 @@
 vault_password
 user_password
+
+# Private overrides live in ~/.config/{sh,bash,zsh}, never in this repo
+*-private

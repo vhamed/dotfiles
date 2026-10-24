@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-DMENU="dmenu -l 10 -i -fn 'FiraCode Nerd Font-18' -p 'Select audio sink:'"
+DMENU="dmenu -l 10 -i -fn 'FiraCode Nerd Font-18' -p 'Select audio ouput:'"
 NOTIFY_TITLE="Audio Output"
 
 # Gather sinks: index|name|description
