@@ -15,6 +15,7 @@ package_list:
   - name: ripgrep
   - name: stow
   - name: i3
+  - name: i3lock-fancy
   - name: rofi
   - name: polybar
   - name: xsel

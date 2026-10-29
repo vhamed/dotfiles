@@ -1,7 +1,7 @@
 # UPPERCASE consistently
 
 # Max lines saved to history file
-HISTSIZE=20000          
+HISTSIZE=2000          
 SAVEHIST=20000
 # Remove older duplicates when a new one is added
 setopt HIST_IGNORE_ALL_DUPS   
@@ -36,7 +36,7 @@ autoload -U colors
 colors
 
 source $XDG_CONFIG_HOME/sh/alias
-source $XDG_CONFIG_HOME/zsh/wincent_prompt
+source $XDG_CONFIG_HOME/zsh/hamed_prompt
 source $XDG_CONFIG_HOME/zsh/keybindings
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

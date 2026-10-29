@@ -10,6 +10,8 @@
 export EDITOR=nvim
 export VISUAL=nvim
 export TERMINAL=kitty
+export REPOS=$HOME/Repos
+export DOTFILES=$REPOS/dotfiles
 
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
