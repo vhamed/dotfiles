@@ -6,6 +6,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+alias swap-cap-escape='setxkbmap -option caps:escape'
 alias ll='ls -halF'
 alias la='ls -A'
 alias ld='ls -ld'
@@ -65,6 +66,8 @@ fi
 mk () {
   mkdir -p $@ && cd $@
 }
+
+genpass() { tr -dc 'A-Za-z0-9!@#$%^&*' < /dev/urandom | head -c "${1:-20}"; echo; }
 
 aptUnlock () {
   sudo rm /var/lib/apt/lists/lock
